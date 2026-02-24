@@ -1,0 +1,29 @@
+<section class="hero-wrapper">
+    <div class="bg-track">
+        <div class="bg-color"></div>
+        <div class="bg-image"></div>
+    </div>
+</section>
+
+<style>
+    .hero-wrapper { 
+        position: relative; 
+        z-index: 1; /* Capa más baja */
+    }
+    .bg-color { 
+        height: 100vh; 
+        background-color: #0a0a0a; 
+    }
+    
+    .bg-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-image: url('/hero-robotica.jpg'); 
+        background-size: cover;
+        background-position: center;
+        box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.6); 
+    }
+</style>

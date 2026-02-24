@@ -1,0 +1,142 @@
+---
+/* Pillars.astro - Bloques de navegación principal */
+---
+
+<section class="pillars-section" id="explorar">
+  <div class="pillars-grid">
+    
+    <a href="/quienes-somos" class="pillar-box">
+      <div class="pillar-top">
+        <span class="pillar-label">01</span>
+        <h2>QUIENES SOMOS</h2>
+      </div>
+      <p>UN EQUIPO DEL <strong>COLEGIO BELGRANO</strong> LIDERADO POR ESPECIALISTAS. UNION ENTRE TRADICION E INNOVACION.</p>
+      <span class="pillar-link">CONOCE A LOS DOCENTES _</span>
+    </a>
+
+    <a href="/quienes-somos" class="pillar-box">
+      <div class="pillar-top">
+        <span class="pillar-label">02</span>
+        <h2>QUE HACEMOS</h2>
+      </div>
+      <p>DESDE COMPETENCIAS NACIONALES HASTA PROYECTOS DE AULA. TRABAJO REAL CON SENSORES Y DISEÑO 3D.</p>
+      <span class="pillar-link">VER PROYECTOS _</span>
+    </a>
+
+    <a href="/quienes-somos" class="pillar-box">
+      <div class="pillar-top">
+        <span class="pillar-label">03</span>
+        <h2>POR QUE LO HACEMOS</h2>
+      </div>
+      <p>EL LENGUAJE DEL FUTURO ES LA CREACION. FOMENTAMOS AUTONOMIA Y PENSAMIENTO CRITICO.</p>
+      <span class="pillar-link">IMPORTANCIA DE CREAR _</span>
+    </a>
+
+    <a href="/quienes-somos" class="pillar-box">
+      <div class="pillar-top">
+        <span class="pillar-label">04</span>
+        <h2>COMO LO HACEMOS</h2>
+      </div>
+      <p>GRUPOS REDUCIDOS Y EQUIPAMIENTO DE VANGUARDIA. TURNOS FLEXIBLES Y NIVELES ADAPTADOS.</p>
+      <span class="pillar-link">TURNOS Y EQUIPOS _</span>
+    </a>
+
+  </div>
+</section>
+
+<style>
+    
+  .pillars-section {
+    background-color: #f0f0f0;
+    padding: 0;
+    position: relative;
+    z-index: 10;
+    }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  /* El contenedor ahora es el enlace */
+  .pillar-box {
+    background-color: #ffffff;
+    padding: 5rem 10%;
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    z-index: 1;
+    color: #0a0a0a;
+    text-decoration: none; /* Elimina subrayado global */
+    cursor: pointer;
+  }
+
+  .pillar-box:hover {
+    background-color: #d53037;
+    color: #ffffff;
+    transform: translateY(-15px) scale(1.02);
+    z-index: 5;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+  }
+
+  .pillar-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .pillar-label {
+    font-family: monospace;
+    font-weight: bold;
+    background: #0a0a0a;
+    color: #ffffff;
+    padding: 5px 12px;
+    transition: all 0.4s ease;
+  }
+
+  .pillar-box:hover .pillar-label {
+    background: #ffffff;
+    color: #d53037;
+  }
+
+  .pillar-box h2 {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 900;
+    text-align: right;
+    margin: 0;
+    line-height: 1;
+  }
+
+  .pillar-box p {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin: 2.5rem 0;
+    line-height: 1.6;
+  }
+
+  /* Cambiado a span para evitar anidamiento de links */
+  .pillar-link {
+    font-weight: 900;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    border-bottom: 2px solid currentColor;
+    align-self: flex-start;
+    padding-bottom: 4px;
+    color: inherit;
+  }
+
+  @media (max-width: 768px) {
+    .pillars-grid {
+      grid-template-columns: 1fr;
+    }
+    .pillar-box {
+      min-height: auto;
+      padding: 4rem 2rem;
+    }
+  }
+</style>

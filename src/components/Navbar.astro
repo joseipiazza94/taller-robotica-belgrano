@@ -1,0 +1,178 @@
+---
+/* Navbar.astro */
+---
+
+<header id="navbar" class="hero-header">
+  <div class="header-content">
+    <a href="/#explorar" class="brand-link">
+      <div class="brand-wrapper">
+        <div class="title-logo-row">
+          <h1 class="main-title">TALLER DE<br />ROBOTICA</h1>
+          <img src="/logo-belgrano.png" alt="Logo" class="side-logo" />
+        </div>
+        <div class="subtitle-container">
+          <span class="decor-line"></span>
+          <span class="subtitle">COLEGIO BELGRANO</span>
+          <span class="decor-line"></span>
+        </div>
+      </div>
+    </a>
+  </div>
+</header>
+
+<style>
+  /* Añadimos este estilo para que el link no herede subrayados ni colores azules */
+  .brand-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: opacity 0.3s ease;
+  }
+
+  .brand-link:hover {
+    opacity: 0.9; /* Un pequeño feedback visual al pasar el mouse */
+  }
+    /* --- ESTILOS BASE --- */
+    .hero-header {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100px; 
+        display: flex; align-items: center; z-index: 100; transition: all 0.4s ease;
+        border: none; outline: none;
+    }
+
+    .header-content { width: 100%; display: flex; justify-content: center; padding: 0 5%; background: transparent; -webkit-tap-highlight-color: transparent; }
+
+    .brand-wrapper { display: inline-flex; flex-direction: column; }
+
+    .title-logo-row { display: flex; align-items: center; gap: 2rem; }
+
+    .main-title { 
+        font-size: clamp(3rem, 10vw, 8rem); line-height: 0.85; text-align: left; margin: 0;
+        font-weight: 900; text-transform: uppercase;
+        background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    .side-logo { height: clamp(4.5rem, 15vw, 12rem); width: auto; object-fit: contain; }
+
+    .subtitle-container { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: 0.5rem; }
+
+    .subtitle {
+        font-size: clamp(0.7rem, 1.2vw, 1.2rem); 
+        font-weight: 300; 
+        letter-spacing: 0.8em; 
+        padding: 0 1rem;
+        white-space: nowrap;
+        color: rgba(255, 255, 255, 0.9); 
+        text-transform: uppercase;
+    }
+
+    .decor-line {
+        flex-grow: 1;
+        height: 1px; 
+        background-color: #d53037; 
+        opacity: 0.8;
+    }
+
+    /* --- ESTADO SCROLLED --- */
+    .hero-header.scrolled {
+        background-color: rgba(5, 5, 5, 0.8); backdrop-filter: blur(10px); 
+        height: 90px; border-bottom: none;
+    }
+
+    .hero-header.scrolled .header-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .hero-header.scrolled .brand-wrapper {
+        transform: scale(0.8); 
+        transform-origin: center;
+        margin: 0; 
+    }
+
+    .hero-header.scrolled .title-logo-row {
+        gap: 0.8rem; 
+        align-items: center;
+    }
+
+    .hero-header.scrolled .subtitle-container {
+        margin: 0; 
+        display: flex;
+        align-items: center;
+        gap: 0; /* Mantenemos el gap en 0 para centrado perfecto */
+    }
+
+    .hero-header.scrolled .main-title { 
+        font-size: 1.4rem; 
+        line-height: 1.1;
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
+
+    .hero-header.scrolled .side-logo { height: 40px; }
+
+    .hero-header.scrolled .subtitle {
+        font-size: 0.8rem;
+        letter-spacing: 0.3em; 
+        padding: 0;
+        line-height: 1;
+        font-weight: 400;
+    }
+
+    .hero-header.scrolled .decor-line {
+        display: block; 
+        height: 4px; 
+    }
+
+    @media (max-width: 768px) {
+        .hero-header.scrolled .header-content { padding-left: 20px; }
+        .hero-header.scrolled { height: 85px; }
+    }
+</style>
+
+<script>
+  const initNavbarScroll = () => {
+    const header = document.getElementById('navbar');
+    const content = header?.querySelector('.header-content') as HTMLElement | null;
+
+    if (!header || !content) return;
+
+    // Detectamos si estamos en la Home
+    const isHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
+
+    const handleScroll = () => {
+      // SI NO ES LA HOME: Forzamos el estado compacto siempre
+      if (!isHome) {
+        header.classList.add('scrolled');
+        content.style.transform = `translateY(0)`;
+        return; 
+      }
+
+      // SI ES LA HOME: Ejecutamos tu lógica original de scroll
+      const scrollY = window.scrollY;
+      const vh = window.innerHeight;
+      const startRising = vh;
+      const endRising = vh * 1.5;
+
+      if (scrollY < startRising) {
+        header.classList.remove('scrolled');
+        content.style.transform = `translateY(calc(50vh - 50px))`;
+      } else if (scrollY >= startRising && scrollY <= endRising) {
+        header.classList.remove('scrolled');
+        const progress = (scrollY - startRising) / (vh * 0.5);
+        const currentY = 50 * (1 - progress);
+        content.style.transform = `translateY(calc(${currentY}vh - ${50 * (1 - progress)}px))`;
+      } else {
+        header.classList.add('scrolled');
+        content.style.transform = `translateY(0)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Se ejecuta al cargar la página
+  };
+
+  document.addEventListener('astro:page-load', initNavbarScroll);
+</script>

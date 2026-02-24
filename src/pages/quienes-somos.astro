@@ -1,0 +1,98 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+---
+
+<Layout title="Quiénes Somos - Taller de Robótica">
+    <Navbar />
+    
+    <main class="page-content">
+        <section class="intro-section">
+            <span class="label">01 / EQUIPO</span>
+            <h1>CONOCÉ A LOS DOCENTES</h1>
+            <p class="lead">
+                Combinamos la experiencia pedagógica del <strong>Colegio Belgrano</strong> 
+                con una visión técnica de vanguardia en electrónica, programación y diseño.
+            </p>
+        </section>
+
+        <section class="team-grid">
+            <div class="docente-card">
+                <div class="docente-info">
+                    <span class="role">COORDINACIÓN</span>
+                    <h3>NOMBRE DEL DOCENTE</h3>
+                    <p>Breve descripción de su especialidad o rol dentro del taller.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    .page-content {
+        padding-top: 150px; /* Espacio para que la Navbar no tape el título */
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-inline: 5%;
+    }
+
+    .intro-section { margin-bottom: 5rem; }
+
+    .label {
+        font-family: monospace;
+        color: #d83135;
+        letter-spacing: 4px;
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    h1 {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 900;
+        margin: 0 0 2rem 0;
+        text-transform: uppercase;
+    }
+
+    .lead {
+        font-size: 1.5rem;
+        font-weight: 300;
+        line-height: 1.6;
+        color: #ccc;
+        max-width: 800px;
+    }
+
+    /* Estética de las tarjetas de docentes similar a los módulos de la bitácora */
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 5rem;
+    }
+
+    .docente-card {
+        background: #151515;
+        border: 1px solid #222;
+        padding: 3rem;
+        transition: border-color 0.3s ease;
+    }
+
+    .docente-card:hover {
+        border-color: #d83135;
+    }
+
+    .role {
+        font-family: monospace;
+        font-size: 0.8rem;
+        color: #48c8f5; /* Celeste institucional */
+        letter-spacing: 2px;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+        margin: 0.5rem 0 1rem 0;
+    }
+
+    .page-content {
+    padding-top: 120px; /* Suficiente para que no lo tape la barra de 90px */
+}
+</style>

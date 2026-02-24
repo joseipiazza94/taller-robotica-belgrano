@@ -1,0 +1,80 @@
+---
+/* Quote.astro - Sección de transición con frase inspiracional */
+---
+
+<section class="quote-section">
+  <div class="quote-overlay"></div>
+  <div class="quote-content">
+    <blockquote>
+      "SE ENSEÑA POR AMOR A LOS DEMÁS, SE APRENDE POR AMOR A LA VERDAD"
+    </blockquote>
+    <cite>SAN AGUSTÍN</cite>
+  </div>
+</section>
+
+<style>
+  /* --- CONTENEDOR PRINCIPAL --- */
+  .quote-section {
+    position: relative;
+    height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('/hero-robotica.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+  }
+
+  /* Capa de color institucional sobre la imagen */
+  .quote-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(10, 10, 10, 0.85) 0%,
+      rgba(216, 49, 53, 0.75) 100%
+    );
+  }
+
+  /* --- BLOQUE DE TEXTO --- */
+  .quote-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    max-width: 1000px;
+    padding: 0 2rem;
+  }
+
+  .quote-content blockquote {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 900;
+    margin: 0;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+  }
+
+  /* --- ATRIBUCIÓN --- */
+  .quote-content cite {
+    display: block;
+    margin-top: 3rem;
+    font-style: normal;
+    font-family: monospace;
+    font-size: 1.4rem;
+    letter-spacing: 6px;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+  }
+
+  .quote-content cite::before {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: #d83135; /* Detalle Rojo Belgrano */
+    margin: 0 auto 1rem;
+  }
+</style>
