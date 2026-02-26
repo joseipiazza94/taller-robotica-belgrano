@@ -1,0 +1,243 @@
+---
+const levels = [
+  { 
+    id: 'spark', 
+    nombre: 'Spark Squad', 
+    descripcion: 'Nivel Inicial: Exploración mecánica y lógica de bloques.',
+    video: '/videos/nivel1.mp4', 
+    items: ['LEGO Education', 'Motores DC', 'Lógica'] 
+  },
+  { 
+    id: 'circuit', 
+    nombre: 'Circuit Masters', 
+    descripcion: 'Nivel Intermedio: Electrónica aplicada e impresión 3D.',
+    video: '/videos/nivel2.mp4', 
+    items: ['Arduino', 'Modelado 3D', 'Sensores'] 
+  },
+  { 
+    id: 'cyber', 
+    nombre: 'Cyber Builders', 
+    descripcion: 'Nivel Avanzado: Robótica de competición y código real.',
+    video: '/videos/nivel3.mp4', 
+    items: ['WRO', 'Python/C++', 'Sensores Pro'] 
+  }
+];
+---
+
+<section class="niveles-wrapper">
+  <div class="vertical-title">
+    <span>NIVELES</span>
+  </div>
+
+  <div class="niveles-container">
+    {levels.map((level) => (
+      <div class="level-bar">
+        <div class="level-content">
+          <div class="text-area">
+            <h3>{level.nombre}</h3>
+            <p>{level.descripcion}</p>
+            <div class="pills">
+              {level.items.map(item => <span>{item}</span>)}
+            </div>
+          </div>
+          
+          <div class="video-area">
+            <video muted loop playsinline preload="none">
+              <source src={level.video} type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  /* Contenedor principal que envuelve todo */
+  .niveles-wrapper {
+    position: relative;
+    background: #121212; /* Negro Técnico */
+    padding: 6rem 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Título "NIVELES" en vertical a la derecha */
+  .vertical-title {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .vertical-title span {
+    display: block;
+    writing-mode: vertical-rl;
+    font-size: 8rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.05); /* Blanco muy sutil */
+    letter-spacing: 0.5rem;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  /* Contenedor de las barras rojas */
+  .niveles-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Espacio entre niveles */
+    width: 100%;
+    z-index: 2;
+  }
+
+  /* La barra roja que sale de la izquierda */
+  .level-bar {
+    background: #8b1d20; /* Bordó Sombra base */
+    width: 75%; /* Retirado para que no toque el texto NIVELES */
+    height: 280px;
+    border-radius: 0; /* CORTE RECTO solicitado */
+    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+  }
+
+  /* Efecto de estiramiento y cambio de color al Rojo Oficial */
+  .level-bar:hover {
+    width: 88%; 
+    background: #d83135; /* Rojo Oficial */
+  }
+
+  /* Contenedor interno para separar texto de video */
+  .level-content {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Área del texto (lado izquierdo) */
+  .text-area {
+    padding-left: 4rem;
+    flex: 1;
+    color: white;
+  }
+
+  .text-area h3 {
+    font-size: 3rem;
+    margin: 0;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+
+  .text-area p {
+    font-size: 1.1rem;
+    max-width: 450px;
+    margin: 1rem 0;
+    color: #a0a0a0; /* Gris Texto */
+  }
+
+  /* Contenedor de las "pills" o etiquetas */
+  .pills {
+    display: flex;
+    gap: 0.8rem;
+  }
+
+  .pills span {
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 0.3rem 1rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  /* Área del video (lado derecho) */
+  .video-area {
+    width: 450px; /* Tamaño fijo del bloque de video */
+    height: 100%;
+    position: relative;
+    border-radius: 0; /* CORTE RECTO solicitado */
+    overflow: hidden;
+    background: #000;
+  }
+
+  /* Estilos del video propiamente dicho */
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) brightness(0.4); /* Estética técnica inicial */
+    transition: all 0.5s ease;
+  }
+
+  /* Activación del video en hover */
+  .level-bar:hover video {
+    filter: grayscale(0%) brightness(1);
+    transform: scale(1.05);
+  }
+
+  /* Ajustes para móviles */
+  @media (max-width: 1024px) {
+    .level-bar {
+      width: 100%;
+      height: auto;
+      flex-direction: column;
+    }
+    
+    .level-content {
+      flex-direction: column;
+      padding: 2rem 0;
+    }
+
+    .text-area {
+      padding: 0 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .video-area {
+      width: 100%;
+      height: 200px;
+    }
+
+    .vertical-title {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Esta función contiene la lógica de los videos
+  const setupVideos = () => {
+    const bars = document.querySelectorAll('.level-bar');
+    
+    bars.forEach(bar => {
+      const video = bar.querySelector('video') as HTMLVideoElement;
+      
+      if (video) {
+        bar.addEventListener('mouseenter', () => {
+          video.play().catch(error => console.log("Auto-play prevenido:", error));
+        });
+
+        bar.addEventListener('mouseleave', () => {
+          video.pause();
+          video.currentTime = 0; // Reinicia el video al salir
+        });
+      }
+    });
+  };
+
+  // 1. Se ejecuta en la carga inicial
+  setupVideos();
+
+  // 2. Se ejecuta cada vez que Astro cambia de página (si usas View Transitions)
+  document.addEventListener('astro:page-load', setupVideos);
+  
+  // 3. Por seguridad, también escuchamos cambios de contenido
+  document.addEventListener('astro:after-swap', setupVideos);
+</script>
