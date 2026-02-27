@@ -1,182 +1,228 @@
 ---
-const winners = [
+const trophies = [
   {
+    slug: 'mundial-turquia-2023',
     year: '2023',
-    achievement: 'Mundial Turquía',
-    team: 'Pioneer Team',
-    rank: 'Clasificación Mundial',
-    image: '/images/turquia.jpg' // Reemplazar por tu placeholder
+    title: 'Mundial Turquía',
+    desc: 'Representamos a Salta en la instancia más exigente del planeta.',
+    size: 'bento-big', 
+    img: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1000'
   },
   {
+    slug: 'nacional-argentina-2024',
     year: '2024',
-    achievement: 'Nacional Argentina',
-    team: 'RoboBelgrano',
-    rank: '2do Puesto Nacional',
-    image: '/images/nacional.jpg' // Reemplazar por tu placeholder
+    title: 'Nacional Argentina',
+    desc: '2do Puesto en la categoría Senior.',
+    size: 'bento-wide',
+    img: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=800'
+  },
+  {
+    slug: 'regional-salta-2022',
+    year: '2022',
+    title: 'Regional Salta',
+    desc: 'Campeones invictos con puntaje perfecto.',
+    size: 'bento-wide',
+    img: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=800'
   }
 ];
 ---
 
-<section class="wro-section">
-  <div class="wro-container">
-    <div class="wro-intro">
-      <span class="subtitle">Competencia de Élite</span>
+<section class="wro-section" id="wro">
+  <div class="wro-limit">
+    <header class="wro-intro">
+      <span class="wro-badge">ÉLITE MUNDIAL</span>
       <h2>World Robot Olympiad</h2>
-      <p>
-        La WRO no es solo una competencia, es donde nuestros alumnos ponen a prueba su resiliencia. 
-        Desde el triunfo nacional hasta representar a Salta en el mundial de <strong>Turquía</strong>, 
-        fomentamos el reconocimiento al esfuerzo y la excelencia técnica.
-      </p>
-    </div>
+      <p>Nuestra participación en la WRO es el reflejo de la excelencia. No solo competimos; resolvemos problemas reales bajo presión global.</p>
+    </header>
 
-    <div class="hall-of-fame">
-      <h3>Hall of Fame</h3>
-      <div class="fame-grid">
-        {winners.map(winner => (
-          <div class="fame-card">
-            <div class="image-wrapper">
-              <div class="year-tag">{winner.year}</div>
-              <img src={winner.image} alt={winner.achievement} />
-            </div>
-            <div class="card-body">
-              <h4>{winner.achievement}</h4>
-              <p class="rank">{winner.rank}</p>
-              <p class="team-name">{winner.team}</p>
-            </div>
+    <div class="bento-container">
+      {trophies.map(t => (
+        <a href={`/wro/${t.slug}`} class={`bento-box ${t.size}`} style={`background-image: url(${t.img})`}>
+          <div class="bento-gradient"></div>
+          <div class="bento-info">
+            <span class="bento-tag">{t.year}</span>
+            <h3>{t.title}</h3>
+            <p>{t.desc}</p>
+            <span class="read-more-btn">VER CRÓNICA →</span>
           </div>
-        ))}
-      </div>
+        </a>
+      ))}
     </div>
   </div>
 </section>
 
 <style>
+  /* Contenedor Principal con fondo blanco forzado */
   .wro-section {
-    background-color: #ffffff; /* Alternancia a Blanco */
-    padding: 6rem 0;
+    background-color: #ffffff !important;
+    padding: 100px 0;
+    width: 100%;
+    display: block;
     color: #121212;
   }
 
-  .wro-container {
+  .wro-limit {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0 20px;
   }
 
   .wro-intro {
-    margin-bottom: 5rem;
+    margin-bottom: 50px;
+    text-align: left;
   }
 
-  .subtitle {
-    color: #d83135; /* Rojo Oficial */
-    text-transform: uppercase;
-    font-weight: 700;
+  .wro-badge {
+    color: #d83135;
+    font-weight: 900;
     letter-spacing: 2px;
     font-size: 0.9rem;
+    display: block;
+    margin-bottom: 10px;
   }
 
   .wro-intro h2 {
-    font-size: 3.5rem;
+    font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 900;
-    color: #8b1d20; /* Bordó Sombra para títulos sobre blanco */
-    margin: 1rem 0;
     text-transform: uppercase;
+    color: #121212;
+    margin: 0;
   }
 
   .wro-intro p {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    color: #444;
+    max-width: 650px;
+    margin-top: 15px;
     line-height: 1.6;
-    max-width: 700px;
-    color: #2d2d2d;
   }
 
-  /* HALL OF FAME */
-  .hall-of-fame h3 {
-    font-size: 2.5rem;
-    font-weight: 900;
-    text-align: center;
-    margin-bottom: 3rem;
-    text-transform: uppercase;
-    color: #121212;
-  }
-
-  .fame-grid {
+  /* SISTEMA BENTO GRID */
+  .bento-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100%;
   }
 
-  .fame-card {
-    background: #f8f8f8;
-    border: 2px solid #eeeeee;
-    /* Mantenemos cortes rectos */
-    transition: all 0.3s ease;
-  }
-
-  .fame-card:hover {
-    border-color: #d83135;
-    transform: translateY(-5px);
-    box-shadow: 10px 10px 0px rgba(139, 29, 32, 0.1); /* Sombra técnica rígida */
-  }
-
-  .image-wrapper {
+  /* Reset de Enlaces (Anchors) */
+  .bento-box {
     position: relative;
-    height: 250px;
-    background: #2d2d2d;
+    background-size: cover;
+    background-position: center;
+    background-color: #1a1a1a;
+    min-height: 300px;
+    display: flex;
+    align-items: flex-end;
     overflow: hidden;
+    text-decoration: none !important; /* Elimina subrayado azul */
+    color: white !important; /* Elimina color azul de link */
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
 
-  .year-tag {
+  /* Configuración de tamaños Bento */
+  .bento-big { 
+    grid-row: span 2; 
+    min-height: 620px; 
+  }
+  
+  .bento-wide { 
+    grid-column: span 1; 
+  }
+
+  /* Capa de color/degradado sobre la foto */
+  .bento-gradient {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(139, 29, 32, 0.85) 0%, rgba(0,0,0,0.1) 100%);
+    z-index: 1;
+    transition: all 0.4s ease;
+  }
+
+  /* Contenedor de texto interno */
+  .bento-info {
+    position: relative;
+    z-index: 2;
+    padding: 35px;
+    width: 100%;
+    transform: translateY(25px);
+    transition: transform 0.4s ease;
+  }
+
+  .bento-tag {
     background: #d83135;
     color: white;
-    padding: 0.5rem 1.5rem;
+    padding: 4px 10px;
     font-weight: 900;
-    z-index: 10;
+    font-size: 0.75rem;
+    display: inline-block;
+    margin-bottom: 12px;
   }
 
-  .image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: grayscale(100%);
-    transition: 0.5s ease;
-  }
-
-  .fame-card:hover img {
-    filter: grayscale(0%);
-    transform: scale(1.05);
-  }
-
-  .card-body {
-    padding: 2rem;
-    text-align: left;
-    border-left: 5px solid #8b1d20; /* Detalle bordó a la izquierda */
-  }
-
-  .card-body h4 {
-    font-size: 1.5rem;
+  .bento-info h3 {
+    color: #ffffff !important;
+    font-size: 2.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
     margin: 0;
-    color: #8b1d20;
+    line-height: 1.1;
+    text-decoration: none !important;
+  }
+
+  .bento-info p {
+    color: rgba(255,255,255,0.9);
+    margin: 12px 0 20px;
+    font-size: 1.05rem;
+    line-height: 1.4;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  /* Estilización del botón VER CRÓNICA */
+  .read-more-btn {
+    display: inline-block;
+    color: #ffffff !important;
+    font-weight: 900;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
     text-transform: uppercase;
+    text-decoration: none !important;
+    border-bottom: 2px solid #d83135;
+    padding-bottom: 4px;
+    opacity: 0;
+    transition: all 0.4s ease;
   }
 
-  .rank {
-    font-weight: 700;
-    color: #d83135;
-    margin: 0.5rem 0;
+  /* INTERACCIONES (HOVER) */
+  .bento-box:hover {
+    transform: scale(0.985);
   }
 
-  .team-name {
-    color: #666;
-    font-size: 0.9rem;
-    text-transform: uppercase;
+  .bento-box:hover .bento-gradient {
+    /* Al pasar el mouse, oscurecemos un poco más para que el texto resalte */
+    background: linear-gradient(0deg, rgba(18, 18, 18, 0.95) 0%, rgba(0,0,0,0.3) 100%);
   }
 
+  .bento-box:hover .bento-info {
+    transform: translateY(0);
+  }
+
+  .bento-box:hover p, 
+  .bento-box:hover .read-more-btn {
+    opacity: 1;
+  }
+
+  .bento-box:hover .read-more-btn {
+    color: #d83135 !important; /* El texto del botón cambia a rojo */
+  }
+
+  /* RESPONSIVE */
   @media (max-width: 768px) {
-    .wro-intro h2 { font-size: 2.5rem; }
-    .fame-grid { grid-template-columns: 1fr; }
+    .wro-section { padding: 60px 0; }
+    .bento-container { grid-template-columns: 1fr; }
+    .bento-big { grid-row: span 1; min-height: 400px; }
+    .bento-info { transform: translateY(0); padding: 25px; }
+    .bento-info p, .read-more-btn { opacity: 1; }
+    .bento-info h3 { font-size: 1.8rem; }
   }
 </style>

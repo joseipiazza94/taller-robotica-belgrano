@@ -4,7 +4,9 @@ const levels = [
     id: 'spark', 
     nombre: 'Spark Squad', 
     descripcion: 'Nivel Inicial: Exploración mecánica y lógica de bloques.',
+    // IMPORTANTE: Grabar estos videos en HORIZONTAL (16:9)
     video: '/videos/nivel1.mp4', 
+    detalleExtra: 'En este nivel los chicos trabajan con LEGO Education y conceptos básicos de física. Aprenden a dar sus primeros pasos en la lógica de programación mediante bloques visuales.',
     items: ['LEGO Education', 'Motores DC', 'Lógica'] 
   },
   { 
@@ -12,39 +14,61 @@ const levels = [
     nombre: 'Circuit Masters', 
     descripcion: 'Nivel Intermedio: Electrónica aplicada e impresión 3D.',
     video: '/videos/nivel2.mp4', 
+    detalleExtra: 'Pasamos al hardware real. Introducción a Arduino, sensores ultrasónicos y modelado técnico para impresión 3D en nuestras Bambu Lab A1.',
     items: ['Arduino', 'Modelado 3D', 'Sensores'] 
   },
   { 
     id: 'cyber', 
     nombre: 'Cyber Builders', 
-    descripcion: 'Nivel Avanzado: Robótica de competición y código real.',
+    descripcion: 'Nivel Avanzado: Robótica de competencia y código real.',
     video: '/videos/nivel3.mp4', 
+    detalleExtra: 'El nivel de alto rendimiento. Preparación para la WRO, programación avanzada en Python/C++ y diseño de robots autónomos de competición.',
     items: ['WRO', 'Python/C++', 'Sensores Pro'] 
   }
 ];
 ---
 
-<section class="niveles-wrapper">
-  <div class="vertical-title">
-    <span>NIVELES</span>
-  </div>
+<section class="niveles-wrapper" id="nivelesWrapper">
+  <div class="vertical-title"><span>NIVELES</span></div>
 
-  <div class="niveles-container">
+  <div class="niveles-container" id="levelsContainer">
     {levels.map((level) => (
-      <div class="level-bar">
+      <div class="level-bar" data-id={level.id}>
         <div class="level-content">
-          <div class="text-area">
-            <h3>{level.nombre}</h3>
-            <p>{level.descripcion}</p>
-            <div class="pills">
-              {level.items.map(item => <span>{item}</span>)}
+          
+          {/* VISTA CERRADA: El video es un recuadro fijo */}
+          <div class="main-info">
+            <div class="text-area">
+              <h3>{level.nombre}</h3>
+              <p>{level.descripcion}</p>
+              <div class="pills">
+                {level.items.map(item => <span>{item}</span>)}
+              </div>
+            </div>
+            <div class="horizontal-video">
+              <video muted loop playsinline preload="metadata">
+                <source src={level.video} type="video/mp4" />
+              </video>
             </div>
           </div>
-          
-          <div class="video-area">
-            <video muted loop playsinline preload="none">
-              <source src={level.video} type="video/mp4" />
-            </video>
+
+          {/* VISTA EXPANDIDA: El video se Morphing a Vertical */}
+          <div class="expanded-info">
+            <div class="expanded-layout">
+              <div class="expanded-text">
+                <button class="btn-close-level">← VOLVER</button>
+                <h4>Objetivos del Nivel</h4>
+                <p>{level.detalleExtra}</p>
+                <div class="content-placeholder">
+                  <p>[ CONTENIDO CURRICULAR / FOTOS ]</p>
+                </div>
+              </div>
+              <div class="vertical-video">
+                <video muted loop playsinline preload="metadata">
+                  <source src={level.video} type="video/mp4" />
+                </video>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -53,191 +77,205 @@ const levels = [
 </section>
 
 <style>
-  /* Contenedor principal que envuelve todo */
   .niveles-wrapper {
     position: relative;
-    background: #121212; /* Negro Técnico */
-    padding: 6rem 0;
-    overflow: hidden;
+    background: #121212;
+    padding: 3rem 0; 
+    min-height: auto;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
   }
 
-  /* Título "NIVELES" en vertical a la derecha */
-  .vertical-title {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  .vertical-title span {
-    display: block;
-    writing-mode: vertical-rl;
-    font-size: 8rem;
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0.05); /* Blanco muy sutil */
-    letter-spacing: 0.5rem;
-    text-transform: uppercase;
-    line-height: 1;
-  }
-
-  /* Contenedor de las barras rojas */
   .niveles-container {
     display: flex;
     flex-direction: column;
-    gap: 1rem; /* Espacio entre niveles */
+    gap: 0.8rem;
     width: 100%;
-    z-index: 2;
+    transition: all 0.6s cubic-bezier(0.85, 0, 0.15, 1);
+    align-items: flex-start; 
   }
 
-  /* La barra roja que sale de la izquierda */
   .level-bar {
     background: #8b1d20; /* Bordó Sombra base */
-    width: 75%; /* Retirado para que no toque el texto NIVELES */
-    height: 280px;
-    border-radius: 0; /* CORTE RECTO solicitado */
-    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    width: 75vw;
+    height: 240px;
+    border-radius: 0;
+    transition: all 0.7s cubic-bezier(0.85, 0, 0.15, 1);
     cursor: pointer;
     overflow: hidden;
-    display: flex;
+    position: relative;
+    z-index: 5;
   }
 
-  /* Efecto de estiramiento y cambio de color al Rojo Oficial */
-  .level-bar:hover {
-    width: 88%; 
-    background: #d83135; /* Rojo Oficial */
+  /* HOVER */
+  .level-bar:not(.is-expanded):hover {
+    width: 82vw;
+    background: #d83135;
   }
 
-  /* Contenedor interno para separar texto de video */
-  .level-content {
+  /* ESTADO EXPANDIDO (Reducido un 15%) */
+  .level-bar.is-expanded {
+    height: 72vh; /* Reducción del ~15% respecto al 85vh anterior */
+    width: 78vw;  /* Reducción del ~15% respecto al 92vw anterior */
+    background: #1e1e1e; /* Gris industrial */
+    cursor: default;
+    z-index: 10;
+    margin-left: 6vw; /* Más margen a la izquierda para centrar visualmente el panel reducido */
+    box-shadow: 0 0 50px rgba(0,0,0,0.6);
+  }
+
+  /* Compresión */
+  .niveles-container.has-expanded .level-bar:not(.is-expanded) {
+    height: 0;
+    opacity: 0;
+    margin: 0;
+    pointer-events: none;
+  }
+
+  .level-content { display: flex; flex-direction: column; height: 100%; width: 100%; }
+
+  /* Vista Cerrada */
+  .main-info {
     display: flex;
     width: 100%;
-    height: 100%;
+    height: 240px;
     align-items: center;
     justify-content: space-between;
-  }
-
-  /* Área del texto (lado izquierdo) */
-  .text-area {
     padding-left: 4rem;
-    flex: 1;
-    color: white;
+    transition: opacity 0.4s ease;
   }
 
-  .text-area h3 {
-    font-size: 3rem;
-    margin: 0;
-    font-weight: 900;
-    text-transform: uppercase;
-    line-height: 1.1;
-  }
+  .level-bar.is-expanded .main-info { opacity: 0; height: 0; overflow: hidden; }
 
-  .text-area p {
-    font-size: 1.1rem;
-    max-width: 450px;
-    margin: 1rem 0;
-    color: #a0a0a0; /* Gris Texto */
-  }
-
-  /* Contenedor de las "pills" o etiquetas */
-  .pills {
-    display: flex;
-    gap: 0.8rem;
-  }
-
-  .pills span {
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 0.3rem 1rem;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    background: rgba(255, 255, 255, 0.05);
-  }
-
-  /* Área del video (lado derecho) */
-  .video-area {
-    width: 450px; /* Tamaño fijo del bloque de video */
-    height: 100%;
-    position: relative;
-    border-radius: 0; /* CORTE RECTO solicitado */
-    overflow: hidden;
+  /* Blindaje del Video en Vista Cerrada */
+  .horizontal-video {
+    width: 400px;
+    height: 240px;
     background: #000;
   }
 
-  /* Estilos del video propiamente dicho */
+  /* Vista Expandida */
+  .expanded-info { opacity: 0; visibility: hidden; height: 0; transition: opacity 0.5s ease 0.3s; }
+  .level-bar.is-expanded .expanded-info { opacity: 1; visibility: visible; height: 100%; flex: 1; }
+
+  /* Layout de la expansión reducida */
+  .expanded-layout { 
+    display: grid; 
+    grid-template-columns: 1fr 320px; /* Video vertical un poco más estrecho */
+    height: 100%; 
+  }
+
+  .expanded-text { 
+    padding: 3rem 4rem; 
+    color: white; 
+    display: flex; 
+    flex-direction: column;
+    overflow-y: auto; 
+  }
+
+  .btn-close-level {
+    align-self: flex-start;
+    background: #d83135;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.4rem;
+    font-weight: 900;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+  }
+
+  .expanded-text h4 { color: #d83135; font-size: 1.6rem; text-transform: uppercase; margin-bottom: 0.8rem; }
+  .expanded-text p { font-size: 1.1rem; line-height: 1.5; color: #e0e0e0; }
+
+  .vertical-video { width: 100%; height: 100%; background: #000; }
+
   video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(100%) brightness(0.4); /* Estética técnica inicial */
+    object-position: center;
+    filter: grayscale(100%) brightness(0.4);
     transition: all 0.5s ease;
   }
 
-  /* Activación del video en hover */
-  .level-bar:hover video {
+  .level-bar:hover video, .level-bar.is-expanded video {
     filter: grayscale(0%) brightness(1);
-    transform: scale(1.05);
   }
 
-  /* Ajustes para móviles */
+  /* Título Vertical Sutil */
+  .vertical-title { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); z-index: 1; }
+  .vertical-title span { writing-mode: vertical-rl; font-size: 7rem; font-weight: 900; color: rgba(255,255,255,0.03); text-transform: uppercase; }
+
+  /* Estilos Mobile */
   @media (max-width: 1024px) {
-    .level-bar {
-      width: 100%;
-      height: auto;
-      flex-direction: column;
-    }
-    
-    .level-content {
-      flex-direction: column;
-      padding: 2rem 0;
-    }
-
-    .text-area {
-      padding: 0 2rem;
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .video-area {
-      width: 100%;
-      height: 200px;
-    }
-
-    .vertical-title {
-      display: none;
-    }
+    .level-bar { width: 100vw; }
+    .level-bar.is-expanded { width: 100vw; height: 100vh; margin-left: 0; }
+    .main-info { padding-left: 1.5rem; flex-direction: column; height: auto; padding-top: 2rem; }
+    .horizontal-video { width: 100%; height: 180px; }
+    .expanded-layout { grid-template-columns: 1fr; }
+    .vertical-video { height: 250px; order: -1; }
   }
 </style>
-
 <script>
-  // Esta función contiene la lógica de los videos
-  const setupVideos = () => {
+  const setupLevels = () => {
+    const container = document.getElementById('levelsContainer');
     const bars = document.querySelectorAll('.level-bar');
-    
-    bars.forEach(bar => {
-      const video = bar.querySelector('video') as HTMLVideoElement;
-      
-      if (video) {
-        bar.addEventListener('mouseenter', () => {
-          video.play().catch(error => console.log("Auto-play prevenido:", error));
-        });
 
-        bar.addEventListener('mouseleave', () => {
-          video.pause();
-          video.currentTime = 0; // Reinicia el video al salir
-        });
-      }
+    bars.forEach(bar => {
+      // Buscamos AMBOS videos (el horizontal y el vertical)
+      const videos = bar.querySelectorAll('video');
+      
+      const playVideos = () => videos.forEach(v => v.play().catch(()=>{}));
+      const pauseVideos = () => videos.forEach(v => { v.pause(); v.currentTime = 0; });
+
+      // Hover: Solo si NO está expandida
+      bar.addEventListener('mouseenter', () => {
+        if (!bar.classList.contains('is-expanded')) {
+          playVideos();
+        }
+      });
+
+      bar.addEventListener('mouseleave', () => {
+        if (!bar.classList.contains('is-expanded')) {
+          pauseVideos();
+        }
+      });
+
+      // Click para expandir/cerrar
+      bar.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        
+        // Botón CERRAR
+        if (target.classList.contains('btn-close-level')) {
+          bar.classList.remove('is-expanded');
+          container?.classList.remove('has-expanded');
+          pauseVideos();
+          e.stopPropagation(); // Evita que el click se propague a la card
+          return;
+        }
+
+        // Abrir
+        if (!bar.classList.contains('is-expanded')) {
+          // Primero pausamos todos los videos de todas las barras
+          document.querySelectorAll('.level-bar video').forEach(v => (v as HTMLVideoElement).pause());
+          
+          // Reseteamos estados
+          bars.forEach(b => b.classList.remove('is-expanded'));
+          
+          // Activamos esta
+          bar.classList.add('is-expanded');
+          container?.classList.add('has-expanded');
+          
+          // Sincronizamos y reproducimos los videos de ESTA barra
+          playVideos();
+        }
+      });
     });
   };
 
-  // 1. Se ejecuta en la carga inicial
-  setupVideos();
-
-  // 2. Se ejecuta cada vez que Astro cambia de página (si usas View Transitions)
-  document.addEventListener('astro:page-load', setupVideos);
-  
-  // 3. Por seguridad, también escuchamos cambios de contenido
-  document.addEventListener('astro:after-swap', setupVideos);
+  setupLevels();
+  document.addEventListener('astro:page-load', setupLevels);
 </script>
