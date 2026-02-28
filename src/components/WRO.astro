@@ -30,9 +30,30 @@ const trophies = [
 <section class="wro-section" id="wro">
   <div class="wro-limit">
     <header class="wro-intro">
-      <span class="wro-badge">ÉLITE MUNDIAL</span>
-      <h2>World Robot Olympiad</h2>
-      <p>Nuestra participación en la WRO es el reflejo de la excelencia. No solo competimos; resolvemos problemas reales bajo presión global.</p>
+      <div class="intro-main">
+        <span class="wro-badge">ÉLITE MUNDIAL</span>
+        <h2>World Robot Olympiad</h2>
+        <p class="main-desc">
+          La <strong>WRO</strong> es la competencia de robótica educativa más importante del mundo, presente en más de 90 países. 
+          Nuestra participación es el reflejo de la excelencia: resolvemos problemas reales bajo presión global, representando al colegio y al país en la élite tecnológica.
+        </p>
+      </div>
+
+      {/* BLOQUE DE FICHA TÉCNICA */}
+      <div class="wro-stats-container">
+        <div class="stat-line">
+          <span class="stat-value">+90</span>
+          <span class="stat-label">Países en competencia</span>
+        </div>
+        <div class="stat-line">
+          <span class="stat-value">Senior</span>
+          <span class="stat-label">Categoría de Élite</span>
+        </div>
+        <div class="stat-line">
+          <span class="stat-value">WRO</span>
+          <span class="stat-label">Plataforma Global</span>
+        </div>
+      </div>
     </header>
 
     <div class="bento-container">
@@ -52,12 +73,11 @@ const trophies = [
 </section>
 
 <style>
-  /* Contenedor Principal con fondo blanco forzado */
+  /* --- CONTENEDOR PRINCIPAL --- */
   .wro-section {
     background-color: #ffffff !important;
     padding: 100px 0;
     width: 100%;
-    display: block;
     color: #121212;
   }
 
@@ -67,9 +87,13 @@ const trophies = [
     padding: 0 20px;
   }
 
+  /* --- INTRODUCCIÓN Y FICHA TÉCNICA --- */
   .wro-intro {
-    margin-bottom: 50px;
-    text-align: left;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px;
+    margin-bottom: 80px;
+    align-items: center;
   }
 
   .wro-badge {
@@ -87,17 +111,54 @@ const trophies = [
     text-transform: uppercase;
     color: #121212;
     margin: 0;
+    line-height: 0.9;
   }
 
-  .wro-intro p {
-    font-size: 1.1rem;
+  .main-desc {
+    font-size: 1.15rem;
     color: #444;
-    max-width: 650px;
-    margin-top: 15px;
+    margin-top: 25px;
     line-height: 1.6;
   }
 
-  /* SISTEMA BENTO GRID */
+  .main-desc strong { color: #d83135; font-weight: 900; }
+
+  /* CAJA GRIS DE DATOS */
+  .wro-stats-container {
+    background: #f4f4f4;
+    padding: 40px;
+    border-left: 5px solid #d83135;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .stat-line {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding-bottom: 15px;
+  }
+
+  .stat-line:last-child { border: none; padding-bottom: 0; }
+
+  .stat-value {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #121212;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888;
+    margin-top: 5px;
+    font-weight: 700;
+  }
+
+  /* --- SISTEMA BENTO --- */
   .bento-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -105,7 +166,6 @@ const trophies = [
     width: 100%;
   }
 
-  /* Reset de Enlaces (Anchors) */
   .bento-box {
     position: relative;
     background-size: cover;
@@ -115,22 +175,14 @@ const trophies = [
     display: flex;
     align-items: flex-end;
     overflow: hidden;
-    text-decoration: none !important; /* Elimina subrayado azul */
-    color: white !important; /* Elimina color azul de link */
+    text-decoration: none !important;
+    color: white !important;
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
 
-  /* Configuración de tamaños Bento */
-  .bento-big { 
-    grid-row: span 2; 
-    min-height: 620px; 
-  }
-  
-  .bento-wide { 
-    grid-column: span 1; 
-  }
+  .bento-big { grid-row: span 2; min-height: 620px; }
+  .bento-wide { grid-column: span 1; }
 
-  /* Capa de color/degradado sobre la foto */
   .bento-gradient {
     position: absolute;
     inset: 0;
@@ -139,7 +191,6 @@ const trophies = [
     transition: all 0.4s ease;
   }
 
-  /* Contenedor de texto interno */
   .bento-info {
     position: relative;
     z-index: 2;
@@ -166,7 +217,6 @@ const trophies = [
     text-transform: uppercase;
     margin: 0;
     line-height: 1.1;
-    text-decoration: none !important;
   }
 
   .bento-info p {
@@ -178,7 +228,6 @@ const trophies = [
     transition: opacity 0.4s ease;
   }
 
-  /* Estilización del botón VER CRÓNICA */
   .read-more-btn {
     display: inline-block;
     color: #ffffff !important;
@@ -186,39 +235,26 @@ const trophies = [
     font-size: 0.8rem;
     letter-spacing: 2px;
     text-transform: uppercase;
-    text-decoration: none !important;
     border-bottom: 2px solid #d83135;
     padding-bottom: 4px;
     opacity: 0;
     transition: all 0.4s ease;
   }
 
-  /* INTERACCIONES (HOVER) */
-  .bento-box:hover {
-    transform: scale(0.985);
-  }
-
-  .bento-box:hover .bento-gradient {
-    /* Al pasar el mouse, oscurecemos un poco más para que el texto resalte */
-    background: linear-gradient(0deg, rgba(18, 18, 18, 0.95) 0%, rgba(0,0,0,0.3) 100%);
-  }
-
-  .bento-box:hover .bento-info {
-    transform: translateY(0);
-  }
-
-  .bento-box:hover p, 
-  .bento-box:hover .read-more-btn {
-    opacity: 1;
-  }
-
-  .bento-box:hover .read-more-btn {
-    color: #d83135 !important; /* El texto del botón cambia a rojo */
-  }
+  /* INTERACCIONES HOVER */
+  .bento-box:hover { transform: scale(0.985); }
+  .bento-box:hover .bento-gradient { background: linear-gradient(0deg, rgba(18, 18, 18, 0.95) 0%, rgba(0,0,0,0.3) 100%); }
+  .bento-box:hover .bento-info { transform: translateY(0); }
+  .bento-box:hover p, .bento-box:hover .read-more-btn { opacity: 1; }
+  .bento-box:hover .read-more-btn { color: #d83135 !important; }
 
   /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .wro-intro { grid-template-columns: 1fr; gap: 30px; }
+    .wro-stats-container { order: -1; }
+  }
+
   @media (max-width: 768px) {
-    .wro-section { padding: 60px 0; }
     .bento-container { grid-template-columns: 1fr; }
     .bento-big { grid-row: span 1; min-height: 400px; }
     .bento-info { transform: translateY(0); padding: 25px; }

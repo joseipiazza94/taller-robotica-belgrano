@@ -4,7 +4,6 @@ const levels = [
     id: 'spark', 
     nombre: 'Spark Squad', 
     descripcion: 'Nivel Inicial: Exploración mecánica y lógica de bloques.',
-    // IMPORTANTE: Grabar estos videos en HORIZONTAL (16:9)
     video: '/videos/nivel1.mp4', 
     detalleExtra: 'En este nivel los chicos trabajan con LEGO Education y conceptos básicos de física. Aprenden a dar sus primeros pasos en la lógica de programación mediante bloques visuales.',
     items: ['LEGO Education', 'Motores DC', 'Lógica'] 
@@ -36,7 +35,7 @@ const levels = [
       <div class="level-bar" data-id={level.id}>
         <div class="level-content">
           
-          {/* VISTA CERRADA: El video es un recuadro fijo */}
+          {/* VISTA CERRADA: Ahora con Position Absolute para evitar el parpadeo */}
           <div class="main-info">
             <div class="text-area">
               <h3>{level.nombre}</h3>
@@ -52,7 +51,7 @@ const levels = [
             </div>
           </div>
 
-          {/* VISTA EXPANDIDA: El video se Morphing a Vertical */}
+          {/* VISTA EXPANDIDA */}
           <div class="expanded-info">
             <div class="expanded-layout">
               <div class="expanded-text">
@@ -80,7 +79,7 @@ const levels = [
   .niveles-wrapper {
     position: relative;
     background: #121212;
-    padding: 3rem 0; 
+    padding: 6rem 0; 
     min-height: auto;
     display: flex;
     align-items: center;
@@ -97,10 +96,9 @@ const levels = [
   }
 
   .level-bar {
-    background: #8b1d20; /* Bordó Sombra base */
+    background: #8b1d20;
     width: 75vw;
     height: 240px;
-    border-radius: 0;
     transition: all 0.7s cubic-bezier(0.85, 0, 0.15, 1);
     cursor: pointer;
     overflow: hidden;
@@ -108,24 +106,21 @@ const levels = [
     z-index: 5;
   }
 
-  /* HOVER */
   .level-bar:not(.is-expanded):hover {
     width: 82vw;
     background: #d83135;
   }
 
-  /* ESTADO EXPANDIDO (Reducido un 15%) */
   .level-bar.is-expanded {
-    height: 72vh; /* Reducción del ~15% respecto al 85vh anterior */
-    width: 78vw;  /* Reducción del ~15% respecto al 92vw anterior */
-    background: #1e1e1e; /* Gris industrial */
+    height: 72vh;
+    width: 78vw;
+    background: #1e1e1e;
     cursor: default;
     z-index: 10;
-    margin-left: 6vw; /* Más margen a la izquierda para centrar visualmente el panel reducido */
+    margin-left: 6vw;
     box-shadow: 0 0 50px rgba(0,0,0,0.6);
   }
 
-  /* Compresión */
   .niveles-container.has-expanded .level-bar:not(.is-expanded) {
     height: 0;
     opacity: 0;
@@ -133,9 +128,9 @@ const levels = [
     pointer-events: none;
   }
 
-  .level-content { display: flex; flex-direction: column; height: 100%; width: 100%; }
+  .level-content { position: relative; height: 100%; width: 100%; }
 
-  /* Vista Cerrada */
+  /* VISTA CERRADA (AJUSTADA PARA EL ZERO-FLICKER) */
   .main-info {
     display: flex;
     width: 100%;
@@ -143,36 +138,39 @@ const levels = [
     align-items: center;
     justify-content: space-between;
     padding-left: 4rem;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
   }
 
-  .level-bar.is-expanded .main-info { opacity: 0; height: 0; overflow: hidden; }
-
-  /* Blindaje del Video en Vista Cerrada */
-  .horizontal-video {
-    width: 400px;
-    height: 240px;
-    background: #000;
+  .level-bar.is-expanded .main-info { 
+    opacity: 0; 
+    visibility: hidden;
+    pointer-events: none;
   }
 
-  /* Vista Expandida */
-  .expanded-info { opacity: 0; visibility: hidden; height: 0; transition: opacity 0.5s ease 0.3s; }
-  .level-bar.is-expanded .expanded-info { opacity: 1; visibility: visible; height: 100%; flex: 1; }
+  .horizontal-video { width: 400px; height: 240px; background: #000; }
 
-  /* Layout de la expansión reducida */
-  .expanded-layout { 
-    display: grid; 
-    grid-template-columns: 1fr 320px; /* Video vertical un poco más estrecho */
-    height: 100%; 
+  /* VISTA EXPANDIDA */
+  .expanded-info { 
+    position: relative;
+    z-index: 2;
+    opacity: 0; 
+    visibility: hidden; 
+    height: 100%;
+    transition: opacity 0.5s ease; 
   }
 
-  .expanded-text { 
-    padding: 3rem 4rem; 
-    color: white; 
-    display: flex; 
-    flex-direction: column;
-    overflow-y: auto; 
+  .level-bar.is-expanded .expanded-info { 
+    opacity: 1; 
+    visibility: visible; 
   }
+
+  .expanded-layout { display: grid; grid-template-columns: 1fr 320px; height: 100%; }
+
+  .expanded-text { padding: 3rem 4rem; color: white; display: flex; flex-direction: column; overflow-y: auto; }
 
   .btn-close-level {
     align-self: flex-start;
@@ -187,8 +185,11 @@ const levels = [
     font-size: 0.8rem;
   }
 
-  .expanded-text h4 { color: #d83135; font-size: 1.6rem; text-transform: uppercase; margin-bottom: 0.8rem; }
-  .expanded-text p { font-size: 1.1rem; line-height: 1.5; color: #e0e0e0; }
+  .text-area h3 { font-size: 2rem; font-weight: 900; text-transform: uppercase; margin: 0; color: white; }
+  .text-area p { color: rgba(255,255,255,0.8); margin: 5px 0 15px; }
+
+  .pills { display: flex; gap: 0.5rem; }
+  .pills span { background: rgba(0,0,0,0.3); padding: 4px 12px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.1); }
 
   .vertical-video { width: 100%; height: 100%; background: #000; }
 
@@ -196,81 +197,73 @@ const levels = [
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
     filter: grayscale(100%) brightness(0.4);
-    transition: all 0.5s ease;
+    transition: filter 0.5s ease;
   }
 
-  .level-bar:hover video, .level-bar.is-expanded video {
-    filter: grayscale(0%) brightness(1);
-  }
+  .level-bar:hover video, .level-bar.is-expanded video { filter: grayscale(0%) brightness(1); }
 
-  /* Título Vertical Sutil */
-  .vertical-title { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); z-index: 1; }
+  .vertical-title { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); z-index: 0; }
   .vertical-title span { writing-mode: vertical-rl; font-size: 7rem; font-weight: 900; color: rgba(255,255,255,0.03); text-transform: uppercase; }
 
-  /* Estilos Mobile */
   @media (max-width: 1024px) {
     .level-bar { width: 100vw; }
-    .level-bar.is-expanded { width: 100vw; height: 100vh; margin-left: 0; }
-    .main-info { padding-left: 1.5rem; flex-direction: column; height: auto; padding-top: 2rem; }
-    .horizontal-video { width: 100%; height: 180px; }
+    .main-info { padding-left: 1.5rem; flex-direction: column; height: auto; position: relative; }
+    .horizontal-video { width: 100%; height: 200px; }
     .expanded-layout { grid-template-columns: 1fr; }
     .vertical-video { height: 250px; order: -1; }
   }
 </style>
+
 <script>
   const setupLevels = () => {
     const container = document.getElementById('levelsContainer');
     const bars = document.querySelectorAll('.level-bar');
 
     bars.forEach(bar => {
-      // Buscamos AMBOS videos (el horizontal y el vertical)
-      const videos = bar.querySelectorAll('video');
+      const horizontalVideo = bar.querySelector('.horizontal-video video') as HTMLVideoElement;
+      const verticalVideo = bar.querySelector('.vertical-video video') as HTMLVideoElement;
       
-      const playVideos = () => videos.forEach(v => v.play().catch(()=>{}));
-      const pauseVideos = () => videos.forEach(v => { v.pause(); v.currentTime = 0; });
+      const syncAndPlay = (from: HTMLVideoElement, to: HTMLVideoElement) => {
+        to.currentTime = from.currentTime;
+        to.play().catch(()=>{});
+      };
 
-      // Hover: Solo si NO está expandida
       bar.addEventListener('mouseenter', () => {
-        if (!bar.classList.contains('is-expanded')) {
-          playVideos();
-        }
+        if (!bar.classList.contains('is-expanded')) horizontalVideo.play().catch(()=>{});
       });
 
       bar.addEventListener('mouseleave', () => {
         if (!bar.classList.contains('is-expanded')) {
-          pauseVideos();
+          horizontalVideo.pause();
+          horizontalVideo.currentTime = 0;
         }
       });
 
-      // Click para expandir/cerrar
       bar.addEventListener('click', (e) => {
         const target = e.target as HTMLElement;
         
-        // Botón CERRAR
         if (target.classList.contains('btn-close-level')) {
+          syncAndPlay(verticalVideo, horizontalVideo);
           bar.classList.remove('is-expanded');
           container?.classList.remove('has-expanded');
-          pauseVideos();
-          e.stopPropagation(); // Evita que el click se propague a la card
+          
+          setTimeout(() => {
+            verticalVideo.pause();
+            if (!bar.matches(':hover')) {
+               horizontalVideo.pause();
+               horizontalVideo.currentTime = 0;
+            }
+          }, 700);
+          e.stopPropagation();
           return;
         }
 
-        // Abrir
         if (!bar.classList.contains('is-expanded')) {
-          // Primero pausamos todos los videos de todas las barras
-          document.querySelectorAll('.level-bar video').forEach(v => (v as HTMLVideoElement).pause());
-          
-          // Reseteamos estados
+          syncAndPlay(horizontalVideo, verticalVideo);
           bars.forEach(b => b.classList.remove('is-expanded'));
-          
-          // Activamos esta
           bar.classList.add('is-expanded');
           container?.classList.add('has-expanded');
-          
-          // Sincronizamos y reproducimos los videos de ESTA barra
-          playVideos();
         }
       });
     });

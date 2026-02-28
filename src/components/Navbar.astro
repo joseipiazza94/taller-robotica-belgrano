@@ -4,12 +4,14 @@
 
 <header id="navbar" class="hero-header">
   <div class="header-content">
-    <a href="/#explorar" class="brand-link">
+    <a href="/#explorar" class="brand-link" id="navBrand">
       <div class="brand-wrapper">
         <div class="title-logo-row">
           <h1 class="main-title">TALLER DE<br />ROBOTICA</h1>
           <img src="/logo-belgrano.png" alt="Logo" class="side-logo" />
+          <span class="nav-subtitle-inline">COLEGIO BELGRANO</span>
         </div>
+        
         <div class="subtitle-container">
           <span class="decor-line"></span>
           <span class="subtitle">COLEGIO BELGRANO</span>
@@ -17,143 +19,122 @@
         </div>
       </div>
     </a>
+
+    <nav class="nav-menu">
+      <a href="#pilares" class="nav-link">PILARES</a>
+      <a href="#niveles" class="nav-link">NIVELES</a>
+      <a href="#wro" class="nav-link">COMPETENCIA</a>
+      <a href="#contacto" class="nav-link">CONTACTO</a>
+    </nav>
   </div>
 </header>
 
 <style>
-  /* Añadimos este estilo para que el link no herede subrayados ni colores azules */
-  .brand-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-    transition: opacity 0.3s ease;
+  /* --- ESTILOS BASE --- */
+  .hero-header {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100px; 
+    display: flex; align-items: center; z-index: 1000; transition: all 0.4s ease;
   }
 
-  .brand-link:hover {
-    opacity: 0.9; /* Un pequeño feedback visual al pasar el mouse */
+  .header-content { 
+    width: 100%; display: flex; justify-content: center; align-items: center;
+    padding: 0 5%; transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
-    /* --- ESTILOS BASE --- */
-    .hero-header {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100px; 
-        display: flex; align-items: center; z-index: 100; transition: all 0.4s ease;
-        border: none; outline: none;
-    }
 
-    .header-content { width: 100%; display: flex; justify-content: center; padding: 0 5%; background: transparent; -webkit-tap-highlight-color: transparent; }
+  .brand-link { text-decoration: none; color: inherit; display: block; transition: all 0.5s ease; }
+  .brand-wrapper { display: inline-flex; flex-direction: column; }
+  .title-logo-row { display: flex; align-items: center; gap: 2rem; transition: gap 0.5s ease; }
 
-    .brand-wrapper { display: inline-flex; flex-direction: column; }
+  .main-title { 
+    font-size: clamp(3rem, 10vw, 8rem); line-height: 0.85; margin: 0;
+    font-weight: 900; text-transform: uppercase;
+    background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
 
-    .title-logo-row { display: flex; align-items: center; gap: 2rem; }
+  .side-logo { height: clamp(4.5rem, 15vw, 12rem); width: auto; object-fit: contain; transition: height 0.5s ease; }
 
-    .main-title { 
-        font-size: clamp(3rem, 10vw, 8rem); line-height: 0.85; text-align: left; margin: 0;
-        font-weight: 900; text-transform: uppercase;
-        background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
-        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
+  /* SUBTÍTULO INLINE (Menos pesado) */
+  .nav-subtitle-inline {
+    display: none;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7); /* Blanco suavizado */
+    font-weight: 300; /* Peso ligero */
+    letter-spacing: 3px;
+    border-left: 1px solid rgba(216, 49, 55, 0.4); /* Línea roja sutil */
+    padding-left: 1.5rem;
+    margin-left: 0.5rem;
+    text-transform: uppercase;
+  }
 
-    .side-logo { height: clamp(4.5rem, 15vw, 12rem); width: auto; object-fit: contain; }
+  .subtitle-container { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: 0.5rem; }
+  .subtitle {
+    font-size: clamp(0.7rem, 1.2vw, 1.2rem); font-weight: 300; letter-spacing: 0.8em; padding: 0 1rem;
+    color: rgba(255, 255, 255, 0.9); text-transform: uppercase;
+  }
+  .decor-line { flex-grow: 1; height: 1px; background-color: #d53037; opacity: 0.8; }
 
-    .subtitle-container { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: 0.5rem; }
+  /* --- NAVEGACIÓN (Ajustes de peso y tamaño) --- */
+  .nav-menu {
+    position: absolute; right: 5%; display: flex; gap: 2.5rem;
+    opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
+  }
 
-    .subtitle {
-        font-size: clamp(0.7rem, 1.2vw, 1.2rem); 
-        font-weight: 300; 
-        letter-spacing: 0.8em; 
-        padding: 0 1rem;
-        white-space: nowrap;
-        color: rgba(255, 255, 255, 0.9); 
-        text-transform: uppercase;
-    }
+  .nav-link { 
+    color: white; 
+    text-decoration: none; 
+    font-weight: 500; /* Menos pesado */
+    font-size: 0.85rem; /* Un poco más grande */
+    letter-spacing: 2px; 
+    text-transform: uppercase;
+    position: relative;
+    padding: 8px 0;
+    transition: color 0.3s ease;
+  }
 
-    .decor-line {
-        flex-grow: 1;
-        height: 1px; 
-        background-color: #d53037; 
-        opacity: 0.8;
-    }
+  /* SUBRAYADO PROGRESIVO RECUPERADO */
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #d53037;
+    transition: width 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
 
-    /* --- ESTADO SCROLLED --- */
-    .hero-header.scrolled {
-        background-color: rgba(5, 5, 5, 0.8); backdrop-filter: blur(10px); 
-        height: 90px; border-bottom: none;
-    }
+  .nav-link:hover { color: #d53037; }
+  .nav-link:hover::after { width: 100%; }
 
-    .hero-header.scrolled .header-content {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-    }
+  /* --- ESTADO SCROLLED --- */
+  .hero-header.scrolled { background-color: rgba(10, 10, 10, 0.95); backdrop-filter: blur(15px); height: 80px; }
+  .hero-header.scrolled .header-content { justify-content: flex-start; }
+  .hero-header.scrolled .title-logo-row { gap: 1.2rem; }
+  .hero-header.scrolled .main-title { font-size: 1.3rem; -webkit-text-fill-color: white; }
+  .hero-header.scrolled .side-logo { height: 38px; }
+  .hero-header.scrolled .nav-subtitle-inline { display: block; }
+  .hero-header.scrolled .subtitle-container { display: none; }
+  .hero-header.scrolled .nav-menu { opacity: 1; visibility: visible; pointer-events: auto; }
 
-    .hero-header.scrolled .brand-wrapper {
-        transform: scale(0.8); 
-        transform-origin: center;
-        margin: 0; 
-    }
-
-    .hero-header.scrolled .title-logo-row {
-        gap: 0.8rem; 
-        align-items: center;
-    }
-
-    .hero-header.scrolled .subtitle-container {
-        margin: 0; 
-        display: flex;
-        align-items: center;
-        gap: 0; /* Mantenemos el gap en 0 para centrado perfecto */
-    }
-
-    .hero-header.scrolled .main-title { 
-        font-size: 1.4rem; 
-        line-height: 1.1;
-        background-clip: text;
-        -webkit-background-clip: text;
-    }
-
-    .hero-header.scrolled .side-logo { height: 40px; }
-
-    .hero-header.scrolled .subtitle {
-        font-size: 0.8rem;
-        letter-spacing: 0.3em; 
-        padding: 0;
-        line-height: 1;
-        font-weight: 400;
-    }
-
-    .hero-header.scrolled .decor-line {
-        display: block; 
-        height: 4px; 
-    }
-
-    @media (max-width: 768px) {
-        .hero-header.scrolled .header-content { padding-left: 20px; }
-        .hero-header.scrolled { height: 85px; }
-    }
+  @media (max-width: 1024px) {
+    .nav-menu { display: none; }
+    .nav-subtitle-inline { display: none; }
+  }
 </style>
 
 <script>
   const initNavbarScroll = () => {
     const header = document.getElementById('navbar');
     const content = header?.querySelector('.header-content') as HTMLElement | null;
-
     if (!header || !content) return;
-
-    // Detectamos si estamos en la Home
     const isHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
 
     const handleScroll = () => {
-      // SI NO ES LA HOME: Forzamos el estado compacto siempre
-      if (!isHome) {
-        header.classList.add('scrolled');
-        content.style.transform = `translateY(0)`;
-        return; 
-      }
-
-      // SI ES LA HOME: Ejecutamos tu lógica original de scroll
+      if (!isHome) { header.classList.add('scrolled'); content.style.transform = `translateY(0)`; return; }
       const scrollY = window.scrollY;
       const vh = window.innerHeight;
-      const startRising = vh;
+      const startRising = vh; 
       const endRising = vh * 1.5;
 
       if (scrollY < startRising) {
@@ -169,10 +150,8 @@
         content.style.transform = `translateY(0)`;
       }
     };
-
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Se ejecuta al cargar la página
+    handleScroll();
   };
-
   document.addEventListener('astro:page-load', initNavbarScroll);
 </script>
