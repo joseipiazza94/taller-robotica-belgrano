@@ -1,7 +1,3 @@
----
-/* Navbar.astro */
----
-
 <header id="navbar" class="hero-header">
   <div class="header-content">
     <a href="/#explorar" class="brand-link" id="navBrand">
@@ -21,10 +17,10 @@
     </a>
 
     <nav class="nav-menu">
-      <a href="#pilares" class="nav-link">PILARES</a>
-      <a href="#niveles" class="nav-link">NIVELES</a>
-      <a href="#wro" class="nav-link">COMPETENCIA</a>
-      <a href="#contacto" class="nav-link">CONTACTO</a>
+      <a href="/#pilares" class="nav-link">PILARES</a>
+      <a href="/#niveles" class="nav-link">NIVELES</a>
+      <a href="/#wro" class="nav-link">COMPETENCIA</a>
+      <a href="/#contacto" class="nav-link">CONTACTO</a>
     </nav>
   </div>
 </header>
@@ -33,17 +29,34 @@
   /* --- ESTILOS BASE --- */
   .hero-header {
     position: fixed; top: 0; left: 0; width: 100%; height: 100px; 
-    display: flex; align-items: center; z-index: 1000; transition: all 0.4s ease;
+    display: flex; align-items: center; z-index: 1000; 
+    opacity: 0; 
+    visibility: hidden;
+  }
+
+  .hero-header.ready { 
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.4s ease, opacity 0.5s ease; 
   }
 
   .header-content { 
     width: 100%; display: flex; justify-content: center; align-items: center;
-    padding: 0 5%; transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    padding: 0 5%; 
+  }
+
+  .hero-header.ready .header-content { 
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); 
   }
 
   .brand-link { text-decoration: none; color: inherit; display: block; transition: all 0.5s ease; }
   .brand-wrapper { display: inline-flex; flex-direction: column; }
-  .title-logo-row { display: flex; align-items: center; gap: 2rem; transition: gap 0.5s ease; }
+  
+  .title-logo-row { display: flex; align-items: center; gap: 2rem; }
+  
+  .hero-header.ready .title-logo-row { 
+    transition: gap 0.5s ease; 
+  }
 
   .main-title { 
     font-size: clamp(3rem, 10vw, 8rem); line-height: 0.85; margin: 0;
@@ -52,16 +65,19 @@
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   }
 
-  .side-logo { height: clamp(4.5rem, 15vw, 12rem); width: auto; object-fit: contain; transition: height 0.5s ease; }
+  .side-logo { height: clamp(4.5rem, 15vw, 12rem); width: auto; object-fit: contain; }
+  
+  .hero-header.ready .side-logo { 
+    transition: height 0.5s ease; 
+  }
 
-  /* SUBTÍTULO INLINE (Menos pesado) */
   .nav-subtitle-inline {
     display: none;
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.7); /* Blanco suavizado */
-    font-weight: 300; /* Peso ligero */
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
     letter-spacing: 3px;
-    border-left: 1px solid rgba(216, 49, 55, 0.4); /* Línea roja sutil */
+    border-left: 1px solid rgba(216, 49, 55, 0.4);
     padding-left: 1.5rem;
     margin-left: 0.5rem;
     text-transform: uppercase;
@@ -74,7 +90,7 @@
   }
   .decor-line { flex-grow: 1; height: 1px; background-color: #d53037; opacity: 0.8; }
 
-  /* --- NAVEGACIÓN (Ajustes de peso y tamaño) --- */
+  /* --- NAVEGACIÓN --- */
   .nav-menu {
     position: absolute; right: 5%; display: flex; gap: 2.5rem;
     opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
@@ -83,8 +99,8 @@
   .nav-link { 
     color: white; 
     text-decoration: none; 
-    font-weight: 500; /* Menos pesado */
-    font-size: 0.85rem; /* Un poco más grande */
+    font-weight: 500;
+    font-size: 0.85rem;
     letter-spacing: 2px; 
     text-transform: uppercase;
     position: relative;
@@ -92,22 +108,15 @@
     transition: color 0.3s ease;
   }
 
-  /* SUBRAYADO PROGRESIVO RECUPERADO */
   .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #d53037;
-    transition: width 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+    background: #d53037; transition: width 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
 
   .nav-link:hover { color: #d53037; }
   .nav-link:hover::after { width: 100%; }
 
-  /* --- ESTADO SCROLLED --- */
+  /* --- ESTADO SCROLLED (PC) --- */
   .hero-header.scrolled { background-color: rgba(10, 10, 10, 0.95); backdrop-filter: blur(15px); height: 80px; }
   .hero-header.scrolled .header-content { justify-content: flex-start; }
   .hero-header.scrolled .title-logo-row { gap: 1.2rem; }
@@ -117,21 +126,94 @@
   .hero-header.scrolled .subtitle-container { display: none; }
   .hero-header.scrolled .nav-menu { opacity: 1; visibility: visible; pointer-events: auto; }
 
+  /* --- RESPONSIVE: NUEVA DISTRIBUCIÓN MÓVIL --- */
   @media (max-width: 1024px) {
-    .nav-menu { display: none; }
-    .nav-subtitle-inline { display: none; }
+    /* Mantenemos el logo gigante centrado al inicio (sin scrolled) */
+    .header-content { flex-direction: column; }
+    
+    /* Cuando se activa SCROLLED en móvil */
+    .hero-header.scrolled {
+      height: 105px; /* Un poco más alto para las dos filas */
+    }
+
+    .hero-header.scrolled .header-content {
+      padding: 10px 0;
+      gap: 12px;
+    }
+
+    /* FILA 1: Logo y Título */
+    .hero-header.scrolled .title-logo-row {
+      gap: 0.8rem;
+      justify-content: center;
+      width: 100%;
+    }
+    
+    .hero-header.scrolled .main-title {
+      font-size: 1.1rem; /* Más compacto para que entre todo */
+    }
+
+    .hero-header.scrolled .side-logo {
+      height: 30px;
+    }
+
+    .hero-header.scrolled .nav-subtitle-inline {
+      display: none; /* Quitamos el subtítulo inline para ganar espacio horizontal */
+    }
+
+    /* FILA 2: Menú de Navegación */
+    .hero-header.scrolled .nav-menu {
+      position: static; /* Vuelve al flujo normal debajo del logo */
+      display: flex;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      gap: 1.2rem;
+      justify-content: center;
+      width: 100%;
+      padding-top: 5px;
+      border-top: 1px solid rgba(255,255,255,0.05); /* Separador sutil */
+    }
+
+    .hero-header.scrolled .nav-link {
+      font-size: 0.65rem; /* Letra pequeña pero legible */
+      letter-spacing: 1px;
+      padding: 4px 0;
+    }
+
+    /* Ajuste para que el subrayado no choque */
+    .nav-link::after { height: 1px; }
+  }
+
+  /* Ajuste extra para celulares muy pequeños */
+  @media (max-width: 380px) {
+    .hero-header.scrolled .nav-menu { gap: 0.8rem; }
+    .hero-header.scrolled .main-title { font-size: 0.9rem; }
   }
 </style>
 
-<script>
-  const initNavbarScroll = () => {
+<script is:inline>
+  window.navbarScrollHandler = window.navbarScrollHandler || null;
+
+  const initNavbarSmooth = () => {
     const header = document.getElementById('navbar');
-    const content = header?.querySelector('.header-content') as HTMLElement | null;
+    const content = header ? header.querySelector('.header-content') : null;
     if (!header || !content) return;
+
+    header.classList.remove('ready');
+
     const isHome = window.location.pathname === '/' || window.location.pathname === '/index.html';
 
-    const handleScroll = () => {
-      if (!isHome) { header.classList.add('scrolled'); content.style.transform = `translateY(0)`; return; }
+    if (window.navbarScrollHandler) {
+      window.removeEventListener('scroll', window.navbarScrollHandler);
+    }
+
+    window.navbarScrollHandler = () => {
+      if (!isHome) { 
+        header.classList.add('scrolled'); 
+        content.style.transform = 'translateY(0)'; 
+        return; 
+      }
+      
       const scrollY = window.scrollY;
       const vh = window.innerHeight;
       const startRising = vh; 
@@ -139,6 +221,7 @@
 
       if (scrollY < startRising) {
         header.classList.remove('scrolled');
+        // Centrado vertical inicial
         content.style.transform = `translateY(calc(50vh - 50px))`;
       } else if (scrollY >= startRising && scrollY <= endRising) {
         header.classList.remove('scrolled');
@@ -147,11 +230,18 @@
         content.style.transform = `translateY(calc(${currentY}vh - ${50 * (1 - progress)}px))`;
       } else {
         header.classList.add('scrolled');
-        content.style.transform = `translateY(0)`;
+        content.style.transform = 'translateY(0)';
       }
     };
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
+
+    window.addEventListener('scroll', window.navbarScrollHandler);
+    window.navbarScrollHandler();
+
+    setTimeout(() => {
+      header.classList.add('ready');
+    }, 50); 
   };
-  document.addEventListener('astro:page-load', initNavbarScroll);
+
+  initNavbarSmooth();
+  document.addEventListener('astro:after-swap', initNavbarSmooth);
 </script>

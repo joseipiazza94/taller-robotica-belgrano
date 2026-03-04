@@ -72,57 +72,37 @@ const pilares = [
 ];
 ---
 
-<section class="pilares-section">
+<section class="pilares-section" id="pilaresSection">
   <div class="pilares-grid" id="pilaresGrid">
     {pilares.map(pilar => (
-      <div class="pilar-card" data-id={pilar.id}>
+      <div class="pilar-card" data-id={pilar.id} style={`--bg-image: url(${pilar.imagen})`}>
         
-        <button class="close-tab" aria-label="Cerrar pilar">
-          <span>CERRAR</span>
-        </button>
-
+        {/* VISTA CERRADA - Centrado Mejorado */}
         <div class="pilar-closed">
-          <h2>{pilar.titulo}</h2>
-          <p class="summary-text">{pilar.resumen}</p>
+            <h2>{pilar.titulo}</h2>
+            <p class="summary-text">{pilar.resumen}</p>
         </div>
         
+        {/* VISTA ABIERTA */}
         <div class="pilar-opened">
+          <div class="opened-banner">
+             <h3>{pilar.titulo}</h3>
+          </div>
+
           <div class="content-wrapper">
             <div class="detail-grid">
               
               <div class="text-detail">
-                <div class="text-header">
-                  <h3>{pilar.titulo}</h3>
-                </div>
-
                 <div class="pilar-separator"></div>
-
-                <div class="scrollable-content">
-                  <div class="full-body-text" set:html={pilar.detalle}></div>
-                  
-                  {/* Para todos los pilares MENOS 'que', el botón va aquí (izquierda) */}
-                  {pilar.id !== 'que' && (
-                    <div class="action-footer">
-                      <a href={`/pilares/${pilar.id}`} class="btn-more">CONOCER MÁS →</a>
-                    </div>
-                  )}
-
-                  {/* Para el pilar 'que', el botón va alineado a la derecha */}
-                  {pilar.id === 'que' && (
-                    <div class="action-footer footer-right">
-                      <a href={`/pilares/${pilar.id}`} class="btn-more">CONOCER MÁS →</a>
-                    </div>
-                  )}
+                <div class="full-body-text" set:html={pilar.detalle}></div>
+                
+                <div class={`action-footer ${pilar.id === 'que' ? 'footer-right' : ''}`}>
+                  <a href={`/pilares/${pilar.id}`} class="btn-more">CONOCER MÁS →</a>
                 </div>
               </div>
 
               <div class="image-side">
                 <div class="side-info-container">
-                  <div class="image-container">
-                    <img src={pilar.imagen} alt={pilar.titulo} />
-                    <div class="frame-decor"></div>
-                  </div>
-                  
                   <ul class="pilar-bullets">
                     {pilar.puntos.map(punto => (
                       <li><strong>{punto.label}:</strong> {punto.desc}</li>
@@ -130,117 +110,138 @@ const pilares = [
                   </ul>
                 </div>
               </div>
-
             </div>
           </div>
+
+          <button class="close-tab-mobile" aria-label="Cerrar pilar">
+            <span>VOLVER AL MENÚ</span>
+          </button>
         </div>
+
+        <button class="close-tab-desktop" aria-label="Cerrar pilar">
+          <span>CERRAR</span>
+        </button>
+
       </div>
     ))}
   </div>
 </section>
 
 <style>
-  .pilares-section { background: #121212; padding: 0; min-height: 85vh; display: flex; align-items: center; overflow: hidden; }
+  .pilares-section { background: #121212; min-height: 85vh; display: flex; align-items: center; overflow: hidden; position: relative; }
 
+  /* --- GRID DESKTOP --- */
   .pilares-grid { 
     display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; 
     width: 100vw; height: 85vh; transition: all 0.8s cubic-bezier(0.85, 0, 0.15, 1); 
   }
 
   .pilares-grid.expanded-quienes { grid-template-columns: 4fr 1fr; grid-template-rows: 4fr 1fr; }
-  .pilares-grid.expanded-que     { grid-template-columns: 1fr 4fr; grid-template-rows: 4fr 1fr; }
-  .pilares-grid.expanded-porque  { grid-template-columns: 4fr 1fr; grid-template-rows: 1fr 4fr; }
-  .pilares-grid.expanded-como    { grid-template-columns: 1fr 4fr; grid-template-rows: 1fr 4fr; }
+  .pilares-grid.expanded-que      { grid-template-columns: 1fr 4fr; grid-template-rows: 4fr 1fr; }
+  .pilares-grid.expanded-porque   { grid-template-columns: 4fr 1fr; grid-template-rows: 1fr 4fr; }
+  .pilares-grid.expanded-como     { grid-template-columns: 1fr 4fr; grid-template-rows: 1fr 4fr; }
 
   .pilar-card { 
-    background: #8b1d20; color: white; cursor: pointer; position: relative; overflow: hidden; 
-    border: 1px solid rgba(255,255,255,0.05); transition: background 0.4s ease, transform 0.4s ease;
+    background-color: #8b1d20;
+    background-image: linear-gradient(rgba(139, 29, 32, 0.85), rgba(139, 29, 32, 0.85)), var(--bg-image);
+    background-size: cover; background-position: center;
+    color: white; cursor: pointer; position: relative; overflow: hidden; 
+    border: 1px solid rgba(255,255,255,0.05); transition: background 0.4s ease;
   }
 
-  .pilar-card:not(.is-active):hover { background: #a32427; transform: scale(1.005); z-index: 2; }
-  .pilar-card.is-active { background: #1a1a1a; cursor: default; z-index: 10; }
+  .pilar-card.is-active { background: #111; background-image: none; cursor: default; z-index: 10; }
 
-  .pilares-grid.is-any-active .pilar-card:not(.is-active) .summary-text { opacity: 0; }
-  .pilares-grid.is-any-active .pilar-card:not(.is-active) h2 { font-size: 1.1rem; text-align: center; width: 100%; padding: 0 15px; }
+  /* --- 1. CENTRADO CERRADO (CORREGIDO) --- */
+  .pilar-closed { 
+    position: absolute; inset: 0; /* Asegura que ocupe todo el espacio */
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 2rem; text-align: center; transition: opacity 0.3s ease;
+    z-index: 5;
+  }
+  .pilar-card.is-active .pilar-closed { display: none; }
+  
+  .pilar-closed h2 { font-size: 2.2rem; font-weight: 900; text-transform: uppercase; margin: 0; line-height: 1; }
+  .summary-text { opacity: 0.7; max-width: 280px; font-size: 1.1rem; margin-top: 1rem; }
 
-  .close-tab {
-    position: absolute; background: #d83135; color: white; border: none; width: 45px; height: 160px;
-    cursor: pointer; z-index: 100; opacity: 0; transition: all 0.5s ease;
+  /* --- 2. VISTA ABIERTA & REMOCIÓN DE SCROLLBAR --- */
+  .pilar-opened { 
+    display: none; height: 100%; width: 100%; flex-direction: column; 
+    overflow-x: hidden;
+    overflow-y: auto;
+    /* Ocultar barra de scroll para estética limpia en PC */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .pilar-opened::-webkit-scrollbar { display: none; }
+
+  .pilar-card.is-active .pilar-opened { display: flex; }
+
+  .opened-banner { 
+    width: 100%; height: 180px; flex-shrink: 0;
+    background-image: linear-gradient(rgba(139, 29, 32, 0.9), rgba(139, 29, 32, 0.9)), var(--bg-image);
+    background-size: cover; background-position: center;
     display: flex; align-items: center; justify-content: center;
   }
-  [data-id="quienes"] .close-tab { bottom: 0; right: 0; transform: translateX(100%); }
-  [data-id="que"] .close-tab     { bottom: 0; left: 0; transform: translateX(-100%); }
-  [data-id="porque"] .close-tab  { top: 0; right: 0; transform: translateX(100%); }
-  [data-id="como"] .close-tab    { top: 0; left: 0; transform: translateX(-100%); }
-  .pilar-card.is-active .close-tab { opacity: 1; transform: translateX(0); }
+  .opened-banner h3 { font-size: 2.2rem; font-weight: 900; text-transform: uppercase; margin: 0; }
 
-  .close-tab span { writing-mode: vertical-rl; text-orientation: mixed; font-weight: 900; letter-spacing: 3px; font-size: 0.85rem; text-transform: uppercase; }
-  .close-tab:hover { background: #fff; color: #d83135; }
-
-  .pilar-closed { 
-    display: flex; flex-direction: column; align-items: center; justify-content: center; 
-    height: 100%; padding: 2rem; text-align: center; transition: opacity 0.3s ease;
-  }
-  .pilar-card.is-active .pilar-closed { opacity: 0; pointer-events: none; }
-  .pilar-closed h2 { font-size: 2.2rem; font-weight: 900; text-transform: uppercase; margin: 0; }
-  .summary-text { opacity: 0.7; max-width: 280px; margin-top: 1rem; font-size: 1.1rem; }
-
-  .pilar-opened { 
-    display: none; height: 100%; width: 100%; position: absolute; top: 0; left: 0;
-    opacity: 0; align-items: center;
-  }
-
-  /* Entrada limpia con delay de 0.4s para evitar parpadeos */
-  .pilar-card.is-active .pilar-opened { 
-    display: flex;
-    animation: contentReveal 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.4s; 
-  }
-
-  @keyframes contentReveal {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .content-wrapper { width: 100%; height: 85%; padding: 0 6%; }
-  .detail-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5%; height: 100%; align-items: center; }
+  .content-wrapper { width: 100%; padding: 3rem 6%; flex-grow: 1; }
+  .detail-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5%; align-items: start; }
   
-  .text-detail { height: 100%; display: flex; flex-direction: column; justify-content: center; }
-  .scrollable-content { overflow-y: auto; padding-right: 2rem; }
-
-  .text-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 0.5rem; }
-  .text-detail h3 { font-size: 3.5rem; font-weight: 900; text-transform: uppercase; color: #d83135; margin: 0; line-height: 1; }
-  .pilar-separator { width: 80px; height: 3px; background: #d83135; margin-bottom: 2rem; }
-
-  .full-body-text { font-size: 1.15rem; line-height: 1.6; color: #cecece; margin-bottom: 1.5rem; }
+  .pilar-separator { width: 60px; height: 4px; background: #d83135; margin-bottom: 2rem; }
+  .full-body-text { font-size: 1.15rem; line-height: 1.6; color: #cecece; }
   :global(.full-body-text strong) { color: #d83135; font-weight: 700; }
-
-  .action-footer { margin-top: 1.5rem; }
   
-  /* CLASE ESPECÍFICA PARA MOVER EL BOTÓN A LA DERECHA EN 'QUÉ HACEMOS' */
+  .action-footer { margin-top: 2rem; }
   .footer-right { display: flex; justify-content: flex-end; }
-
   .btn-more { 
-    display: inline-block; padding: 0.8rem 2rem; border: 1px solid #d83135; 
-    color: #d83135; text-decoration: none; font-weight: 900; text-transform: uppercase; font-size: 0.8rem;
-    transition: all 0.3s ease;
+    display: inline-block; padding: 0.8rem 2rem; border: 1px solid #d83135; color: #d83135; 
+    text-decoration: none; font-weight: 900; text-transform: uppercase; font-size: 0.8rem;
+    transition: 0.3s ease;
   }
   .btn-more:hover { background: #d83135; color: white; }
 
-  .side-info-container { display: flex; flex-direction: column; gap: 2rem; }
   .pilar-bullets { list-style: none; padding: 0; }
-  .pilar-bullets li { color: #aaa; margin-bottom: 0.6rem; padding-left: 1.5rem; position: relative; font-size: 0.9rem; }
-  .pilar-bullets li::before { content: '→'; position: absolute; left: 0; color: #d83135; font-weight: 900; }
+  .pilar-bullets li { color: #aaa; margin-bottom: 0.8rem; font-size: 0.95rem; line-height: 1.4; }
 
-  .image-container { width: 100%; height: 260px; position: relative; }
-  .image-container img { width: 100%; height: 100%; object-fit: cover; border: 1px solid rgba(255,255,255,0.1); }
-  .frame-decor { position: absolute; top: -10px; right: -10px; width: 30px; height: 30px; border-top: 3px solid #d83135; border-right: 3px solid #d83135; }
+  /* BOTONES CERRAR */
+  .close-tab-desktop {
+    position: absolute; background: #d83135; color: white; border: none; width: 45px; height: 160px;
+    cursor: pointer; z-index: 100; display: none; align-items: center; justify-content: center;
+    transition: 0.3s;
+  }
+  .close-tab-desktop span { writing-mode: vertical-rl; font-weight: 900; letter-spacing: 3px; font-size: 0.85rem; }
+  .close-tab-mobile { display: none; }
 
+  /* --- RESPONSIVE MÓVIL --- */
   @media (max-width: 1024px) {
-    .pilares-grid { grid-template-columns: 1fr; grid-template-rows: auto; height: auto; }
-    .text-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .pilares-section { height: auto; padding: 4rem 0; align-items: flex-start; }
+    .pilares-grid { display: flex; flex-direction: column; height: auto; padding: 0 1rem; gap: 1rem; }
+    
+    .pilar-card { height: 180px; flex-shrink: 0; width: 100%; border-radius: 4px; }
+    .pilar-card.is-active { height: auto; order: -1; }
+    .pilares-grid.is-any-active .pilar-card:not(.is-active) { display: none; }
+
+    .opened-banner { height: 180px; } 
+    .content-wrapper { padding: 2rem 0; }
     .detail-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .image-side { height: 300px; order: -1; }
-    .text-detail h3 { font-size: 2.5rem; }
+    
+    .action-footer { display: flex; justify-content: flex-end; margin-bottom: 1rem; }
+
+    .close-tab-mobile {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%; height: 60px; background: #d83135; color: white;
+      border: none; font-weight: 900; letter-spacing: 3px; cursor: pointer;
+    }
+    .close-tab-desktop { display: none !important; }
+  }
+
+  @media (min-width: 1025px) {
+    .pilar-card.is-active .close-tab-desktop { display: flex; }
+    [data-id="quienes"] .close-tab-desktop { bottom: 0; right: 0; transform: translateX(100%); }
+    [data-id="que"] .close-tab-desktop     { bottom: 0; left: 0; transform: translateX(-100%); }
+    [data-id="porque"] .close-tab-desktop  { top: 0; right: 0; transform: translateX(100%); }
+    [data-id="como"] .close-tab-desktop    { top: 0; left: 0; transform: translateX(-100%); }
+    .pilar-card.is-active .close-tab-desktop { transform: translateX(0); transition: 0.5s ease; }
   }
 </style>
 
@@ -248,15 +249,21 @@ const pilares = [
   const setupPilares = () => {
     const grid = document.getElementById('pilaresGrid');
     const cards = document.querySelectorAll('.pilar-card');
+    const section = document.getElementById('pilaresSection');
 
     cards.forEach(card => {
       card.addEventListener('click', (e) => {
         const id = card.getAttribute('data-id');
         const target = e.target as HTMLElement;
 
-        if (target.closest('.close-tab')) {
+        if (target.closest('.close-tab-mobile') || target.closest('.close-tab-desktop')) {
           grid?.setAttribute('class', 'pilares-grid');
           cards.forEach(c => c.classList.remove('is-active'));
+          
+          if (section) {
+            const topOffset = section.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({ top: topOffset - 20, behavior: 'smooth' });
+          }
           e.stopPropagation();
           return;
         }
@@ -265,6 +272,12 @@ const pilares = [
           cards.forEach(c => c.classList.remove('is-active'));
           card.classList.add('is-active');
           grid?.setAttribute('class', `pilares-grid expanded-${id} is-any-active`);
+          
+          if (window.innerWidth <= 1024) {
+            setTimeout(() => {
+              card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+          }
         }
       });
     });

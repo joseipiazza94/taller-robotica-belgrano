@@ -13,14 +13,14 @@ const contacto = {
   <div class="footer-container">
     <div class="contact-grid">
       
-      {/* BLOQUE 1: MAPA ESTÁNDAR (Reconocible y directo) */}
+      {/* BLOQUE 1: MAPA ESTÁNDAR (Etiqueta por fuera usando Grid) */}
       <div class="contact-card map-box">
         <div class="map-label">
           <span class="status-tag">UBICACIÓN TALLER</span>
         </div>
         <div class="map-iframe-wrapper">
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3622.187445775836!2d-65.412435523737!3d-24.78903330752528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x941bc3bf3a894f31%3A0xcd0b362a39ec803a!2sColegio%20Belgrano!5e0!3m2!1ses-419!2sar!4v1700000000000!5m2!1ses-419!2sar" 
+            src="https://maps.google.com/maps?q=Colegio+Belgrano+Salta+Bartolome+Mitre+764&t=&z=15&ie=UTF8&iwloc=&output=embed" 
             width="100%" 
             height="100%" 
             style="border:0;" 
@@ -35,7 +35,7 @@ const contacto = {
       <div class="contact-card info-box">
         <div class="info-content">
           <span class="label">COLEGIO BELGRANO</span>
-          <h3>Contacto Directo</h3>
+          <h3>Contáctanos</h3>
           <p class="address-text">{contacto.direccion}</p>
           
           <div class="divider"></div>
@@ -91,34 +91,44 @@ const contacto = {
     border: 1px solid rgba(255,255,255,0.05);
   }
 
-  /* MAPA ESTILO LIMPIO */
-  .map-box { position: relative; padding: 15px; }
+  /* --- MAPA Y ETIQUETA VERTICAL (GRID) --- */
+  .map-box { 
+    display: grid;
+    grid-template-columns: auto 1fr; /* Columna 1 ajustada al texto, Columna 2 toma el resto */
+    padding: 15px; 
+    gap: 15px; 
+  }
   
   .map-label {
-    position: absolute;
-    top: 30px;
-    left: 30px;
-    z-index: 10;
+    position: relative !important; /* Mata cualquier posición flotante vieja */
+    top: 0 !important;
+    left: 0 !important;
+    display: flex;
+    align-items: flex-start; 
   }
 
   .status-tag {
     background: #d83135;
     color: white;
-    padding: 6px 15px;
+    padding: 20px 8px; 
     font-weight: 900;
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    white-space: nowrap; /* Evita que la palabra se rompa en dos líneas */
+    
+    /* TEXTO VERTICAL */
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
   }
 
   .map-iframe-wrapper {
-    flex: 1;
     width: 100%;
     height: 100%;
     background: #252525;
+    min-height: 350px; /* Asegura que el mapa no colapse */
   }
 
-  /* INFO BOX */
+  /* --- INFO BOX --- */
   .info-box {
     padding: 40px;
     justify-content: space-between;
@@ -141,7 +151,7 @@ const contacto = {
     margin-bottom: 15px;
   }
 
-  .address-text { color: #888; font-size: 1.1rem; }
+  .address-text { color: #888; font-size: 1.1rem; margin: 0; }
 
   .divider {
     height: 1px;
@@ -161,9 +171,10 @@ const contacto = {
     font-size: 0.75rem;
     color: #d83135;
     text-transform: uppercase;
+    margin: 0;
   }
 
-  /* BOTONES */
+  /* --- BOTONES --- */
   .social-links { display: grid; gap: 10px; }
 
   .social-btn {
@@ -191,10 +202,25 @@ const contacto = {
     padding-top: 30px;
   }
 
-  .footer-bottom p { font-size: 0.7rem; color: #444; letter-spacing: 1px; }
+  .footer-bottom p { font-size: 0.7rem; color: #444; letter-spacing: 1px; margin: 0; }
 
+  /* --- RESPONSIVE --- */
   @media (max-width: 900px) {
     .contact-grid { grid-template-columns: 1fr; }
     .info-box { padding: 30px; }
+  }
+
+  @media (max-width: 768px) {
+    .map-box { 
+      display: flex;
+      flex-direction: column; /* Pasa la etiqueta arriba del mapa en celulares */
+      gap: 10px;
+    }
+    .status-tag {
+      writing-mode: horizontal-tb; /* Vuelve el texto a la normalidad */
+      transform: none;
+      padding: 8px 15px;
+      width: fit-content;
+    }
   }
 </style>
