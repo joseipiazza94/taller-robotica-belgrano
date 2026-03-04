@@ -75,14 +75,14 @@ const levels = [
       <div class="level-bar" data-id={level.id}>
         <div class="level-content">
           
-          {/* VISTA CERRADA (Simplificada) */}
+          {/* VISTA CERRADA */}
           <div class="main-info">
             <div class="text-area">
               <h3>{level.nombre}</h3>
               <p>{level.descripcion}</p>
             </div>
             <div class="horizontal-video">
-              <video muted loop playsinline preload="metadata">
+              <video muted loop playsinline preload="auto">
                 <source src={level.video} type="video/mp4" />
               </video>
             </div>
@@ -105,7 +105,7 @@ const levels = [
               </div>
               
               <div class="vertical-video">
-                <video muted loop playsinline preload="metadata">
+                <video muted loop playsinline preload="auto">
                   <source src={level.video} type="video/mp4" />
                 </video>
               </div>
@@ -147,6 +147,7 @@ const levels = [
     overflow: hidden;
     position: relative;
     z-index: 5;
+    pointer-events: auto; /* IMPORTANTE: Asegura que detecte el ratón */
   }
 
   @media (hover: hover) {
@@ -183,7 +184,6 @@ const levels = [
     transition: all 0.4s ease-in-out;
   }
 
-  /* --- GRID OVERLAP --- */
   .level-content { 
     display: grid;
     width: 100%;
@@ -195,7 +195,6 @@ const levels = [
     width: 100%;
   }
 
-  /* --- VISTA CERRADA --- */
   .main-info {
     display: flex;
     height: 180px; 
@@ -213,7 +212,6 @@ const levels = [
     transition: opacity 0.1s ease-in; 
   }
 
-  /* AJUSTE TÍTULO: White-space normal para que baje de línea si es necesario */
   .text-area h3 { 
     font-size: 2.2rem; 
     font-weight: 900; 
@@ -226,7 +224,14 @@ const levels = [
   
   .text-area p { color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-top: 5px; max-width: 90%; }
 
-  .horizontal-video { width: 350px; height: 180px; background: #000; position: relative; }
+  /* CORRECCIÓN: pointer-events none para no interceptar el hover del padre */
+  .horizontal-video { 
+    width: 350px; 
+    height: 180px; 
+    background: #000; 
+    position: relative; 
+    pointer-events: none; 
+  }
 
   /* --- VISTA EXPANDIDA --- */
   .expanded-info { 
@@ -307,7 +312,7 @@ const levels = [
   .expanded-text h4 { color: #d83135; font-size: 1.8rem; text-transform: uppercase; margin-bottom: 1.2rem; font-weight: 900; }
 
   /* --- VIDEOS --- */
-  .vertical-video { width: 100%; height: 100%; background: #000; position: relative; }
+  .vertical-video { width: 100%; height: 100%; background: #000; position: relative; pointer-events: none; }
 
   video {
     position: absolute; 
@@ -315,6 +320,7 @@ const levels = [
     object-fit: cover;
     filter: grayscale(100%) brightness(0.3);
     transition: all 0.6s ease;
+    pointer-events: none; /* EL VIDEO NO DEBE INTERCEPTAR EL MOUSE */
   }
 
   .level-bar:hover video, .level-bar.is-expanded video { filter: grayscale(0%) brightness(1); }
@@ -323,55 +329,26 @@ const levels = [
   .vertical-title { position: absolute; right: 30px; top: 50%; transform: translateY(-50%); z-index: 0; }
   .vertical-title span { writing-mode: vertical-rl; font-size: 8rem; font-weight: 900; color: rgba(255,255,255,0.02); text-transform: uppercase; }
 
-  /* --- MEDIA QUERIES (TABLETS Y MÓVILES) --- */
+  /* --- MEDIA QUERIES --- */
   @media (max-width: 1024px) {
     .horizontal-video, .vertical-video { display: none !important; }
-
     .level-bar { width: 100%; min-height: 200px; max-height: 200px; }
-    .level-bar.is-expanded { 
-      width: 100%; 
-      margin-left: 0; 
-      min-height: 0 !important; 
-      max-height: 1500px; 
-    }
-    
-    .main-info { 
-      height: 200px;
-      padding: 0 2rem; 
-      flex-direction: column; 
-      justify-content: center; 
-      align-items: flex-start; 
-    }
-
-    /* Reducción del H3 para que quepa en el ancho móvil */
-    .text-area h3 { 
-      font-size: 1.8rem; 
-      white-space: normal; 
-    }
+    .level-bar.is-expanded { width: 100%; margin-left: 0; min-height: 0 !important; max-height: 1500px; }
+    .main-info { height: 200px; padding: 0 2rem; flex-direction: column; justify-content: center; align-items: flex-start; }
+    .text-area h3 { font-size: 1.8rem; white-space: normal; }
     .text-area p { font-size: 1rem; margin: 0.5rem 0 1rem; }
-    
     .expanded-layout { display: block; min-height: auto; }
-    
-    /* Bajamos el padding superior para que el botón Volver no esté tan pegado al techo */
-    .expanded-text { 
-      padding: 3rem 2rem 2rem 2rem !important; 
-      justify-content: flex-start !important;
-    }
-    
+    .expanded-text { padding: 3rem 2rem 2rem 2rem !important; justify-content: flex-start !important; }
     .btn-close-level { margin-top: 0; margin-bottom: 1.5rem; } 
     .expanded-text h4 { font-size: 1.5rem; margin-top: 0; margin-bottom: 1rem; } 
-    
     .vertical-title { display: none; }
   }
 
   @media (max-width: 768px) {
     .niveles-wrapper { padding: 4rem 0; }
-    
     .level-bar { min-height: 150px; max-height: 150px; }
     .main-info { height: 150px; padding: 0 1.5rem; }
-    
     .expanded-text { padding: 2.5rem 1.5rem !important; } 
-    
     .text-area h3 { font-size: 1.6rem; }
     .btn-discover { width: 100%; box-sizing: border-box; text-align: center; }
   }
@@ -383,47 +360,63 @@ const levels = [
     const bars = document.querySelectorAll('.level-bar');
 
     bars.forEach(bar => {
-      const horizontalVideo = bar.querySelector('.horizontal-video video') as HTMLVideoElement;
-      const verticalVideo = bar.querySelector('.vertical-video video') as HTMLVideoElement;
+      const hVideo = bar.querySelector('.horizontal-video video') as HTMLVideoElement;
+      const vVideo = bar.querySelector('.vertical-video video') as HTMLVideoElement;
       
-      const syncAndPlay = (from: HTMLVideoElement, to: HTMLVideoElement) => {
-        if (!to || to.offsetParent === null) return;
-        to.currentTime = from.currentTime;
-        to.play().catch(()=>{});
+      const safePlay = (video: HTMLVideoElement | null) => {
+        if (!video) return;
+        video.muted = true;
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {});
+        }
       };
 
-      bar.addEventListener('click', async (e) => {
+      const syncAndPlay = (from: HTMLVideoElement, to: HTMLVideoElement) => {
+        if (!to) return;
+        to.currentTime = from.currentTime;
+        safePlay(to);
+      };
+
+      // --- HOVER ACTIVA VIDEO ---
+      bar.addEventListener('mouseenter', () => {
+        if (!bar.classList.contains('is-expanded')) {
+          if (hVideo) safePlay(hVideo);
+        }
+      });
+
+      bar.addEventListener('mouseleave', () => {
+        if (!bar.classList.contains('is-expanded')) {
+          if (hVideo) {
+            hVideo.pause();
+            hVideo.currentTime = 0;
+          }
+        }
+      });
+
+      // --- CLIC ---
+      bar.addEventListener('click', (e) => {
         const target = e.target as HTMLElement;
         
         if (target.classList.contains('btn-close-level')) {
-          syncAndPlay(verticalVideo, horizontalVideo);
+          if (vVideo && hVideo) syncAndPlay(vVideo, hVideo);
           bar.classList.remove('is-expanded');
           container?.classList.remove('has-expanded');
+          setTimeout(() => { if(vVideo) vVideo.pause(); }, 500);
           e.stopPropagation();
           return;
         }
 
         if (!bar.classList.contains('is-expanded')) {
-          syncAndPlay(horizontalVideo, verticalVideo);
-          
-          // 1. Aplicamos los cambios de clases
+          if (hVideo && vVideo) syncAndPlay(hVideo, vVideo);
           bars.forEach(b => b.classList.remove('is-expanded'));
           bar.classList.add('is-expanded');
           container?.classList.add('has-expanded');
 
-          // 2. Forzamos el scroll al inicio de la sección niveles-wrapper
-          // Esto garantiza que no importa qué tarjeta sea, siempre volvemos al "techo" del componente
           const wrapper = document.getElementById('nivelesWrapper');
           if (wrapper) {
             const topOffset = wrapper.getBoundingClientRect().top + window.scrollY;
-            
-            // Usamos un pequeño delay para que el navegador asimile que las otras tarjetas ya miden 0
-            requestAnimationFrame(() => {
-              window.scrollTo({
-                top: topOffset - 20, // El -20 es un pequeño margen de cortesía
-                behavior: 'smooth'
-              });
-            });
+            window.scrollTo({ top: topOffset - 20, behavior: 'smooth' });
           }
         }
       });
