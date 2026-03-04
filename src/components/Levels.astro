@@ -2,27 +2,67 @@
 const levels = [
   { 
     id: 'spark', 
-    nombre: 'Spark Squad', 
-    descripcion: 'Nivel Inicial: Exploración mecánica y lógica de bloques.',
+    nombre: 'Micro-Bots', 
+    slug: 'micro-bots',
+    descripcion: 'Robótica inicial: circuitos, construcción manual y diseño 3D.',
     video: '/videos/nivel1.mp4', 
-    detalleExtra: 'En este nivel los chicos trabajan con LEGO Education y conceptos básicos de física. Aprenden a dar sus primeros pasos en la lógica de programación mediante bloques visuales.',
-    items: ['LEGO Education', 'Motores DC', 'Lógica'] 
+    detalleExtra: `
+      <strong>El viaje del Explorador: de la curiosidad a la creación.</strong><br /><br />
+      En este primer contacto, los alumnos descubren que son capaces de <strong>intervenir el mundo físico</strong> a través de la electrónica y la mecánica simple. <br /><br />
+      • <strong>Hardware Real:</strong> Transición desde circuitos básicos de energía hasta movimientos autónomos.<br />
+      • <strong>Metodología:</strong> Uso de herramientas reales y resolución de problemas, convirtiendo el error en aprendizaje.<br />
+      • <strong>Diseño 3D:</strong> Introducción al espacio tridimensional para visualizar ideas de una forma nueva.<br /><br />
+      Al finalizar el Nivel 1, los chicos dejan de ser consumidores de pantallas para convertirse en <strong>pequeños inventores</strong> que entienden la lógica detrás de la tecnología.
+    `,
+    items: ['Curiosidad', 'Lógica', 'Construcción'] 
   },
   { 
     id: 'circuit', 
-    nombre: 'Circuit Masters', 
-    descripcion: 'Nivel Intermedio: Electrónica aplicada e impresión 3D.',
+    nombre: 'Cyber-Exploradores', 
+    slug: 'cyber-exploradores',
+    descripcion: 'Robótica intermedia: sensores, sistemas autónomos y primer contacto con WRO.',
     video: '/videos/nivel2.mp4', 
-    detalleExtra: 'Pasamos al hardware real. Introducción a Arduino, sensores ultrasónicos y modelado técnico para impresión 3D en nuestras Bambu Lab A1.',
-    items: ['Arduino', 'Modelado 3D', 'Sensores'] 
+    detalleExtra: `
+      <strong>Autonomía y precisión: cuando los proyectos empiezan a "hablar".</strong><br /><br />
+      En este nivel, los alumnos integran <strong>señales visuales y mecanismos de precisión</strong> para resolver desafíos del mundo real. <br /><br />
+      • <strong>Interacción Avanzada:</strong> Uso de pantallas LCD y sensores para que las creaciones muestren datos en tiempo real.<br />
+      • <strong>Ingeniería Pro:</strong> Manejo de servomotores y sistemas de engranajes para lograr movimientos de alta destreza.<br />
+      • <strong>Foco en Soluciones:</strong> Construcción de proyectos funcionales como radares de movimiento y cajas fuertes digitales.<br /><br />
+      Como condimento especial, iniciamos el camino en la <strong>WRO (World Robot Olympiad)</strong>, participando en categorías enfocadas en la integración tecnológica y el trabajo en equipo.
+    `,
+    items: ['Interacción', 'Autonomía', 'Adaptabilidad'] 
   },
   { 
     id: 'cyber', 
-    nombre: 'Cyber Builders', 
-    descripcion: 'Nivel Avanzado: Robótica de competencia y código real.',
+    nombre: 'Cyber Pro', 
+    slug: 'cyber-pro',
+    descripcion: 'Robótica avanzada: sistemas complejos, automatización y desafío WRO.',
     video: '/videos/nivel3.mp4', 
-    detalleExtra: 'El nivel de alto rendimiento. Preparación para la WRO, programación avanzada en Python/C++ y diseño de robots autónomos de competición.',
-    items: ['WRO', 'Python/C++', 'Sensores Pro'] 
+    detalleExtra: `
+      <strong>De construir robots a crear sistemas funcionales.</strong><br /><br />
+      En este nivel, el foco evoluciona hacia la integración de sistemas complejos, donde el <strong>código avanzado</strong> y la <strong>fuerza mecánica</strong> se unen para ejecutar tareas de precisión industrial. <br /><br />
+      • <strong>Lógica de Sistemas:</strong> Desarrollo de máquinas con funciones reales, como cajeros automáticos con validación y clasificadores inteligentes.<br />
+      • <strong>Toma de Decisiones:</strong> Programación de comportamientos profundos mediante ultrasonido y reconocimiento de secuencias lógicas.<br />
+      • <strong>Fabricación Digital:</strong> Uso estratégico del modelado 3D para fabricar piezas a medida de prototipos de alto rendimiento.<br /><br />
+      Los alumnos aplican este conocimiento directamente en los <strong>desafíos WRO</strong>, demostrando su capacidad para resolver retos tecnológicos con un enfoque práctico, técnico y profesional.
+    `,
+    items: ['Análisis', 'Precisión', 'Resolución'] 
+  },
+  { 
+    id: 'elite', 
+    nombre: 'Ctrl+Alt+Elite', 
+    slug: 'ctrl-alt-elite',
+    descripcion: 'Robótica de Proyectos: prototipado 3D, soluciones propias y entrenamiento para WRO.',
+    video: '/videos/nivel4.mp4', 
+    detalleExtra: `
+      <strong>El espacio para quienes eligen profundizar en la ingeniería.</strong><br /><br />
+      Este nivel está pensado para alumnos con experiencia que buscan dedicar más tiempo a sus propias ideas, trabajando con <strong>independencia</strong> y un fuerte sentido de compañerismo. <br /><br />
+      • <strong>Fabricación Digital:</strong> Diseñan y fabrican sus propias piezas y carrocerías en 3D, personalizando cada aspecto técnico de sus robots.<br />
+      • <strong>Resolución Autónoma:</strong> Brindamos las herramientas necesarias para que los chicos aprendan a resolver desafíos complejos por sus propios medios.<br />
+      • <strong>Experiencia de Competencia:</strong> Volcamos todo el conocimiento en el proyecto <strong>WRO</strong>, donde los alumnos asumen el reto de competir con seriedad y profesionalismo.<br /><br />
+      Es un año para perfeccionar detalles y disfrutar el proceso de ver cómo un robot llega a hacer exactamente lo que imaginamos, adquiriendo una <strong>autonomía real</strong> que trasciende el aula.
+    `,
+    items: ['Independencia', 'Liderazgo', 'Especialización'] 
   }
 ];
 ---
@@ -35,7 +75,7 @@ const levels = [
       <div class="level-bar" data-id={level.id}>
         <div class="level-content">
           
-          {/* VISTA CERRADA: Ahora con Position Absolute para evitar el parpadeo */}
+          {/* VISTA CERRADA */}
           <div class="main-info">
             <div class="text-area">
               <h3>{level.nombre}</h3>
@@ -56,12 +96,17 @@ const levels = [
             <div class="expanded-layout">
               <div class="expanded-text">
                 <button class="btn-close-level">← VOLVER</button>
-                <h4>Objetivos del Nivel</h4>
-                <p>{level.detalleExtra}</p>
-                <div class="content-placeholder">
-                  <p>[ CONTENIDO CURRICULAR / FOTOS ]</p>
+                
+                <div class="text-content-limit">
+                  <h4>Objetivos del Nivel</h4>
+                  <div class="detail-content" set:html={level.detalleExtra}></div>
+
+                  <a href={`/niveles/${level.slug}`} class="btn-discover">
+                    DESCUBRIR EXPERIENCIA COMPLETA →
+                  </a>
                 </div>
               </div>
+              
               <div class="vertical-video">
                 <video muted loop playsinline preload="metadata">
                   <source src={level.video} type="video/mp4" />
@@ -79,8 +124,7 @@ const levels = [
   .niveles-wrapper {
     position: relative;
     background: #121212;
-    padding: 6rem 0; 
-    min-height: auto;
+    padding: 8rem 0; 
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -89,16 +133,15 @@ const levels = [
   .niveles-container {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1rem;
     width: 100%;
     transition: all 0.6s cubic-bezier(0.85, 0, 0.15, 1);
-    align-items: flex-start; 
   }
 
   .level-bar {
     background: #8b1d20;
     width: 75vw;
-    height: 240px;
+    height: 180px;
     transition: all 0.7s cubic-bezier(0.85, 0, 0.15, 1);
     cursor: pointer;
     overflow: hidden;
@@ -107,18 +150,19 @@ const levels = [
   }
 
   .level-bar:not(.is-expanded):hover {
-    width: 82vw;
+    width: 80vw;
     background: #d83135;
   }
 
   .level-bar.is-expanded {
-    height: 72vh;
-    width: 78vw;
-    background: #1e1e1e;
+    height: auto; 
+    min-height: 600px; /* Aumentado para que respire más */
+    width: 85vw;
+    background: #222222; 
     cursor: default;
     z-index: 10;
-    margin-left: 6vw;
-    box-shadow: 0 0 50px rgba(0,0,0,0.6);
+    margin-left: 2vw;
+    box-shadow: 0 0 60px rgba(0,0,0,0.8);
   }
 
   .niveles-container.has-expanded .level-bar:not(.is-expanded) {
@@ -128,90 +172,134 @@ const levels = [
     pointer-events: none;
   }
 
-  .level-content { position: relative; height: 100%; width: 100%; }
+  .level-content { position: relative; width: 100%; height: 100%; }
 
-  /* VISTA CERRADA (AJUSTADA PARA EL ZERO-FLICKER) */
   .main-info {
     display: flex;
     width: 100%;
-    height: 240px;
+    height: 180px;
     align-items: center;
     justify-content: space-between;
     padding-left: 4rem;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+    transition: opacity 0.4s ease;
     position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
+    top: 0; left: 0;
   }
 
-  .level-bar.is-expanded .main-info { 
-    opacity: 0; 
-    visibility: hidden;
-    pointer-events: none;
-  }
+  .level-bar.is-expanded .main-info { opacity: 0; visibility: hidden; }
 
-  .horizontal-video { width: 400px; height: 240px; background: #000; }
+  /* Agregado position: relative para contener el video */
+  .horizontal-video { width: 350px; height: 180px; background: #000; position: relative; }
 
-  /* VISTA EXPANDIDA */
   .expanded-info { 
-    position: relative;
-    z-index: 2;
     opacity: 0; 
     visibility: hidden; 
+    transition: opacity 0.5s ease 0.2s;
     height: 100%;
-    transition: opacity 0.5s ease; 
   }
 
-  .level-bar.is-expanded .expanded-info { 
-    opacity: 1; 
-    visibility: visible; 
+  .level-bar.is-expanded .expanded-info { opacity: 1; visibility: visible; }
+
+  .expanded-layout { 
+    display: grid; 
+    grid-template-columns: 1.2fr 0.8fr; 
+    min-height: 600px; /* Aumentado para sincronizar con el contenedor y dar respiro */
   }
 
-  .expanded-layout { display: grid; grid-template-columns: 1fr 320px; height: 100%; }
+  .expanded-text { 
+    padding: 4rem; 
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+  }
 
-  .expanded-text { padding: 3rem 4rem; color: white; display: flex; flex-direction: column; overflow-y: auto; }
+  .text-content-limit { max-width: 580px; }
+
+  .detail-content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #cecece;
+    margin-bottom: 2.5rem;
+    /* Suavizado de fuente */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* NEGRITA ESTILIZADA: Menos "gorda" y con aire */
+  :global(.detail-content strong) {
+    color: #ffffff; 
+    font-weight: 700; 
+    letter-spacing: 0.02em;
+    display: inline-block;
+  }
+
+  .btn-discover {
+    display: inline-block;
+    background: #d83135;
+    color: #ffffff;
+    padding: 0.9rem 2rem;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: fit-content;
+  }
+
+  .btn-discover:hover { background: #b11b1f; transform: translateX(10px); }
 
   .btn-close-level {
     align-self: flex-start;
-    background: #d83135;
-    color: white;
-    border: none;
-    padding: 0.7rem 1.4rem;
-    font-weight: 900;
+    background: transparent;
+    color: #888;
+    border: 1px solid #444;
+    padding: 0.5rem 1rem;
+    font-weight: 700;
     cursor: pointer;
     margin-bottom: 2rem;
+    transition: all 0.3s ease;
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 
-  .text-area h3 { font-size: 2rem; font-weight: 900; text-transform: uppercase; margin: 0; color: white; }
-  .text-area p { color: rgba(255,255,255,0.8); margin: 5px 0 15px; }
+  .btn-close-level:hover { color: white; border-color: #d83135; }
 
-  .pills { display: flex; gap: 0.5rem; }
-  .pills span { background: rgba(0,0,0,0.3); padding: 4px 12px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.1); }
+  .expanded-text h4 { color: #d83135; font-size: 1.8rem; text-transform: uppercase; margin-bottom: 1.2rem; font-weight: 900; }
 
-  .vertical-video { width: 100%; height: 100%; background: #000; }
+  .text-area h3 { font-size: 2.2rem; font-weight: 900; text-transform: uppercase; margin: 0; color: white; }
+  .text-area p { color: rgba(255,255,255,0.7); font-size: 1.1rem; }
+
+  .pills { display: flex; gap: 0.6rem; margin-top: 10px; }
+  .pills span { background: rgba(0,0,0,0.5); padding: 5px 15px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; border: 1px solid #d83135; color: white; }
+
+  /* Agregado position: relative para contener el video */
+  .vertical-video { width: 100%; height: 100%; background: #000; position: relative; }
 
   video {
+    position: absolute; /* CLAVE: Evita que el aspecto original del video rompa la grilla */
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(100%) brightness(0.4);
-    transition: filter 0.5s ease;
+    filter: grayscale(100%) brightness(0.3);
+    transition: all 0.6s ease;
   }
 
   .level-bar:hover video, .level-bar.is-expanded video { filter: grayscale(0%) brightness(1); }
 
-  .vertical-title { position: absolute; right: 20px; top: 50%; transform: translateY(-50%); z-index: 0; }
-  .vertical-title span { writing-mode: vertical-rl; font-size: 7rem; font-weight: 900; color: rgba(255,255,255,0.03); text-transform: uppercase; }
+  .vertical-title { position: absolute; right: 30px; top: 50%; transform: translateY(-50%); z-index: 0; }
+  .vertical-title span { writing-mode: vertical-rl; font-size: 8rem; font-weight: 900; color: rgba(255,255,255,0.02); text-transform: uppercase; }
 
   @media (max-width: 1024px) {
-    .level-bar { width: 100vw; }
+    .level-bar { width: 100vw; height: auto; }
+    .level-bar.is-expanded { width: 100vw; margin-left: 0; }
     .main-info { padding-left: 1.5rem; flex-direction: column; height: auto; position: relative; }
-    .horizontal-video { width: 100%; height: 200px; }
+    .horizontal-video { width: 100%; height: 220px; }
     .expanded-layout { grid-template-columns: 1fr; }
-    .vertical-video { height: 250px; order: -1; }
+    .vertical-video { height: 350px; order: -1; }
+    .expanded-text { padding: 2rem; }
   }
 </style>
 

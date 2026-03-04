@@ -1,0 +1,39 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+---
+
+<ArticleLayout 
+  title="Micro-Bots" 
+  subtitle="Robótica inicial: circuitos, construcción manual y diseño 3D"
+  heroImage="/images/nivel1.jpg"
+>
+  <div class="tech-pills">
+    <span class="pill">Curiosidad</span>
+    <span class="pill">Lógica Básica</span>
+    <span class="pill">Construcción</span>
+  </div>
+
+  <p class="lead">
+    <strong>El viaje del Explorador: de la curiosidad a la creación.</strong> En este primer contacto, los alumnos descubren que son capaces de intervenir el mundo físico a través de la electrónica y la mecánica simple.
+  </p>
+
+  <video autoplay loop muted playsinline class="level-video">
+    <source src="/videos/nivel1.mp4" type="video/mp4" />
+  </video>
+
+  <h2>¿Qué aprendemos en este nivel?</h2>
+  <p>Al finalizar el Nivel 1, los chicos dejan de ser consumidores pasivos de pantallas para convertirse en <strong>pequeños inventores</strong> que entienden la lógica detrás de la tecnología que los rodea.</p>
+  
+  <ul>
+    <li><strong>Hardware Real:</strong> Transición desde circuitos básicos de energía hasta la generación de movimientos autónomos.</li>
+    <li><strong>Metodología Práctica:</strong> Uso de herramientas reales y resolución de problemas, convirtiendo el error en una oportunidad de aprendizaje.</li>
+    <li><strong>Diseño 3D:</strong> Introducción al espacio tridimensional para visualizar y materializar ideas de una forma completamente nueva.</li>
+  </ul>
+
+  <style>
+    .tech-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 2rem; }
+    .pill { background: #1a1a1a; border: 1px solid #d83135; padding: 6px 16px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #fff; letter-spacing: 1px; }
+    .level-video { width: 100%; border: 1px solid #333; margin: 1rem 0 3rem 0; filter: grayscale(30%); transition: filter 0.4s ease; }
+    .level-video:hover { filter: grayscale(0%); }
+  </style>
+</ArticleLayout>

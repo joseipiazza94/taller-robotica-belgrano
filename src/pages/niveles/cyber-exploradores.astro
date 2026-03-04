@@ -1,0 +1,39 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+---
+
+<ArticleLayout 
+  title="Cyber-Exploradores" 
+  subtitle="Robótica intermedia: sensores, sistemas autónomos y primer contacto con WRO"
+  heroImage="/images/nivel2.jpg"
+>
+  <div class="tech-pills">
+    <span class="pill">Interacción</span>
+    <span class="pill">Autonomía</span>
+    <span class="pill">Adaptabilidad</span>
+  </div>
+
+  <p class="lead">
+    <strong>Autonomía y precisión: cuando los proyectos empiezan a "hablar".</strong> En este nivel, los alumnos integran señales visuales y mecanismos de precisión para resolver desafíos del mundo real.
+  </p>
+
+  <video autoplay loop muted playsinline class="level-video">
+    <source src="/videos/nivel2.mp4" type="video/mp4" />
+  </video>
+
+  <h2>El Salto Técnico</h2>
+  <p>Como condimento especial, en esta etapa iniciamos el camino en la <strong>WRO (World Robot Olympiad)</strong>, participando en categorías enfocadas en la integración tecnológica y el trabajo en equipo bajo presión.</p>
+  
+  <ul>
+    <li><strong>Interacción Avanzada:</strong> Uso de pantallas LCD y múltiples sensores para que las creaciones muestren datos y reaccionen en tiempo real.</li>
+    <li><strong>Ingeniería Pro:</strong> Manejo de servomotores y sistemas de engranajes complejos para lograr movimientos de alta destreza y precisión.</li>
+    <li><strong>Foco en Soluciones:</strong> Construcción de proyectos completamente funcionales como radares de movimiento y cajas fuertes digitales.</li>
+  </ul>
+
+  <style>
+    .tech-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 2rem; }
+    .pill { background: #1a1a1a; border: 1px solid #d83135; padding: 6px 16px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #fff; letter-spacing: 1px; }
+    .level-video { width: 100%; border: 1px solid #333; margin: 1rem 0 3rem 0; filter: grayscale(30%); transition: filter 0.4s ease; }
+    .level-video:hover { filter: grayscale(0%); }
+  </style>
+</ArticleLayout>

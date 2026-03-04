@@ -1,0 +1,39 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+---
+
+<ArticleLayout 
+  title="Cyber Pro" 
+  subtitle="Robótica avanzada: sistemas complejos, automatización y desafío WRO"
+  heroImage="/images/nivel3.jpg"
+>
+  <div class="tech-pills">
+    <span class="pill">Análisis</span>
+    <span class="pill">Precisión Industrial</span>
+    <span class="pill">Resolución Compleja</span>
+  </div>
+
+  <p class="lead">
+    <strong>De construir robots a crear sistemas funcionales.</strong> El foco evoluciona hacia la integración, donde el código avanzado y la fuerza mecánica se unen para ejecutar tareas de precisión.
+  </p>
+
+  <video autoplay loop muted playsinline class="level-video">
+    <source src="/videos/nivel3.mp4" type="video/mp4" />
+  </video>
+
+  <h2>Ingeniería Aplicada</h2>
+  <p>Los alumnos aplican todo este conocimiento directamente en los <strong>desafíos oficiales de la WRO</strong>, demostrando su capacidad para resolver retos tecnológicos con un enfoque práctico, técnico y 100% profesional.</p>
+  
+  <ul>
+    <li><strong>Lógica de Sistemas:</strong> Desarrollo de máquinas con funciones del mundo real, como cajeros automáticos con validación y clasificadores inteligentes de objetos.</li>
+    <li><strong>Toma de Decisiones Automática:</strong> Programación de comportamientos profundos mediante sensores de ultrasonido y reconocimiento de secuencias lógicas matemáticas.</li>
+    <li><strong>Fabricación Digital:</strong> Uso estratégico del modelado 3D para imprimir y fabricar piezas a medida necesarias para prototipos de alto rendimiento.</li>
+  </ul>
+
+  <style>
+    .tech-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 2rem; }
+    .pill { background: #1a1a1a; border: 1px solid #d83135; padding: 6px 16px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: #fff; letter-spacing: 1px; }
+    .level-video { width: 100%; border: 1px solid #333; margin: 1rem 0 3rem 0; filter: grayscale(30%); transition: filter 0.4s ease; }
+    .level-video:hover { filter: grayscale(0%); }
+  </style>
+</ArticleLayout>

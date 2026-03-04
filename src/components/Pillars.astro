@@ -3,32 +3,72 @@ const pilares = [
   { 
     id: 'quienes', 
     titulo: 'Quiénes Somos', 
-    resumen: 'El equipo detrás de la innovación en Salta.', 
-    detalle: 'Somos un grupo interdisciplinario de docentes y profesionales apasionados por la tecnología aplicada a la educación. En el Colegio Belgrano, nuestra misión es brindar un entorno donde la curiosidad se transforme en proyectos reales.\n\nContamos con especialistas en ingeniería, programación y pedagogía que acompañan a cada alumno en su proceso de descubrimiento técnico.' 
+    resumen: 'Un espacio para descubrir la tecnología a través de la práctica.', 
+    detalle: `
+      <strong>Un equipo apasionado por la tecnología y la educación.</strong><br /><br />
+      Somos un taller pensado para que los alumnos se familiaricen con la robótica de forma natural, encontrando su vocación a través del código y la ingeniería. <br /><br />
+      El taller es impulsado por la <strong>Ing. Ana Chalabe</strong> y por <strong>Florencia Piazza</strong>, docente experta en ilustración y animación. <br /><br />
+      Todo esto es posible gracias al marco del <strong>Colegio Belgrano</strong>, que nos brinda el entorno necesario para crear.
+    `,
+    puntos: [
+      { label: 'Exploración', desc: 'Herramientas reales de programación.' },
+      { label: 'Vocaciones', desc: 'Primer paso hacia la ingeniería.' },
+      { label: 'Trayectoria', desc: 'Visión técnica y pedagógica.' },
+      { label: 'Valores', desc: 'Respaldo del Colegio Belgrano.' }
+    ],
+    imagen: '/images/quienes-somos.jpg'
   },
   { 
     id: 'que', 
     titulo: 'Qué Hacemos', 
     resumen: 'Robótica educativa y experimentación real.', 
-    detalle: 'Desde la construcción física con kits especializados hasta el desarrollo de algoritmos de inteligencia artificial. Nuestro taller abarca:\n\n• Diseño y prototipado mecánico.\n• Programación en entornos visuales y de código.\n• Preparación para competencias nacionales e internacionales.\n• Electrónica y automatización avanzada.' 
+    detalle: `
+      <strong>Prototipado, programación y pensamiento creativo.</strong><br /><br />
+      Desde la construcción física hasta el desarrollo de algoritmos inteligentes. Nuestro taller abarca el diseño mecánico y la programación en entornos profesionales para resolver desafíos del mundo real.<br /><br />
+      Buscamos que los alumnos comprendan la tecnología desde adentro, integrando electrónica y lógica en cada sesión.
+    `,
+    puntos: [
+      { label: 'Prototipado', desc: 'Diseño y montaje de estructuras.' },
+      { label: 'Programación', desc: 'Entornos visuales y de código.' },
+      { label: 'WRO', desc: 'Preparación para competencia internacional.' },
+      { label: 'Autonomía', desc: 'Resolución de retos técnicos.' }
+    ],
+    imagen: '/images/que-hacemos.jpg'
   },
   { 
     id: 'porque', 
     titulo: 'Por Qué', 
     resumen: 'Crear tecnología, no solo consumirla.', 
-    detalle: 'Vivimos en un mundo rodeado de dispositivos, pero pocos entienden su lenguaje. El objetivo de este taller es empoderar a los chicos para que dejen de ser usuarios pasivos y se conviertan en los creadores del mañana.\n\nFomentamos el pensamiento crítico, la resolución de problemas complejos y la resiliencia ante el error.' 
+    detalle: `
+      <strong>Empoderando a los creadores del futuro.</strong><br /><br />
+      El objetivo de este taller es que los alumnos dejen de ser usuarios pasivos y se conviertan en los creadores del mañana. <br /><br />
+      Fomentamos el pensamiento crítico, la resolución de problemas complejos y la resiliencia ante el error, herramientas fundamentales para cualquier camino profesional.
+    `,
+    puntos: [
+      { label: 'Crítica', desc: 'Análisis profundo de problemas.' },
+      { label: 'Liderazgo', desc: 'Gestión de proyectos propios.' },
+      { label: 'Resiliencia', desc: 'Aprendizaje a través del error.' },
+      { label: 'Futuro', desc: 'Habilidades para el siglo XXI.' }
+    ],
+    imagen: '/images/por-que.jpg'
   },
   { 
     id: 'como', 
     titulo: 'Cómo', 
     resumen: 'Metodología basada en proyectos y niveles.', 
-    detalle: 'Nuestro camino de aprendizaje está estructurado en tres niveles de progresión técnica diseñados para acompañar el crecimiento cognitivo del alumno:',
-    niveles: [
-      { nombre: 'Spark Squad', desc: 'Mecánica y bloques (Nivel Inicial)' },
-      { nombre: 'Circuit Masters', desc: 'Arduino y 3D (Nivel Intermedio)' },
-      { nombre: 'Cyber Builders', desc: 'Competición y Python (Nivel Avanzado)' }
-    ]
-  },
+    detalle: `
+      <strong>Un camino de aprendizaje estructurado y progresivo.</strong><br /><br />
+      Nuestra metodología se basa en niveles de progresión técnica diseñados para acompañar el crecimiento cognitivo y la autonomía del alumno en cada etapa. <br /><br />
+      Trabajamos con proyectos reales donde el conocimiento se adquiere de forma práctica y aplicada.
+    `,
+    puntos: [
+      { label: 'Niveles', desc: 'Escalabilidad en dificultad técnica.' },
+      { label: 'ABP', desc: 'Aprendizaje basado en proyectos.' },
+      { label: 'Seguimiento', desc: 'Atención personalizada por niveles.' },
+      { label: 'Herramientas', desc: 'Software y hardware profesional.' }
+    ],
+    imagen: '/images/como-lo-hacemos.jpg'
+  }
 ];
 ---
 
@@ -37,55 +77,60 @@ const pilares = [
     {pilares.map(pilar => (
       <div class="pilar-card" data-id={pilar.id}>
         
-        {/* PESTAÑA DE SALIDA VERTICAL */}
         <button class="close-tab" aria-label="Cerrar pilar">
           <span>CERRAR</span>
         </button>
 
-        {/* VISTA CERRADA (Bordó) */}
         <div class="pilar-closed">
-          <div class="placeholder-svg-closed"></div>
           <h2>{pilar.titulo}</h2>
           <p class="summary-text">{pilar.resumen}</p>
         </div>
         
-        {/* VISTA ABIERTA (Gris Industrial) */}
         <div class="pilar-opened">
           <div class="content-wrapper">
-            <div class="header-box">
-              <h3>{pilar.titulo}</h3>
-            </div>
-            
             <div class="detail-grid">
+              
               <div class="text-detail">
+                <div class="text-header">
+                  <h3>{pilar.titulo}</h3>
+                </div>
+
+                <div class="pilar-separator"></div>
+
                 <div class="scrollable-content">
-                  <p class="lead-text">{pilar.resumen}</p>
-                  <div class="full-body-text">
-                    {pilar.detalle}
-                  </div>
+                  <div class="full-body-text" set:html={pilar.detalle}></div>
                   
-                  {pilar.niveles && (
-                    <div class="mini-niveles">
-                      {pilar.niveles.map(n => (
-                        <div class="mini-card">
-                          <strong>{n.nombre}</strong>
-                          <span>{n.desc}</span>
-                        </div>
-                      ))}
+                  {/* Para todos los pilares MENOS 'que', el botón va aquí (izquierda) */}
+                  {pilar.id !== 'que' && (
+                    <div class="action-footer">
+                      <a href={`/pilares/${pilar.id}`} class="btn-more">CONOCER MÁS →</a>
+                    </div>
+                  )}
+
+                  {/* Para el pilar 'que', el botón va alineado a la derecha */}
+                  {pilar.id === 'que' && (
+                    <div class="action-footer footer-right">
+                      <a href={`/pilares/${pilar.id}`} class="btn-more">CONOCER MÁS →</a>
                     </div>
                   )}
                 </div>
-                
-                <div class="action-footer">
-                  <a href={`/pilares/${pilar.id}`} class="btn-more">LEER MÁS DETALLADO →</a>
+              </div>
+
+              <div class="image-side">
+                <div class="side-info-container">
+                  <div class="image-container">
+                    <img src={pilar.imagen} alt={pilar.titulo} />
+                    <div class="frame-decor"></div>
+                  </div>
+                  
+                  <ul class="pilar-bullets">
+                    {pilar.puntos.map(punto => (
+                      <li><strong>{punto.label}:</strong> {punto.desc}</li>
+                    ))}
+                  </ul>
                 </div>
               </div>
 
-              <div class="image-placeholder">
-                <div class="placeholder-overlay">
-                  <span>[ ESPACIO PARA FOTO O INFOGRAFÍA ]</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -95,131 +140,107 @@ const pilares = [
 </section>
 
 <style>
-  .pilares-section { 
-    background: #121212; 
-    padding: 2rem 0; 
-    min-height: auto; 
-    display: flex; 
-    overflow: hidden; 
-  }
+  .pilares-section { background: #121212; padding: 0; min-height: 85vh; display: flex; align-items: center; overflow: hidden; }
 
   .pilares-grid { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    grid-template-rows: 1fr 1fr; 
-    width: 100vw; 
-    height: 85vh; /* Altura reducida para que no sea tan alto */
-    transition: all 0.8s cubic-bezier(0.85, 0, 0.15, 1); 
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; 
+    width: 100vw; height: 85vh; transition: all 0.8s cubic-bezier(0.85, 0, 0.15, 1); 
   }
 
-  /* Expansiones GIGANTES */
   .pilares-grid.expanded-quienes { grid-template-columns: 4fr 1fr; grid-template-rows: 4fr 1fr; }
   .pilares-grid.expanded-que     { grid-template-columns: 1fr 4fr; grid-template-rows: 4fr 1fr; }
   .pilares-grid.expanded-porque  { grid-template-columns: 4fr 1fr; grid-template-rows: 1fr 4fr; }
   .pilares-grid.expanded-como    { grid-template-columns: 1fr 4fr; grid-template-rows: 1fr 4fr; }
 
   .pilar-card { 
-    background: #8b1d20; 
-    color: white; 
-    cursor: pointer; 
-    position: relative; 
-    overflow: hidden; 
-    border: 1px solid rgba(255,255,255,0.05); 
-    transition: background 0.6s ease; 
+    background: #8b1d20; color: white; cursor: pointer; position: relative; overflow: hidden; 
+    border: 1px solid rgba(255,255,255,0.05); transition: background 0.4s ease, transform 0.4s ease;
   }
 
-  .pilar-card.is-active { 
-    background: #1e1e1e; /* Gris Industrial */
-    cursor: default; 
-    z-index: 10; 
-  }
+  .pilar-card:not(.is-active):hover { background: #a32427; transform: scale(1.005); z-index: 2; }
+  .pilar-card.is-active { background: #1a1a1a; cursor: default; z-index: 10; }
 
-  /* PESTAÑA DE SALIDA */
+  .pilares-grid.is-any-active .pilar-card:not(.is-active) .summary-text { opacity: 0; }
+  .pilares-grid.is-any-active .pilar-card:not(.is-active) h2 { font-size: 1.1rem; text-align: center; width: 100%; padding: 0 15px; }
+
   .close-tab {
-    position: absolute;
-    background: #d83135; /* Rojo oficial */
-    color: white;
-    border: none;
-    width: 40px;
-    height: 150px;
-    cursor: pointer;
-    z-index: 50;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    position: absolute; background: #d83135; color: white; border: none; width: 45px; height: 160px;
+    cursor: pointer; z-index: 100; opacity: 0; transition: all 0.5s ease;
+    display: flex; align-items: center; justify-content: center;
   }
-
   [data-id="quienes"] .close-tab { bottom: 0; right: 0; transform: translateX(100%); }
   [data-id="que"] .close-tab     { bottom: 0; left: 0; transform: translateX(-100%); }
   [data-id="porque"] .close-tab  { top: 0; right: 0; transform: translateX(100%); }
   [data-id="como"] .close-tab    { top: 0; left: 0; transform: translateX(-100%); }
-
   .pilar-card.is-active .close-tab { opacity: 1; transform: translateX(0); }
-  .close-tab span { writing-mode: vertical-rl; text-orientation: mixed; font-weight: 900; letter-spacing: 2px; font-size: 0.8rem; }
-  .close-tab:hover { background: white; color: #d83135; }
 
-  /* VISTA CERRADA */
+  .close-tab span { writing-mode: vertical-rl; text-orientation: mixed; font-weight: 900; letter-spacing: 3px; font-size: 0.85rem; text-transform: uppercase; }
+  .close-tab:hover { background: #fff; color: #d83135; }
+
   .pilar-closed { 
     display: flex; flex-direction: column; align-items: center; justify-content: center; 
-    height: 100%; padding: 1.5rem; text-align: center; transition: opacity 0.4s;
+    height: 100%; padding: 2rem; text-align: center; transition: opacity 0.3s ease;
   }
   .pilar-card.is-active .pilar-closed { opacity: 0; pointer-events: none; }
-  
-  .pilar-closed h2 { font-size: 2.2rem; font-weight: 900; text-transform: uppercase; }
-  .summary-text { opacity: 0.6; max-width: 250px; margin-top: 0.5rem; font-size: 0.9rem; }
-  .placeholder-svg-closed { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; margin-bottom: 1rem; }
+  .pilar-closed h2 { font-size: 2.2rem; font-weight: 900; text-transform: uppercase; margin: 0; }
+  .summary-text { opacity: 0.7; max-width: 280px; margin-top: 1rem; font-size: 1.1rem; }
 
-  /* VISTA ABIERTA */
   .pilar-opened { 
-    display: none; padding: 4% 6%; height: 100%; opacity: 0; 
-    position: absolute; top: 0; left: 0; width: 100%;
+    display: none; height: 100%; width: 100%; position: absolute; top: 0; left: 0;
+    opacity: 0; align-items: center;
   }
-  .pilar-card.is-active .pilar-opened { display: block; animation: fadeIn 0.6s forwards 0.4s; }
 
-  .content-wrapper { height: 100%; display: flex; flex-direction: column; }
-  .content-wrapper h3 { font-size: clamp(3rem, 6vw, 5rem); font-weight: 900; text-transform: uppercase; color: #d83135; margin-bottom: 1.5rem; }
-
-  .detail-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; flex: 1; min-height: 0; }
-  
-  .text-detail { display: flex; flex-direction: column; }
-  
-  .scrollable-content { 
-    overflow-y: auto; flex: 1; padding-right: 1.5rem; 
-    scrollbar-width: thin; scrollbar-color: #d83135 transparent;
+  /* Entrada limpia con delay de 0.4s para evitar parpadeos */
+  .pilar-card.is-active .pilar-opened { 
+    display: flex;
+    animation: contentReveal 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards 0.4s; 
   }
+
+  @keyframes contentReveal {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .content-wrapper { width: 100%; height: 85%; padding: 0 6%; }
+  .detail-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 5%; height: 100%; align-items: center; }
   
-  .scrollable-content::-webkit-scrollbar { width: 4px; }
-  .scrollable-content::-webkit-scrollbar-thumb { background: #d83135; }
+  .text-detail { height: 100%; display: flex; flex-direction: column; justify-content: center; }
+  .scrollable-content { overflow-y: auto; padding-right: 2rem; }
 
-  .lead-text { font-size: 1.6rem; font-weight: 700; color: #d83135; margin-bottom: 1.5rem; line-height: 1.2; }
-  .full-body-text { font-size: 1.1rem; line-height: 1.5; color: #e0e0e0; white-space: pre-line; }
+  .text-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 0.5rem; }
+  .text-detail h3 { font-size: 3.5rem; font-weight: 900; text-transform: uppercase; color: #d83135; margin: 0; line-height: 1; }
+  .pilar-separator { width: 80px; height: 3px; background: #d83135; margin-bottom: 2rem; }
 
-  .mini-niveles { display: grid; gap: 0.8rem; margin: 1.5rem 0; }
-  .mini-card { background: rgba(255,255,255,0.03); padding: 1rem; border-left: 4px solid #d83135; }
-  .mini-card strong { display: block; color: white; margin-bottom: 0.2rem; }
-  .mini-card span { color: #888; font-size: 0.85rem; }
+  .full-body-text { font-size: 1.15rem; line-height: 1.6; color: #cecece; margin-bottom: 1.5rem; }
+  :global(.full-body-text strong) { color: #d83135; font-weight: 700; }
 
   .action-footer { margin-top: 1.5rem; }
+  
+  /* CLASE ESPECÍFICA PARA MOVER EL BOTÓN A LA DERECHA EN 'QUÉ HACEMOS' */
+  .footer-right { display: flex; justify-content: flex-end; }
+
   .btn-more { 
-    display: inline-block; padding: 1rem 2rem; 
-    background: white; color: #121212; text-decoration: none; font-weight: 900; 
+    display: inline-block; padding: 0.8rem 2rem; border: 1px solid #d83135; 
+    color: #d83135; text-decoration: none; font-weight: 900; text-transform: uppercase; font-size: 0.8rem;
+    transition: all 0.3s ease;
   }
+  .btn-more:hover { background: #d83135; color: white; }
 
-  .image-placeholder { background: #252525; border: 1px dashed #444; position: relative; }
-  .placeholder-overlay { display: flex; align-items: center; justify-content: center; height: 100%; color: #555; text-align: center; padding: 2rem; }
+  .side-info-container { display: flex; flex-direction: column; gap: 2rem; }
+  .pilar-bullets { list-style: none; padding: 0; }
+  .pilar-bullets li { color: #aaa; margin-bottom: 0.6rem; padding-left: 1.5rem; position: relative; font-size: 0.9rem; }
+  .pilar-bullets li::before { content: '→'; position: absolute; left: 0; color: #d83135; font-weight: 900; }
 
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .image-container { width: 100%; height: 260px; position: relative; }
+  .image-container img { width: 100%; height: 100%; object-fit: cover; border: 1px solid rgba(255,255,255,0.1); }
+  .frame-decor { position: absolute; top: -10px; right: -10px; width: 30px; height: 30px; border-top: 3px solid #d83135; border-right: 3px solid #d83135; }
 
   @media (max-width: 1024px) {
-    .pilares-grid { grid-template-columns: 1fr; grid-template-rows: repeat(4, 1fr); height: auto; }
-    .content-wrapper h3 { font-size: 2.2rem; }
-    .detail-grid { grid-template-columns: 1fr; }
-    .close-tab { width: 100%; height: 40px; top: 0 !important; left: 0 !important; transform: translateY(-100%) !important; }
-    .pilar-card.is-active .close-tab { transform: translateY(0) !important; }
-    .close-tab span { writing-mode: horizontal-tb; }
-    .scrollable-content { overflow-y: visible; max-height: none; }
+    .pilares-grid { grid-template-columns: 1fr; grid-template-rows: auto; height: auto; }
+    .text-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .detail-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .image-side { height: 300px; order: -1; }
+    .text-detail h3 { font-size: 2.5rem; }
   }
 </style>
 
@@ -248,7 +269,6 @@ const pilares = [
       });
     });
   };
-
   setupPilares();
   document.addEventListener('astro:page-load', setupPilares);
 </script>
