@@ -1,0 +1,62 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+// 1. Definimos qué propiedades recibe esta página
+interface Props {
+  post: CollectionEntry<'bitacora'>;
+}
+
+export async function getStaticPaths() {
+  // Le decimos a TypeScript que esto es una lista de entradas de la bitácora
+  const posts: CollectionEntry<'bitacora'>[] = await getCollection('bitacora');
+  
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+// 2. Astro.props ahora sabe que 'post' tiene la propiedad 'data'
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={post.data.title}>
+  <article class="post-detail">
+    <header class="post-hero">
+      {/* Usamos la imagen que definiste en el Markdown para la portada mensual */}
+      <div class="hero-overlay" style={`background-image: url(${post.data.image})`}></div>
+      <div class="hero-text">
+        <span class="mes-badge">{post.data.mes}</span>
+        <h1>{post.data.title}</h1>
+      </div>
+    </header>
+
+    <div class="post-body">
+      <div class="markdown-content">
+        {/* Aquí se renderiza el contenido sobre el trabajo de Ana y Florencia */}
+        <Content />
+      </div>
+      <footer class="post-footer">
+        <a href="/bitacora" class="back-btn">← VOLVER AL LISTADO</a>
+      </footer>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .post-detail { background: #0a0a0a; color: white; min-height: 100vh; }
+  .post-hero { height: 50vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .hero-overlay { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0.3; filter: blur(8px); }
+  .hero-text { position: relative; z-index: 10; text-align: center; }
+  h1 { font-size: 4rem; font-weight: 900; text-transform: uppercase; margin-top: 1rem; }
+  .mes-badge { background: #d83135; padding: 0.5rem 1rem; font-weight: 900; font-size: 0.8rem; letter-spacing: 2px; }
+  .post-body { max-width: 800px; margin: 0 auto; padding: 4rem 5%; }
+  .markdown-content { font-size: 1.1rem; line-height: 1.8; color: #ccc; }
+  .markdown-content :global(h2) { color: #d83135; font-size: 2rem; margin: 3rem 0 1rem; text-transform: uppercase; }
+  .markdown-content :global(strong) { color: white; }
+  .markdown-content :global(hr) { border: 0; height: 1px; background: #222; margin: 3rem 0; }
+  .post-footer { margin-top: 4rem; border-top: 1px solid #222; padding-top: 2rem; }
+  .back-btn { color: #d83135; text-decoration: none; font-weight: 900; font-size: 0.8rem; letter-spacing: 2px; }
+</style>

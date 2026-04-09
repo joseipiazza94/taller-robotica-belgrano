@@ -1,0 +1,122 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+const allPosts: CollectionEntry<'bitacora'>[] = await getCollection('bitacora');
+const latestPost = allPosts.sort((a, b) => b.data.fecha.valueOf() - a.data.fecha.valueOf())[0];
+---
+
+<section class="bitacora-preview">
+  <div class="container-width">
+    <div class="section-header">
+      <span class="pre-title">LO QUE PASA EN EL TALLER</span>
+      <h2>BITÁCORA DE ACTIVIDADES</h2>
+    </div>
+
+    {latestPost ? (
+      <div class="preview-card">
+        <div class="preview-image">
+          <img src={latestPost.data.image} alt={latestPost.data.title} />
+        </div>
+        <div class="preview-info">
+          <span class="mes-tag">{latestPost.data.mes}</span>
+          <h3>{latestPost.data.title}</h3>
+          <p>{latestPost.data.description}</p>
+          <div class="actions">
+            <a href={`/bitacora/${latestPost.slug}`} class="btn-primary">LEER BITÁCORA COMPLETA</a>
+            <a href="/bitacora" class="btn-secondary">VER MESES ANTERIORES</a>
+          </div>
+        </div>
+      </div>
+    ) : (
+      <div class="no-posts">
+        <p>Próximamente compartiremos los avances de las clases dirigidas por <strong>Ana Chalabe</strong> y <strong>Florencia Piazza</strong>.</p>
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  /* --- CONTENEDOR PRINCIPAL --- */
+  .bitacora-preview { 
+    padding: 10rem 0; 
+    /* Forzamos el color para que no lo pise ninguna regla global */
+    background-color: #8b1d20 !important; 
+    position: relative; 
+    display: block;
+    width: 100%;
+    /* Eliminamos transiciones para evitar el parpadeo visual */
+    transition: none !important; 
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  /* --- MARGENES COHERENTES CON LA WEB --- */
+  .container-width {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+    position: relative;
+    z-index: 2;
+  }
+
+  .section-header { margin-bottom: 4rem; text-align: left; }
+  .pre-title { color: white; font-weight: 900; letter-spacing: 4px; font-size: 0.8rem; opacity: 0.8; text-transform: uppercase; }
+  .section-header h2 { font-size: 3.5rem; font-weight: 900; text-transform: uppercase; margin-top: 0.5rem; color: white; line-height: 1; }
+
+  /* --- TARJETA DE ADELANTO --- */
+  .preview-card { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    background: #111; 
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    overflow: hidden;
+  }
+
+  .preview-image { height: 100%; min-height: 400px; }
+  .preview-image img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
+
+  .preview-info { padding: 4rem; display: flex; flex-direction: column; justify-content: center; }
+  .mes-tag { color: #d83135; font-weight: 800; letter-spacing: 2px; font-size: 0.7rem; margin-bottom: 1rem; text-transform: uppercase; }
+  .preview-info h3 { font-size: 2.5rem; font-weight: 900; margin-bottom: 1.5rem; color: white; line-height: 1.1; }
+  .preview-info p { color: #ccc; line-height: 1.6; font-size: 1.1rem; margin-bottom: 2.5rem; }
+
+  /* --- BOTONES Y ACCIONES --- */
+  .actions { display: flex; gap: 1.5rem; align-items: center; }
+  
+  .btn-primary { 
+    background: #d83135; 
+    color: white; 
+    padding: 1rem 2rem; 
+    text-decoration: none; 
+    font-weight: 900; 
+    font-size: 0.8rem; 
+    transition: 0.3s ease; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .btn-primary:hover { background: white; color: #d83135; }
+  
+  .btn-secondary { 
+    color: #eee; 
+    text-decoration: none; 
+    font-weight: 900; 
+    font-size: 0.8rem; 
+    border-bottom: 2px solid #d83135; 
+    padding-bottom: 4px;
+    text-transform: uppercase;
+    transition: 0.3s ease; 
+  }
+  .btn-secondary:hover { color: white; border-color: white; }
+
+  .no-posts { text-align: center; padding: 4rem; color: white; background: rgba(0,0,0,0.2); }
+
+  /* --- AJUSTES RESPONSIVE --- */
+  @media (max-width: 1024px) {
+    .bitacora-preview { padding: 6rem 0; }
+    .preview-card { grid-template-columns: 1fr; }
+    .preview-info { padding: 2.5rem; }
+    .section-header h2 { font-size: 2.5rem; }
+    .preview-info h3 { font-size: 2rem; }
+    .actions { flex-direction: column; align-items: flex-start; }
+  }
+</style>

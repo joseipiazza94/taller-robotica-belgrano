@@ -6,6 +6,7 @@ import Quote from '../components/Quote.astro';
 import Levels from '../components/Levels.astro';
 import Hero from '../components/Hero.astro';
 import WRO from '../components/WRO.astro';
+import BitacoraPreview from '../components/BitacoraPreview.astro'; // Nueva importación
 import Footer from '../components/Footer.astro';
 ---
 
@@ -16,20 +17,24 @@ import Footer from '../components/Footer.astro';
         <Hero /> 
         <div id="explorar" class="anchor-offset"></div>
         <section id="pilares">
-        <Pillars />
+            <Pillars />
         </section>
         <Quote />
         <section id="niveles">
-        <Levels />
+            <Levels />
         </section>
-        <section id="wro">
-        <WRO />
-        </section>
+        
+        {/* Agregamos la Bitácora antes de la competencia o después, según prefieras */}
+        <BitacoraPreview />
 
+        <section id="wro">
+            <WRO />
+        </section>
     </main>
-<section id="contacto">
-<Footer />
-</section>
+
+    <section id="contacto">
+        <Footer />
+    </section>
 </Layout>
 
 <style>
