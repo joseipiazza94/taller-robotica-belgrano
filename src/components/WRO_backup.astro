@@ -1,0 +1,182 @@
+---
+const winners = [
+  {
+    year: '2023',
+    achievement: 'Mundial Turquía',
+    team: 'Pioneer Team',
+    rank: 'Clasificación Mundial',
+    image: '/images/turquia.jpg' // Reemplazar por tu placeholder
+  },
+  {
+    year: '2024',
+    achievement: 'Nacional Argentina',
+    team: 'RoboBelgrano',
+    rank: '2do Puesto Nacional',
+    image: '/images/nacional.jpg' // Reemplazar por tu placeholder
+  }
+];
+---
+
+<section class="wro-section">
+  <div class="wro-container">
+    <div class="wro-intro">
+      <span class="subtitle">Competencia de Élite</span>
+      <h2>World Robot Olympiad</h2>
+      <p>
+        La WRO no es solo una competencia, es donde nuestros alumnos ponen a prueba su resiliencia. 
+        Desde el triunfo nacional hasta representar a Salta en el mundial de <strong>Turquía</strong>, 
+        fomentamos el reconocimiento al esfuerzo y la excelencia técnica.
+      </p>
+    </div>
+
+    <div class="hall-of-fame">
+      <h3>Hall of Fame</h3>
+      <div class="fame-grid">
+        {winners.map(winner => (
+          <div class="fame-card">
+            <div class="image-wrapper">
+              <div class="year-tag">{winner.year}</div>
+              <img src={winner.image} alt={winner.achievement} />
+            </div>
+            <div class="card-body">
+              <h4>{winner.achievement}</h4>
+              <p class="rank">{winner.rank}</p>
+              <p class="team-name">{winner.team}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .wro-section {
+    background-color: #ffffff; /* Alternancia a Blanco */
+    padding: 6rem 0;
+    color: #121212;
+  }
+
+  .wro-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .wro-intro {
+    margin-bottom: 5rem;
+  }
+
+  .subtitle {
+    color: #d83135; /* Rojo Oficial */
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+  }
+
+  .wro-intro h2 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #8b1d20; /* Bordó Sombra para títulos sobre blanco */
+    margin: 1rem 0;
+    text-transform: uppercase;
+  }
+
+  .wro-intro p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 700px;
+    color: #2d2d2d;
+  }
+
+  /* HALL OF FAME */
+  .hall-of-fame h3 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    color: #121212;
+  }
+
+  .fame-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  .fame-card {
+    background: #f8f8f8;
+    border: 2px solid #eeeeee;
+    /* Mantenemos cortes rectos */
+    transition: all 0.3s ease;
+  }
+
+  .fame-card:hover {
+    border-color: #d83135;
+    transform: translateY(-5px);
+    box-shadow: 10px 10px 0px rgba(139, 29, 32, 0.1); /* Sombra técnica rígida */
+  }
+
+  .image-wrapper {
+    position: relative;
+    height: 250px;
+    background: #2d2d2d;
+    overflow: hidden;
+  }
+
+  .year-tag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #d83135;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    font-weight: 900;
+    z-index: 10;
+  }
+
+  .image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: 0.5s ease;
+  }
+
+  .fame-card:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+  }
+
+  .card-body {
+    padding: 2rem;
+    text-align: left;
+    border-left: 5px solid #8b1d20; /* Detalle bordó a la izquierda */
+  }
+
+  .card-body h4 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: #8b1d20;
+    text-transform: uppercase;
+  }
+
+  .rank {
+    font-weight: 700;
+    color: #d83135;
+    margin: 0.5rem 0;
+  }
+
+  .team-name {
+    color: #666;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    .wro-intro h2 { font-size: 2.5rem; }
+    .fame-grid { grid-template-columns: 1fr; }
+  }
+</style>

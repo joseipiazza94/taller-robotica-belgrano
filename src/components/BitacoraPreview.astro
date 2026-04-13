@@ -6,7 +6,7 @@ const allPosts: CollectionEntry<'bitacora'>[] = await getCollection('bitacora');
 const latestPost = allPosts.sort((a, b) => b.data.fecha.valueOf() - a.data.fecha.valueOf())[0];
 ---
 
-<section class="bitacora-preview">
+<section id="bitacora" class="bitacora-preview">
   <div class="container-width">
     <div class="section-header">
       <span class="pre-title">LO QUE PASA EN EL TALLER</span>
