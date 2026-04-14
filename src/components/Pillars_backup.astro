@@ -1,142 +1,291 @@
 ---
-/* Pillars.astro - Bloques de navegación principal */
+const pilares = [
+  { 
+    id: 'quienes', 
+    titulo: 'Quiénes Somos', 
+    resumen: 'Un espacio para descubrir la tecnología y despertar las vocaciones que diseñarán el mañana.', 
+    intro: 'En el Taller de Robótica del Colegio Belgrano no sólo enseñamos a armar robots; entregamos a los chicos las herramientas que hoy mueven al mundo. Buscamos que cada alumno descubra su vocación técnica a través de la experimentación real y un enfoque Maker.',
+    puntosTitulo: 'Nuestra identidad:',
+    puntos: [
+      { label: 'Herramientas reales', desc: 'Enseñamos herramientas útiles para el futuro: desde dispositivos simples y sensores hasta lógica de programación avanzada.' },
+      { label: 'Despertar Vocacional', desc: 'El primer paso sólido para los futuros ingenieros, programadores y creativos digitales.' },
+      { label: 'Camino Recorrido', desc: 'Llevamos desde 2016 integrando la tecnología en el aprendizaje, de la mano de la Ing. Ana Chalabe.' },
+      { label: 'Fusión STEAM', desc: 'Al rigor técnico de la ingeniería, sumamos la mirada artística de Florencia Piazza, maestra jardinera, haciendo del taller un espacio de creación y diseño.' }
+    ],
+    cierre: 'Transformamos el aula en un laboratorio de soluciones para el mundo real, preparando a los alumnos para un futuro donde la tecnología es el lenguaje principal.',
+    imagen: '/images/quienes-somos.jpg'
+  },
+  { 
+    "id": "que-hacemos", 
+    "titulo": "¿Qué hacemos?", 
+    "resumen": "Transformamos ideas en proyectos funcionales a través del diseño y la programación.", 
+    "intro": "En el taller, el aprendizaje es 100% práctico. Los alumnos atraviesan todo el proceso de ingeniería: desde el diseño inicial y el montaje físico con diversos materiales, hasta la programación y la presentación de sus resultados.",
+    "puntosTitulo": "Nuestro proceso creativo:",
+    "puntos": [
+      { "label": "Diseño y Construcción", "desc": "Usamos desde cartón y papel hasta impresiones 3D y kits profesionales para dar vida a los proyectos." },
+      { "label": "Programación Real", "desc": "Aprendemos a dar órdenes a las máquinas usando interfaces de bloques o código puro, según el nivel." },
+      { "label": "Desafío WRO", "desc": "Nos preparamos para la categoría 'Future Innovators', creando robots que resuelven problemas cotidianos." },
+      { "label": "Habilidades de Comunicación", "desc": "Los chicos aprenden a documentar y exponer sus trabajos frente a sus compañeros." }
+    ],
+    "cierre": "Fomentamos el trabajo en equipo en un ambiente donde la diversión y el disfrute son el motor de cada descubrimiento.",
+    "imagen": "/images/que-hacemos.jpg"
+  },
+  { 
+    id: 'porque', 
+    titulo: 'Por Qué', 
+    resumen: 'Crear tecnología, no solo consumirla.', 
+    intro: 'El objetivo fundamental es que los alumnos dejen de ser usuarios pasivos de pantallas y se conviertan en los creadores del mañana. Empoderamos a los estudiantes a través de la invención.',
+    puntosTitulo: 'Habilidades que desarrollamos:',
+    puntos: [
+      { label: 'Pensamiento Crítico', desc: 'Análisis profundo para encontrar soluciones eficientes.' },
+      { label: 'Liderazgo', desc: 'Gestión y propiedad de sus propios proyectos técnicos.' },
+      { label: 'Resiliencia', desc: 'Aprendizaje basado en la experimentación y el error.' },
+      { label: 'Futuro', desc: 'Habilidades blandas y técnicas esenciales para el siglo XXI.' }
+    ],
+    cierre: 'Fomentamos la resolución de problemas complejos, una herramienta fundamental para cualquier camino profesional que elijan seguir.',
+    imagen: '/images/por-que.jpg'
+  },
+  { 
+    id: 'como', 
+    titulo: 'Cómo', 
+    resumen: 'Metodología basada en proyectos y niveles.', 
+    intro: 'Trabajamos con un sistema de aprendizaje estructurado y progresivo. Nuestra metodología se basa en niveles de progresión técnica diseñados para acompañar el crecimiento cognitivo del alumno.',
+    puntosTitulo: 'Nuestra metodología:',
+    puntos: [
+      { label: 'Niveles', desc: 'Escalabilidad clara en la dificultad técnica según la edad.' },
+      { label: 'ABP', desc: 'Aprendizaje Basado en Proyectos reales y tangibles.' },
+      { label: 'Seguimiento', desc: 'Atención personalizada para asegurar el avance de cada chico.' },
+      { label: 'Herramientas', desc: 'Uso de software y hardware de nivel profesional.' }
+    ],
+    cierre: 'Aplicamos el conocimiento de forma práctica, asegurando que cada concepto teórico se traduzca en una función real dentro del robot.',
+    imagen: '/images/como-lo-hacemos.jpg'
+  }
+];
 ---
 
-<section class="pillars-section" id="explorar">
-  <div class="pillars-grid">
-    
-    <a href="/quienes-somos" class="pillar-box">
-      <div class="pillar-top">
-        <span class="pillar-label">01</span>
-        <h2>QUIENES SOMOS</h2>
-      </div>
-      <p>UN EQUIPO DEL <strong>COLEGIO BELGRANO</strong> LIDERADO POR ESPECIALISTAS. UNION ENTRE TRADICION E INNOVACION.</p>
-      <span class="pillar-link">CONOCE A LOS DOCENTES _</span>
-    </a>
+<section class="pilares-section" id="pilaresSection">
+  <div class="pilares-grid" id="pilaresGrid">
+    {pilares.map(pilar => (
+      <div class="pilar-card" data-id={pilar.id} style={`--bg-image: url(${pilar.imagen})`}>
+        
+        {/* VISTA CERRADA */}
+        <div class="pilar-closed">
+            <h2>{pilar.titulo}</h2>
+            <p class="summary-text">{pilar.resumen}</p>
+        </div>
+        
+        {/* VISTA ABIERTA */}
+        <div class="pilar-opened">
+          <div class="opened-banner">
+             <h3>{pilar.titulo}</h3>
+          </div>
 
-    <a href="/quienes-somos" class="pillar-box">
-      <div class="pillar-top">
-        <span class="pillar-label">02</span>
-        <h2>QUE HACEMOS</h2>
-      </div>
-      <p>DESDE COMPETENCIAS NACIONALES HASTA PROYECTOS DE AULA. TRABAJO REAL CON SENSORES Y DISEÑO 3D.</p>
-      <span class="pillar-link">VER PROYECTOS _</span>
-    </a>
+          <div class="content-wrapper">
+            <div class="text-content-limit">
+              <div class="pilar-separator"></div>
+              
+              {/* 1. INTRO */}
+              <p class="intro-text">{pilar.intro}</p>
 
-    <a href="/quienes-somos" class="pillar-box">
-      <div class="pillar-top">
-        <span class="pillar-label">03</span>
-        <h2>POR QUE LO HACEMOS</h2>
-      </div>
-      <p>EL LENGUAJE DEL FUTURO ES LA CREACION. FOMENTAMOS AUTONOMIA Y PENSAMIENTO CRITICO.</p>
-      <span class="pillar-link">IMPORTANCIA DE CREAR _</span>
-    </a>
+              {/* 2. LISTA DESTACADA */}
+              <div class="highlights-section">
+                <h4>{pilar.puntosTitulo}</h4>
+                <ul class="highlights-list">
+                  {pilar.puntos.map(punto => (
+                    <li><strong>{punto.label}:</strong> {punto.desc}</li>
+                  ))}
+                </ul>
+              </div>
 
-    <a href="/quienes-somos" class="pillar-box">
-      <div class="pillar-top">
-        <span class="pillar-label">04</span>
-        <h2>COMO LO HACEMOS</h2>
-      </div>
-      <p>GRUPOS REDUCIDOS Y EQUIPAMIENTO DE VANGUARDIA. TURNOS FLEXIBLES Y NIVELES ADAPTADOS.</p>
-      <span class="pillar-link">TURNOS Y EQUIPOS _</span>
-    </a>
+              {/* 3. CIERRE */}
+              <p class="closing-text">{pilar.cierre}</p>
+              
+              <div class={`action-footer ${pilar.id === 'que' ? 'footer-right' : ''}`}>
+                <a href={`/pilares/${pilar.id}`} class="btn-more">CONOCER MÁS →</a>
+              </div>
+            </div>
+          </div>
 
+          <button class="close-tab-mobile" aria-label="Cerrar pilar">
+            <span>VOLVER AL MENÚ</span>
+          </button>
+        </div>
+
+        <button class="close-tab-desktop" aria-label="Cerrar pilar">
+          <span>CERRAR</span>
+        </button>
+
+      </div>
+    ))}
   </div>
 </section>
 
 <style>
-    
-  .pillars-section {
-    background-color: #f0f0f0;
-    padding: 0;
-    position: relative;
-    z-index: 10;
-    }
+  .pilares-section { background: #121212; min-height: 85vh; display: flex; align-items: center; overflow: hidden; position: relative; }
 
-  .pillars-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
+  /* --- GRID DESKTOP --- */
+  .pilares-grid { 
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; 
+    width: 100vw; height: 85vh; transition: all 0.8s cubic-bezier(0.85, 0, 0.15, 1); 
   }
 
-  /* El contenedor ahora es el enlace */
-  .pillar-box {
-    background-color: #ffffff;
-    padding: 5rem 10%;
-    min-height: 450px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    z-index: 1;
-    color: #0a0a0a;
-    text-decoration: none; /* Elimina subrayado global */
-    cursor: pointer;
+  .pilares-grid.expanded-quienes { grid-template-columns: 4fr 1fr; grid-template-rows: 4fr 1fr; }
+  .pilares-grid.expanded-que       { grid-template-columns: 1fr 4fr; grid-template-rows: 4fr 1fr; }
+  .pilares-grid.expanded-porque    { grid-template-columns: 4fr 1fr; grid-template-rows: 1fr 4fr; }
+  .pilares-grid.expanded-como      { grid-template-columns: 1fr 4fr; grid-template-rows: 1fr 4fr; }
+
+  .pilar-card { 
+    background-color: #8b1d20;
+    background-image: linear-gradient(rgba(139, 29, 32, 0.85), rgba(139, 29, 32, 0.85)), var(--bg-image);
+    background-size: cover; background-position: center;
+    color: white; cursor: pointer; position: relative; overflow: hidden; 
+    border: 1px solid rgba(255,255,255,0.05); transition: background 0.4s ease;
   }
 
-  .pillar-box:hover {
-    background-color: #d83135;
-    color: #ffffff;
-    transform: translateY(-15px) scale(1.02);
+  .pilar-card.is-active { background: #111; background-image: none; cursor: default; z-index: 10; }
+
+  .pilar-closed { 
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 2rem; text-align: center; transition: opacity 0.3s ease;
     z-index: 5;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
   }
+  .pilar-card.is-active .pilar-closed { display: none; }
+  
+  .pilar-closed h2 { font-size: 2.2rem; font-weight: 900; text-transform: uppercase; margin: 0; line-height: 1; }
+  .summary-text { opacity: 0.7; max-width: 280px; font-size: 1.1rem; margin-top: 1rem; }
 
-  .pillar-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+  .pilar-opened { 
+    display: none; height: 100%; width: 100%; flex-direction: column; 
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
+  .pilar-opened::-webkit-scrollbar { display: none; }
 
-  .pillar-label {
-    font-family: monospace;
-    font-weight: bold;
-    background: #0a0a0a;
-    color: #ffffff;
-    padding: 5px 12px;
-    transition: all 0.4s ease;
+  .pilar-card.is-active .pilar-opened { display: flex; }
+
+  .opened-banner { 
+    width: 100%; height: 180px; flex-shrink: 0;
+    background-image: linear-gradient(rgba(139, 29, 32, 0.9), rgba(139, 29, 32, 0.9)), var(--bg-image);
+    background-size: cover; background-position: center;
+    display: flex; align-items: center; justify-content: center;
   }
+  .opened-banner h3 { font-size: 2.2rem; font-weight: 900; text-transform: uppercase; margin: 0; }
 
-  .pillar-box:hover .pillar-label {
-    background: #ffffff;
-    color: #d83135;
+  .content-wrapper { width: 100%; padding: 4rem 10%; flex-grow: 1; }
+  .text-content-limit { max-width: 800px; margin: 0 auto; }
+  
+  .pilar-separator { width: 60px; height: 4px; background: #d83135; margin-bottom: 2.5rem; }
+
+  /* --- NUEVOS ESTILOS LINEALES --- */
+  .intro-text { font-size: 1.25rem; line-height: 1.6; color: #fff; margin-bottom: 2.5rem; }
+
+  .highlights-section { 
+    background: rgba(255, 255, 255, 0.03); 
+    padding: 2.5rem; 
+    border-left: 3px solid #d83135; 
+    margin-bottom: 2.5rem; 
   }
-
-  .pillar-box h2 {
-    font-size: clamp(1.8rem, 4vw, 3rem);
-    font-weight: 900;
-    text-align: right;
-    margin: 0;
-    line-height: 1;
+  .highlights-section h4 { 
+    color: #d83135; text-transform: uppercase; font-size: 0.9rem; 
+    letter-spacing: 2px; margin-bottom: 1.5rem; font-weight: 900; 
   }
+  .highlights-list { list-style: none; padding: 0; }
+  .highlights-list li { margin-bottom: 1.2rem; font-size: 1.05rem; color: #ccc; line-height: 1.5; }
+  .highlights-list li strong { color: #fff; text-transform: uppercase; font-size: 0.85rem; margin-right: 0.5rem; }
 
-  .pillar-box p {
-    font-size: 1.1rem;
-    text-transform: uppercase;
-    font-weight: 500;
-    margin: 2.5rem 0;
-    line-height: 1.6;
+  .closing-text { font-size: 1.15rem; line-height: 1.6; color: #aaa; font-style: italic; margin-bottom: 3rem; }
+  
+  .action-footer { margin-top: 2rem; }
+  .footer-right { display: flex; justify-content: flex-end; }
+  .btn-more { 
+    display: inline-block; padding: 0.8rem 2rem; border: 1px solid #d83135; color: #d83135; 
+    text-decoration: none; font-weight: 900; text-transform: uppercase; font-size: 0.8rem;
+    transition: 0.3s ease;
   }
+  .btn-more:hover { background: #d83135; color: white; }
 
-  /* Cambiado a span para evitar anidamiento de links */
-  .pillar-link {
-    font-weight: 900;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
-    border-bottom: 2px solid currentColor;
-    align-self: flex-start;
-    padding-bottom: 4px;
-    color: inherit;
+  /* BOTONES CERRAR */
+  .close-tab-desktop {
+    position: absolute; background: #d83135; color: white; border: none; width: 45px; height: 160px;
+    cursor: pointer; z-index: 100; display: none; align-items: center; justify-content: center;
+    transition: 0.3s;
   }
+  .close-tab-desktop span { writing-mode: vertical-rl; font-weight: 900; letter-spacing: 3px; font-size: 0.85rem; }
+  .close-tab-mobile { display: none; }
 
-  @media (max-width: 768px) {
-    .pillars-grid {
-      grid-template-columns: 1fr;
+  /* --- RESPONSIVE MÓVIL --- */
+  @media (max-width: 1024px) {
+    .pilares-section { height: auto; padding: 4rem 0; align-items: flex-start; }
+    .pilares-grid { display: flex; flex-direction: column; height: auto; padding: 0 1rem; gap: 1rem; }
+    
+    .pilar-card { height: 180px; flex-shrink: 0; width: 100%; border-radius: 4px; }
+    .pilar-card.is-active { height: auto; order: -1; }
+    .pilares-grid.is-any-active .pilar-card:not(.is-active) { display: none; }
+
+    .content-wrapper { padding: 3rem 1.5rem; }
+    .intro-text { font-size: 1.1rem; }
+    .highlights-section { padding: 1.5rem; }
+    
+    .action-footer { display: flex; justify-content: flex-end; margin-bottom: 1rem; }
+
+    .close-tab-mobile {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%; height: 60px; background: #d83135; color: white;
+      border: none; font-weight: 900; letter-spacing: 3px; cursor: pointer;
     }
-    .pillar-box {
-      min-height: auto;
-      padding: 4rem 2rem;
-    }
+    .close-tab-desktop { display: none !important; }
+  }
+
+  @media (min-width: 1025px) {
+    .pilar-card.is-active .close-tab-desktop { display: flex; }
+    [data-id="quienes"] .close-tab-desktop { bottom: 0; right: 0; transform: translateX(100%); }
+    [data-id="que"] .close-tab-desktop     { bottom: 0; left: 0; transform: translateX(-100%); }
+    [data-id="porque"] .close-tab-desktop  { top: 0; right: 0; transform: translateX(100%); }
+    [data-id="como"] .close-tab-desktop    { top: 0; left: 0; transform: translateX(-100%); }
+    .pilar-card.is-active .close-tab-desktop { transform: translateX(0); transition: 0.5s ease; }
   }
 </style>
+
+<script>
+  const setupPilares = () => {
+    const grid = document.getElementById('pilaresGrid');
+    const cards = document.querySelectorAll('.pilar-card');
+    const section = document.getElementById('pilaresSection');
+
+    cards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        const id = card.getAttribute('data-id');
+        const target = e.target as HTMLElement;
+
+        if (target.closest('.close-tab-mobile') || target.closest('.close-tab-desktop')) {
+          grid?.setAttribute('class', 'pilares-grid');
+          cards.forEach(c => c.classList.remove('is-active'));
+          
+          if (section) {
+            const topOffset = section.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({ top: topOffset - 20, behavior: 'smooth' });
+          }
+          e.stopPropagation();
+          return;
+        }
+
+        if (!card.classList.contains('is-active')) {
+          cards.forEach(c => c.classList.remove('is-active'));
+          card.classList.add('is-active');
+          grid?.setAttribute('class', `pilares-grid expanded-${id} is-any-active`);
+          
+          if (window.innerWidth <= 1024) {
+            setTimeout(() => {
+              card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }, 100);
+          }
+        }
+      });
+    });
+  };
+  setupPilares();
+  document.addEventListener('astro:page-load', setupPilares);
+</script>

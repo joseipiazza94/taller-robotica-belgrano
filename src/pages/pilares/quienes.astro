@@ -3,26 +3,74 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 ---
 
 <ArticleLayout 
-  title="Quiénes Somos" 
-  subtitle="El equipo interdisciplinario detrás del Taller"
+  title="Nuestra Trayectoria" 
+  subtitle="Un espacio donde la tecnología se vuelve real"
   heroImage="/images/quienes-somos.jpg"
   backUrl="/#pilares"
 >
   <p class="lead">
-    El Taller de Robótica del Colegio Belgrano nace de la convicción de que los alumnos no deben ser simples consumidores de tecnología, sino <strong>creadores activos</strong> de su entorno.
+    <strong>El origen: Una respuesta al futuro.</strong> En 2016, el Colegio Belgrano decidió abrir el Taller Extracurricular de Robótica ante la necesidad de ofrecer a los estudiantes un espacio para crear con nuevas tecnologías, dejando de ser usuarios pasivos para entender los procesos detrás de la programación y la electrónica.
   </p>
 
-  <h2>Nuestra Visión</h2>
-  <p>Bajo la dirección de la <strong>Ing. Ana Chalabe</strong> y la docente <strong>Florencia Piazza</strong>, hemos construido un espacio donde el rigor técnico de la ingeniería se encuentra con la creatividad pedagógica.</p>
+  <h2>Liderazgo y experiencia docente</h2>
+  <p>El taller está dirigido por la <strong>Ing. Ana Chalabe</strong>, quien cuenta con más de 30 años dedicados a la enseñanza de tecnología, computación y ciencias duras como física y química.</p>
+  
+  <p>Su experiencia asegura que el aprendizaje técnico tenga una base sólida y una progresión adecuada para cada edad, brindando la tranquilidad de que cada alumno avanza con un sustento pedagógico y técnico profesional.</p>
 
-  <img src="/images/quienes-somos.jpg" alt="Equipo docente trabajando con los alumnos" />
+  <figure class="article-figure">
+    <img src="/images/pilares/quienes/ana-explicando.jpg" alt="Ing. Ana Chalabe en el laboratorio del Colegio Belgrano" />
+    <figcaption>Ana Chalabe, directora del taller, aportando décadas de conocimiento técnico.</figcaption>
+  </figure>
 
-  <h2>Objetivos Institucionales</h2>
-  <p>Nuestro enfoque se sostiene en tres pilares fundamentales que aplicamos en cada nivel del taller:</p>
-  <ul>
-    <li>Fomentar el pensamiento lógico y estructurado para la resolución de problemas.</li>
-    <li>Desarrollar la tolerancia a la frustración mediante el ensayo y error.</li>
-    <li>Preparar a los alumnos con herramientas profesionales (hardware y software) para los desafíos del siglo XXI.</li>
-  </ul>
+  <h2>Crecimiento y proyección internacional</h2>
+  <p>A lo largo de estos años, el taller ha crecido en equipamiento y nivel académico. Este esfuerzo nos permitió representar al colegio y a la provincia en competencias de gran exigencia, alcanzando la instancia internacional de la <strong>WRO (World Robot Olympiad)</strong>.</p>
+  
+  <p>Estos logros son el resultado del trabajo en equipo y del compromiso de los alumnos con sus proyectos, demostrando que el conocimiento adquirido en el aula tiene un alcance global.</p>
 
+  <figure class="article-figure">
+    <img src="/images/wro-competencia.jpg" alt="Equipo del taller en la World Robot Olympiad" />
+    <figcaption>La participación internacional en la WRO marca el estándar de excelencia del taller.</figcaption>
+  </figure>
+
+  <h2>Evolución a STEAM: Ciencia con mirada humana</h2>
+  <p>A partir de 2024, el taller dio un paso importante al pasar de un enfoque STEM a uno <strong>STEAM</strong>. Con la incorporación de Flor, ilustradora y maestra jardinera, sumamos la mirada artística y una pedagogía adaptada a los más pequeños.</p>
+  
+  <p>Esta integración permite humanizar la ciencia, haciendo que el diseño y la creatividad sean tan importantes como el código o los circuitos, logrando que el primer contacto con la tecnología sea visual y estimulante.</p>
+
+  <figure class="article-figure">
+    <img src="/images/flor-steam.jpg" alt="Actividad de diseño y arte en robótica" />
+    <figcaption>La mirada artística de Flor Piazza integra la creatividad en cada prototipo.</figcaption>
+  </figure>
+
+  <h2>Formar a los creadores del mañana</h2>
+  <p>Más allá de los componentes y las pantallas, nuestro principal objetivo es despertar vocaciones. Queremos que el taller sea el lugar donde nazcan los futuros ingenieros y programadores, brindándoles herramientas reales para un mundo de posibilidades profesionales.</p>
+
+  <p>Hoy contamos con más de <strong>100 alumnos</strong> divididos en 5 niveles. Es un espacio donde los chicos vienen a divertirse, conocer nuevas tecnologías y adquirir habilidades fundamentales, preparándose para los desafíos del siglo XXI.</p>
 </ArticleLayout>
+
+<style>
+  .article-figure {
+    margin: 3.5rem 0;
+    width: 100%;
+  }
+
+  .article-figure img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .article-figure figcaption {
+    margin-top: 1.2rem;
+    font-size: 0.85rem;
+    color: #888;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 768px) {
+    .article-figure { margin: 2.5rem 0; }
+  }
+</style>

@@ -4,21 +4,77 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
 <ArticleLayout 
   title="Qué Hacemos" 
-  subtitle="Robótica educativa y experimentación real"
+  subtitle="Del diseño a la realidad: Así trabajamos en el taller"
   heroImage="/images/que-hacemos.jpg"
   backUrl="/#pilares"
 >
   <p class="lead">
-    <strong>Prototipado, programación y pensamiento creativo.</strong> Nuestro enfoque va desde la construcción física básica hasta el desarrollo de algoritmos inteligentes complejos.
+    <strong>El proceso de creación: Pensar, Construir, Programar.</strong> En nuestro taller, cada proyecto es un desafío completo. Los chicos no solo siguen instrucciones; ellos son los arquitectos de sus propios trabajos, diseñando soluciones desde cero.
   </p>
 
-  <p>En nuestro taller, abarcamos el diseño mecánico y la programación en entornos profesionales para resolver desafíos del mundo real. Buscamos que los alumnos comprendan la tecnología "desde adentro", desarmando y armando procesos, e integrando la electrónica con la lógica computacional en cada sesión.</p>
+  <p>El proceso comienza con el montaje físico, donde la creatividad no tiene límites. Combinamos materiales cotidianos y reciclables como cartón y papel con tecnología de vanguardia, incluyendo <strong>impresiones 3D</strong> y kits pre-diseñados, para dar forma a la estructura mecánica del robot.</p>
 
-  <h2>Nuestras Áreas de Acción</h2>
+  <figure class="article-figure">
+    <img src="/images/proceso-construccion.jpg" alt="Alumnos ensamblando un prototipo robótico" />
+    <figcaption>Desde materiales reciclables hasta piezas en 3D: el primer paso es dar forma a la idea.</figcaption>
+  </figure>
+
+  <h2>Darle vida al prototipo</h2>
+  <p>Una vez que la estructura está lista, llega el momento de la electrónica. Los alumnos incorporan sensores, motores y controladores para que el robot interactúe con su entorno. Aquí es donde se sumergen en la <strong>programación</strong>.</p>
+  
+  <p>Dependiendo de su edad y experiencia, utilizan interfaces visuales de bloques (ideales para los más chicos) o avanzan hacia la escritura de código profesional, viendo en tiempo real cómo sus instrucciones se convierten en movimiento y autonomía.</p>
+
+  <h2>Comunicar lo aprendido</h2>
+  <p>Entendemos que un gran proyecto necesita saber explicarse. Por eso, fomentamos que los alumnos documenten su progreso redactando <strong>bitácoras de clase</strong> y realizando presentaciones para sus compañeros.</p>
+
+  <figure class="article-figure">
+    <img src="/images/presentacion-proyectos.jpg" alt="Alumno presentando su bitácora de trabajo" />
+    <figcaption>La comunicación y el registro del proceso son tan importantes como el código mismo.</figcaption>
+  </figure>
+
+  <p>Esta práctica no solo refuerza el conocimiento técnico, sino que les otorga seguridad y habilidades de comunicación fundamentales que les servirán para cualquier carrera que decidan emprender en el futuro.</p>
+
+  <h2>El camino hacia la WRO (World Robot Olympiad)</h2>
+  <p>Nuestra progresión está diseñada para que los chicos crezcan junto con la tecnología, dividiéndose en etapas claras:</p>
+  
   <ul>
-    <li><strong>Prototipado Físico:</strong> Diseño, modelado en 3D y montaje de estructuras mecánicas funcionales.</li>
-    <li><strong>Programación:</strong> Transición guiada desde entornos visuales (bloques) hacia lenguajes de código real.</li>
-    <li><strong>Entrenamiento WRO:</strong> Preparación intensiva para participar en la competencia de robótica más importante a nivel internacional.</li>
-    <li><strong>Desarrollo de Autonomía:</strong> Fomento de la resolución independiente de retos técnicos mediante la investigación.</li>
+    <li><strong>Nivel Inicial (3° y 4° grado):</strong> Es la etapa de descubrimiento. Introducción lúdica a la electrónica básica y los primeros pasos en lógica de programación.</li>
+    <li><strong>A partir de 5° grado:</strong> El enfoque vira hacia el alto rendimiento. Comenzamos la preparación para la WRO en la categoría <em>Future Innovators</em>, diseñando robots que resuelvan problemas reales de la vida cotidiana.</li>
   </ul>
+
+  <figure class="article-figure">
+    <img src="/images/preparacion-wro.jpg" alt="Equipo preparando su robot para la competencia WRO" />
+    <figcaption>El alto rendimiento y la competencia internacional son nuestra meta para los niveles avanzados.</figcaption>
+  </figure>
+
+  <h2>Diversión y Trabajo en Equipo</h2>
+  <p>Aunque el contenido es técnico, la atmósfera es de puro disfrute. Creemos que la mejor forma de aprender es divirtiéndose. Los alumnos colaboran para resolver errores y celebran juntos cuando un robot cumple su misión, transformando el taller en un espacio de pertenencia y aprendizaje mutuo.</p>
 </ArticleLayout>
+
+<style>
+  .article-figure {
+    margin: 3.5rem 0;
+    width: 100%;
+  }
+
+  .article-figure img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .article-figure figcaption {
+    margin-top: 1.2rem;
+    font-size: 0.85rem;
+    color: #888;
+    text-align: center;
+    letter-spacing: 0.5px;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .article-figure { margin: 2.5rem 0; }
+  }
+</style>

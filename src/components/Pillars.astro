@@ -17,18 +17,18 @@ const pilares = [
   },
   { 
     id: 'que', 
-    titulo: 'Qué Hacemos', 
-    resumen: 'Robótica educativa y experimentación real.', 
-    intro: 'Nuestro taller abarca desde la construcción física hasta el desarrollo de algoritmos inteligentes. Es un espacio de prototipado, programación y pensamiento creativo diseñado para resolver desafíos del mundo real.',
-    puntosTitulo: 'Ejes del taller:',
+    titulo: '¿Qué hacemos?', 
+    resumen: "Transformamos ideas en proyectos funcionales a través del diseño y la programación.", 
+    intro: "En el taller, el aprendizaje es 100% práctico. Los alumnos atraviesan todo el proceso de ingeniería: desde el diseño inicial y el montaje físico con diversos materiales, hasta la programación y la presentación de sus resultados.",
+    puntosTitulo: "Nuestro proceso creativo:",
     puntos: [
-      { label: 'Prototipado', desc: 'Diseño, montaje y testeo de estructuras mecánicas.' },
-      { label: 'Programación', desc: 'Dominio de entornos visuales y lenguajes de código profesional.' },
-      { label: 'WRO', desc: 'Preparación técnica para la competencia internacional de robótica.' },
-      { label: 'Autonomía', desc: 'Fomento de la resolución de retos técnicos por cuenta propia.' }
+      { label: "Diseño y Construcción", desc: "Usamos desde cartón y papel hasta impresiones 3D y kits profesionales para dar vida a los proyectos." },
+      { label: "Programación Real", desc: "Aprendemos a dar órdenes a las máquinas usando interfaces de bloques o código puro, según el nivel." },
+      { label: "Desafío WRO", desc: "Nos preparamos para la categoría 'Future Innovators', creando robots que resuelven problemas cotidianos." },
+      { label: "Habilidades de Comunicación", desc: "Los chicos aprenden a documentar y exponer sus trabajos frente a sus compañeros." }
     ],
-    cierre: 'Buscamos que los alumnos comprendan la tecnología desde adentro, integrando electrónica y lógica en cada una de nuestras sesiones.',
-    imagen: '/images/que-hacemos.jpg'
+    cierre: "Fomentamos el trabajo en equipo en un ambiente donde la diversión y el disfrute son el motor de cada descubrimiento.",
+    imagen: "/images/que-hacemos.jpg"
   },
   { 
     id: 'porque', 
@@ -64,30 +64,31 @@ const pilares = [
 ---
 
 <section class="pilares-section" id="pilaresSection">
-  <div class="pilares-grid" id="pilaresGrid">
-    {pilares.map(pilar => (
-      <div class="pilar-card" data-id={pilar.id} style={`--bg-image: url(${pilar.imagen})`}>
-        
-        {/* VISTA CERRADA */}
-        <div class="pilar-closed">
-            <h2>{pilar.titulo}</h2>
-            <p class="summary-text">{pilar.resumen}</p>
-        </div>
-        
-        {/* VISTA ABIERTA */}
-        <div class="pilar-opened">
-          <div class="opened-banner">
-             <h3>{pilar.titulo}</h3>
-          </div>
+  {/* --- MARCA DE AGUA VERTICAL 100% VISIBLE --- */}
+  <div class="bg-text-pilares">PILARES</div>
 
-          <div class="content-wrapper">
-            <div class="text-content-limit">
+  <div class="pilares-container">
+    <div class="pilares-grid" id="pilaresGrid">
+      {pilares.map(pilar => (
+        <div class="pilar-card" data-id={pilar.id}>
+          
+          <div class="pilar-closed" style={`--bg-image: url(${pilar.imagen})`}>
+              <h2>{pilar.titulo}</h2>
+              <p class="summary-text">{pilar.resumen}</p>
+          </div>
+          
+          <div class="pilar-opened">
+            
+            <div class="opened-banner" style={`--bg-image: url(${pilar.imagen})`}>
+               <button class="btn-volver" aria-label="Volver">← VOLVER</button>
+               <h3>{pilar.titulo}</h3>
+            </div>
+
+            <div class="content-wrapper">
               <div class="pilar-separator"></div>
               
-              {/* 1. INTRO */}
               <p class="intro-text">{pilar.intro}</p>
 
-              {/* 2. LISTA DESTACADA */}
               <div class="highlights-section">
                 <h4>{pilar.puntosTitulo}</h4>
                 <ul class="highlights-list">
@@ -97,155 +98,225 @@ const pilares = [
                 </ul>
               </div>
 
-              {/* 3. CIERRE */}
               <p class="closing-text">{pilar.cierre}</p>
               
-              <div class={`action-footer ${pilar.id === 'que' ? 'footer-right' : ''}`}>
-                <a href={`/pilares/${pilar.id}`} class="btn-more">CONOCER MÁS →</a>
+              <div class="action-footer">
+                <a href={`/pilares/${pilar.id}`} class="btn-more">CONOCER MÁS SOBRE ESTE PILAR →</a>
               </div>
             </div>
+            
           </div>
 
-          <button class="close-tab-mobile" aria-label="Cerrar pilar">
-            <span>VOLVER AL MENÚ</span>
-          </button>
         </div>
-
-        <button class="close-tab-desktop" aria-label="Cerrar pilar">
-          <span>CERRAR</span>
-        </button>
-
-      </div>
-    ))}
+      ))}
+    </div>
   </div>
 </section>
 
 <style>
-  .pilares-section { background: #121212; min-height: 85vh; display: flex; align-items: center; overflow: hidden; position: relative; }
+  /* --- 1. SECCIÓN PRINCIPAL: CENTRADO ABSOLUTO --- */
+  .pilares-section { 
+    box-sizing: border-box;
+    background: #121212; 
+    width: 100%; 
+    padding: 5rem 0; 
+    position: relative; 
+    overflow: hidden; 
+    display: flex; 
+    justify-content: center; /* Obliga a la grilla a estar siempre en el medio */
+    align-items: center;
+  }
 
-  /* --- GRID DESKTOP --- */
+  /* --- TEXTO DE FONDO (MARCA DE AGUA LADO IZQUIERDO) --- */
+  .bg-text-pilares {
+    position: absolute;
+    left: 1.5rem; /* Margen seguro para que no se corte la letra */
+    top: 50%;
+    transform: translateY(-50%) rotate(180deg); /* Rotado para leer de abajo a arriba */
+    writing-mode: vertical-rl; /* El método más seguro para texto vertical */
+    font-size: clamp(4rem, 8vw, 10rem);
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03); 
+    z-index: 0; 
+    pointer-events: none; 
+    user-select: none;
+    letter-spacing: 0.1em;
+  }
+
+  /* --- 2. CONTENEDOR CENTRAL --- */
+  .pilares-container {
+    box-sizing: border-box;
+    width: 100%; 
+    max-width: 1200px; 
+    padding: 0 2rem; /* Protege los costados en pantallas chicas */
+    position: relative;
+    z-index: 2; 
+  }
+
+  /* --- 3. LA CUADRÍCULA BASE --- */
   .pilares-grid { 
-    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; 
-    width: 100vw; height: 85vh; transition: all 0.8s cubic-bezier(0.85, 0, 0.15, 1); 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 1.5rem; 
+    width: 100%; 
   }
 
-  .pilares-grid.expanded-quienes { grid-template-columns: 4fr 1fr; grid-template-rows: 4fr 1fr; }
-  .pilares-grid.expanded-que       { grid-template-columns: 1fr 4fr; grid-template-rows: 4fr 1fr; }
-  .pilares-grid.expanded-porque    { grid-template-columns: 4fr 1fr; grid-template-rows: 1fr 4fr; }
-  .pilares-grid.expanded-como      { grid-template-columns: 1fr 4fr; grid-template-rows: 1fr 4fr; }
+  .pilares-grid.has-active-card { display: block; }
+  .pilares-grid.has-active-card .pilar-card:not(.is-active) { display: none; }
 
+  /* --- 4. TARJETAS --- */
   .pilar-card { 
-    background-color: #8b1d20;
-    background-image: linear-gradient(rgba(139, 29, 32, 0.85), rgba(139, 29, 32, 0.85)), var(--bg-image);
-    background-size: cover; background-position: center;
-    color: white; cursor: pointer; position: relative; overflow: hidden; 
-    border: 1px solid rgba(255,255,255,0.05); transition: background 0.4s ease;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 8px; 
+    overflow: hidden; 
+    background: #151515;
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   }
 
-  .pilar-card.is-active { background: #111; background-image: none; cursor: default; z-index: 10; }
+  .pilar-card.is-active {
+    background: #111;
+    border: 1px solid #d83135; 
+  }
 
+  /* --- 5. VISTA CERRADA (CENTRADOS EXACTOS E INMUNES) --- */
   .pilar-closed { 
-    position: absolute; inset: 0;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    padding: 2rem; text-align: center; transition: opacity 0.3s ease;
-    z-index: 5;
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 380px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; /* Centrado vertical puro */
+    padding: 2rem; 
+    cursor: pointer;
+    background-color: #8b1d20; 
+    background-image: linear-gradient(rgba(139, 29, 32, 0.85), rgba(139, 29, 32, 0.85)), var(--bg-image);
+    background-size: cover; 
+    background-position: center;
+    color: white; 
+    transition: background-color 0.3s ease, transform 0.3s ease;
   }
+  
+  .pilar-card:hover .pilar-closed { background-color: #d83135; }
   .pilar-card.is-active .pilar-closed { display: none; }
   
-  .pilar-closed h2 { font-size: 2.2rem; font-weight: 900; text-transform: uppercase; margin: 0; line-height: 1; }
-  .summary-text { opacity: 0.7; max-width: 280px; font-size: 1.1rem; margin-top: 1rem; }
-
-  .pilar-opened { 
-    display: none; height: 100%; width: 100%; flex-direction: column; 
-    overflow-x: hidden;
-    overflow-y: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+  /* Reset agresivo en h2 para matar estilos globales */
+  .pilar-closed h2 { 
+    width: 100%;
+    text-align: center;
+    font-size: 2.2rem; 
+    font-weight: 900; 
+    text-transform: uppercase; 
+    margin: 0 0 1rem 0 !important; /* Separación forzada e inviolable hacia abajo */
+    padding: 0 !important;
+    line-height: 1; /* Corta el "aire" extra invisible de la tipografía */
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5); 
   }
-  .pilar-opened::-webkit-scrollbar { display: none; }
+  
+  /* Reset agresivo en el párrafo */
+  .summary-text { 
+    width: 100%;
+    text-align: center;
+    opacity: 0.9; 
+    max-width: 320px; 
+    font-size: 1.05rem; 
+    margin: 0 !important; /* Mata cualquier margin-bottom global que lo empuje hacia arriba */
+    padding: 0 !important;
+    line-height: 1.5; 
+  }
+
+  /* --- 6. VISTA ABIERTA --- */
+  .pilar-opened { 
+    display: none; 
+    width: 100%; 
+    flex-direction: column; 
+    animation: fadeIn 0.4s ease forwards;
+  }
 
   .pilar-card.is-active .pilar-opened { display: flex; }
 
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* --- BANNER Y BOTÓN VOLVER --- */
   .opened-banner { 
-    width: 100%; height: 180px; flex-shrink: 0;
-    background-image: linear-gradient(rgba(139, 29, 32, 0.9), rgba(139, 29, 32, 0.9)), var(--bg-image);
+    width: 100%; 
+    height: 250px; 
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), var(--bg-image);
     background-size: cover; background-position: center;
     display: flex; align-items: center; justify-content: center;
+    border-bottom: 3px solid #d83135;
   }
-  .opened-banner h3 { font-size: 2.2rem; font-weight: 900; text-transform: uppercase; margin: 0; }
-
-  .content-wrapper { width: 100%; padding: 4rem 10%; flex-grow: 1; }
-  .text-content-limit { max-width: 800px; margin: 0 auto; }
   
-  .pilar-separator { width: 60px; height: 4px; background: #d83135; margin-bottom: 2.5rem; }
+  .opened-banner h3 { 
+    font-size: clamp(2rem, 4vw, 3.5rem); 
+    font-weight: 900; text-transform: uppercase; margin: 0; color: white;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  }
 
-  /* --- NUEVOS ESTILOS LINEALES --- */
-  .intro-text { font-size: 1.25rem; line-height: 1.6; color: #fff; margin-bottom: 2.5rem; }
+  .btn-volver {
+    position: absolute;
+    top: 1.5rem; left: 1.5rem;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(5px);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    padding: 0.6rem 1.2rem;
+    font-weight: 900; letter-spacing: 2px; font-size: 0.75rem;
+    cursor: pointer; transition: 0.3s;
+    text-transform: uppercase;
+  }
+  .btn-volver:hover { background: #d83135; border-color: #d83135; }
+
+  /* --- CONTENIDO DE TEXTO --- */
+  .content-wrapper { 
+    width: 100%; 
+    max-width: 900px; 
+    margin: 0 auto;
+    padding: 4rem 5%; 
+  }
+  
+  .pilar-separator { width: 60px; height: 4px; background: #d83135; margin-bottom: 2rem; border-radius: 2px; }
+
+  .intro-text { font-size: 1.2rem; line-height: 1.6; color: #fff; margin-bottom: 2.5rem; }
 
   .highlights-section { 
-    background: rgba(255, 255, 255, 0.03); 
-    padding: 2.5rem; 
-    border-left: 3px solid #d83135; 
-    margin-bottom: 2.5rem; 
+    background: rgba(255, 255, 255, 0.03); padding: 2rem 2.5rem; 
+    border-left: 4px solid #d83135; margin-bottom: 2.5rem; border-radius: 0 8px 8px 0;
   }
-  .highlights-section h4 { 
-    color: #d83135; text-transform: uppercase; font-size: 0.9rem; 
-    letter-spacing: 2px; margin-bottom: 1.5rem; font-weight: 900; 
-  }
+  .highlights-section h4 { color: #d83135; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 1.5rem; font-weight: 900; }
   .highlights-list { list-style: none; padding: 0; }
-  .highlights-list li { margin-bottom: 1.2rem; font-size: 1.05rem; color: #ccc; line-height: 1.5; }
-  .highlights-list li strong { color: #fff; text-transform: uppercase; font-size: 0.85rem; margin-right: 0.5rem; }
+  .highlights-list li { margin-bottom: 1.2rem; font-size: 1.1rem; color: #ccc; line-height: 1.5; }
+  .highlights-list li strong { color: #fff; text-transform: uppercase; margin-right: 0.5rem; font-size: 0.85rem; }
 
-  .closing-text { font-size: 1.15rem; line-height: 1.6; color: #aaa; font-style: italic; margin-bottom: 3rem; }
-  
-  .action-footer { margin-top: 2rem; }
-  .footer-right { display: flex; justify-content: flex-end; }
+  .closing-text { font-size: 1.1rem; line-height: 1.6; color: #aaa; font-style: italic; margin-bottom: 3rem; }
+
+  /* PIE CON ACCIONES */
+  .action-footer { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; }
   .btn-more { 
-    display: inline-block; padding: 0.8rem 2rem; border: 1px solid #d83135; color: #d83135; 
-    text-decoration: none; font-weight: 900; text-transform: uppercase; font-size: 0.8rem;
-    transition: 0.3s ease;
+    display: inline-block; padding: 1rem 2rem; background: #d83135; color: white; 
+    text-decoration: none; font-weight: 900; text-transform: uppercase; font-size: 0.85rem;
+    transition: 0.3s ease; border-radius: 4px;
   }
-  .btn-more:hover { background: #d83135; color: white; }
-
-  /* BOTONES CERRAR */
-  .close-tab-desktop {
-    position: absolute; background: #d83135; color: white; border: none; width: 45px; height: 160px;
-    cursor: pointer; z-index: 100; display: none; align-items: center; justify-content: center;
-    transition: 0.3s;
-  }
-  .close-tab-desktop span { writing-mode: vertical-rl; font-weight: 900; letter-spacing: 3px; font-size: 0.85rem; }
-  .close-tab-mobile { display: none; }
+  .btn-more:hover { background: white; color: #d83135; }
 
   /* --- RESPONSIVE MÓVIL --- */
   @media (max-width: 1024px) {
-    .pilares-section { height: auto; padding: 4rem 0; align-items: flex-start; }
-    .pilares-grid { display: flex; flex-direction: column; height: auto; padding: 0 1rem; gap: 1rem; }
-    
-    .pilar-card { height: 180px; flex-shrink: 0; width: 100%; border-radius: 4px; }
-    .pilar-card.is-active { height: auto; order: -1; }
-    .pilares-grid.is-any-active .pilar-card:not(.is-active) { display: none; }
-
-    .content-wrapper { padding: 3rem 1.5rem; }
-    .intro-text { font-size: 1.1rem; }
+    .pilares-section { padding: 4rem 0; }
+    .bg-text-pilares { display: none; } 
+    .pilares-container { padding: 0 1rem; }
+    .pilares-grid { display: flex; flex-direction: column; }
+    .pilar-closed { min-height: 280px; }
+    .opened-banner { height: 180px; }
+    .btn-volver { top: 1rem; left: 1rem; }
+    .content-wrapper { padding: 3rem 5%; }
     .highlights-section { padding: 1.5rem; }
-    
-    .action-footer { display: flex; justify-content: flex-end; margin-bottom: 1rem; }
-
-    .close-tab-mobile {
-      display: flex; align-items: center; justify-content: center;
-      width: 100%; height: 60px; background: #d83135; color: white;
-      border: none; font-weight: 900; letter-spacing: 3px; cursor: pointer;
-    }
-    .close-tab-desktop { display: none !important; }
-  }
-
-  @media (min-width: 1025px) {
-    .pilar-card.is-active .close-tab-desktop { display: flex; }
-    [data-id="quienes"] .close-tab-desktop { bottom: 0; right: 0; transform: translateX(100%); }
-    [data-id="que"] .close-tab-desktop     { bottom: 0; left: 0; transform: translateX(-100%); }
-    [data-id="porque"] .close-tab-desktop  { top: 0; right: 0; transform: translateX(100%); }
-    [data-id="como"] .close-tab-desktop    { top: 0; left: 0; transform: translateX(-100%); }
-    .pilar-card.is-active .close-tab-desktop { transform: translateX(0); transition: 0.5s ease; }
   }
 </style>
 
@@ -257,35 +328,34 @@ const pilares = [
 
     cards.forEach(card => {
       card.addEventListener('click', (e) => {
-        const id = card.getAttribute('data-id');
         const target = e.target as HTMLElement;
 
-        if (target.closest('.close-tab-mobile') || target.closest('.close-tab-desktop')) {
-          grid?.setAttribute('class', 'pilares-grid');
+        if (target.closest('.btn-volver')) {
+          grid?.classList.remove('has-active-card');
           cards.forEach(c => c.classList.remove('is-active'));
           
           if (section) {
             const topOffset = section.getBoundingClientRect().top + window.scrollY;
-            window.scrollTo({ top: topOffset - 20, behavior: 'smooth' });
+            window.scrollTo({ top: topOffset - 80, behavior: 'smooth' });
           }
-          e.stopPropagation();
+          e.stopPropagation(); 
           return;
         }
 
-        if (!card.classList.contains('is-active')) {
+        if (!card.classList.contains('is-active') && !target.closest('.btn-more')) {
+          grid?.classList.add('has-active-card');
           cards.forEach(c => c.classList.remove('is-active'));
           card.classList.add('is-active');
-          grid?.setAttribute('class', `pilares-grid expanded-${id} is-any-active`);
           
-          if (window.innerWidth <= 1024) {
-            setTimeout(() => {
-              card.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }, 100);
+          if (section) {
+            const topOffset = section.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({ top: topOffset - 80, behavior: 'smooth' }); 
           }
         }
       });
     });
   };
+  
   setupPilares();
   document.addEventListener('astro:page-load', setupPilares);
 </script>
