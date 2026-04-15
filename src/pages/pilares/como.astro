@@ -3,22 +3,78 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 ---
 
 <ArticleLayout 
-  title="Cómo" 
-  subtitle="Metodología basada en proyectos y niveles"
+  title="Cómo lo hacemos" 
+  subtitle="Aprendizaje Basado en Proyectos: El corazón de nuestra aula"
   heroImage="/images/como-lo-hacemos.jpg"
   backUrl="/#pilares"
 >
   <p class="lead">
-    <strong>Un camino de aprendizaje estructurado y progresivo.</strong> Trabajamos con proyectos reales donde el conocimiento se adquiere de forma exclusivamente práctica y aplicada.
+    <strong>Proyectos que desafían la mente.</strong> En el taller no usamos manuales estáticos ni lecciones teóricas aisladas. Trabajamos por proyectos, lo que significa que desde el primer día, los alumnos tienen un objetivo real y tangible que cumplir.
   </p>
 
-  <p>Nuestra metodología se aleja de las clases teóricas tradicionales para centrarse en la experimentación directa en el taller. Hemos diseñado un ecosistema de aprendizaje que acompaña el crecimiento cognitivo, la edad y el grado de autonomía del alumno, asegurando que cada desafío sea estimulante pero nunca inalcanzable.</p>
+  <p>Cada nuevo desafío es un escalón más alto: si hoy aprendieron a encender una luz, mañana esa luz será parte de un sistema de alarma o un sensor de seguridad. Esta progresión natural asegura que incorporen la complejidad del código y la electrónica sin frustraciones, manteniendo siempre el interés encendido.</p>
 
-  <h2>Nuestra Metodología</h2>
-  <ul>
-    <li><strong>Sistema de Progresión:</strong> Niveles que escalan gradualmente en la dificultad técnica, mecánica y de programación.</li>
-    <li><strong>Aprendizaje Basado en Proyectos (ABP):</strong> Cada concepto nuevo se enseña con un propósito claro: resolver un problema concreto o construir un prototipo que funcione.</li>
-    <li><strong>Acompañamiento Estratégico:</strong> Seguimiento personalizado por niveles, respetando los tiempos y estilos de aprendizaje de cada grupo.</li>
-    <li><strong>Inmersión Profesional:</strong> Uso de herramientas, componentes de hardware y software estándar de la industria desde los primeros días.</li>
-  </ul>
+  {/* IMAGEN 1: PROCESO DE APRENDIZAJE PROGRESIVO */}
+  <figure class="article-figure">
+    <img src="/images/proyectos-desafiantes.jpg" alt="Alumnos trabajando en un proyecto de electrónica compleja" />
+    <figcaption>De lo simple a lo complejo: construyendo conocimiento sobre bases sólidas.</figcaption>
+  </figure>
+
+  <h2>Cinco niveles de evolución técnica</h2>
+  <p>Para garantizar que cada chico esté en el entorno adecuado a su madurez y conocimiento, estructuramos el taller en <strong>5 niveles evolutivos</strong>. Esta escala permite que un alumno pueda empezar desde cero en 3° grado y terminar desarrollando sistemas autónomos complejos antes de entrar al secundario.</p>
+  
+  <p>A partir del Nivel 3, el taller da un salto hacia la <strong>Competencia Internacional</strong>. Los alumnos comienzan a trabajar en la categoría abierta de la WRO (World Robot Olympiad), donde el desafío es crear soluciones robóticas innovadoras para problemas reales de nuestra sociedad.</p>
+
+  <h2>Atención personalizada: El factor humano</h2>
+  <p>Creemos que la robótica requiere una guía constante y asertiva. Por eso, mantenemos grupos de máximo 18 alumnos con una característica que nos distingue: <strong>hay dos docentes presentes en cada clase</strong>.</p>
+  
+  <p>Esto nos permite brindar una atención personalizada, resolviendo dudas técnicas y pedagógicas en el momento exacto en que surgen, asegurando que ningún alumno se quede atrás en su proceso de descubrimiento.</p>
+
+  {/* IMAGEN 2: DOCENTE ASISTIENDO A ALUMNOS */}
+  <figure class="article-figure">
+    <img src="/images/atencion-personalizada.jpg" alt="Docente explicando lógica de programación a un grupo reducido" />
+    <figcaption>Dos profesoras por aula para garantizar que cada pregunta encuentre su respuesta.</figcaption>
+  </figure>
+
+  <h2>Espacio y recursos para crear sin límites</h2>
+  <p>La creatividad necesita tiempo y herramientas. Nuestras clases tienen una duración de <strong>1 hora y 45 minutos</strong>, el tiempo ideal para que los chicos puedan sumergirse profundamente en las fases de montaje físico y programación sin cortes abruptos.</p>
+  
+  <p>Además, mantenemos un proceso constante de inversión en recursos y kits profesionales. En nuestro taller, el límite es la imaginación de los alumnos, ya que nos aseguramos de que cada uno cuente con el material necesario para llevar sus ideas del papel a la realidad física.</p>
+
+  {/* IMAGEN 3: KITS Y HERRAMIENTAS */}
+  <figure class="article-figure">
+    <img src="/images/recursos-tecnologicos.jpg" alt="Detalle de kits de robótica y sensores utilizados en clase" />
+    <figcaption>Tecnología de vanguardia al alcance de los futuros innovadores.</figcaption>
+  </figure>
+
+  <p>Finalmente, fomentamos el valor del equipo. Aunque cada alumno desarrolla habilidades individuales, el trabajo es grupal. Debaten soluciones, comparten recursos y aprenden a colaborar, replicando el ambiente de un laboratorio de innovación moderno.</p>
+
 </ArticleLayout>
+
+<style>
+  .article-figure {
+    margin: 3.5rem 0;
+    width: 100%;
+  }
+
+  .article-figure img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .article-figure figcaption {
+    margin-top: 1.2rem;
+    font-size: 0.85rem;
+    color: #888;
+    text-align: center;
+    letter-spacing: 0.5px;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .article-figure { margin: 2.5rem 0; }
+  }
+</style>
