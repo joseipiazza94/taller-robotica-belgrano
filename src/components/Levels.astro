@@ -1,41 +1,49 @@
 ---
 const levels = [
   { 
-    id: 'mini-bots', 
-    nombre: 'Mini-Bots', 
-    slug: 'mini-bots',
-    descripcion: 'Iniciación lúdica: primer encuentro con la electrónica y el pensamiento lógico para 3er grado.',
+    id: 'nivel-0', 
+    nombre: 'Nivel 0 - 3er Grado', 
+    slug: 'nivel-0',
+    descripcion: 'Nuevo punto de partida: un espacio lúdico para descubrir la electrónica y despertar la curiosidad técnica.',
     video: '/videos/nivel0.mp4', 
     detalleExtra: `
       <strong>El despertar de la curiosidad: aprender jugando.</strong><br /><br />
-      Diseñado específicamente para alumnos de tercer grado, este nivel se centra en el <strong>descubrimiento sensorial</strong> de la tecnología. <br /><br />
-      • <strong>Enfoque Lúdico:</strong> La electrónica se presenta como un juego de construcción donde cada pieza tiene una función mágica.<br />
-      • <strong>Primeros Circuitos:</strong> Experimentación con luz y sonido para entender las bases de la energía sin presiones técnicas complejas.<br />
-      • <strong>Pensamiento Espacial:</strong> Actividades diseñadas para que los más chicos empiecen a imaginar soluciones en tres dimensiones.<br /><br />
-      En Mini-Bots, el error no se corrige, se explora. Es el espacio donde nacen los <strong>futuros ingenieros</strong> a través de la sorpresa y el juego.
+      
+      <strong>¿Por qué Nivel 0?</strong> En el mundo de la programación, los índices siempre empiezan a contar desde el cero. Es el punto de partida lógico y el nombre que elegimos para este nivel que nació por pedido de las familias del Belgrano.<br /><br />
+      
+      Con más de 30 alumnos divididos en dos grupos, este nivel se centra en el <strong>descubrimiento sensorial</strong> de la tecnología, guiado por la experiencia pedagógica de Flor y la base técnica de Ana.<br /><br />
+      
+      • <strong>Enfoque Lúdico y Manual:</strong> Combinamos electrónica básica con construcción manual (papercraft) para que los chicos entiendan la mecánica física mientras se divierten creando dioramas.<br />
+      • <strong>Primeros Circuitos:</strong> Experimentación segura con luz y sonido para que la energía deje de ser algo abstracto y pase a ser algo tangible.<br />
+      • <strong>Pensamiento Espacial:</strong> Entrenamos la mente para imaginar soluciones y estructuras, sentando las bases para el futuro modelado 3D y la ingeniería.<br /><br />
+      
+      En el Nivel 0, el error no se corrige, se explora. Es el espacio donde empezamos a despertar a los <strong>futuros ingenieros y programadores</strong> a través de la sorpresa y el juego.
     `,
-    items: ['Juego', 'Descubrimiento', 'Creatividad'] 
-  },
+    items: ['Electrónica Inicial', 'Construcción', 'Lógica Maker'] 
+},
   { 
-    id: 'micro-bots', 
-    nombre: 'Micro-Bots', 
-    slug: 'micro-bots',
-    descripcion: 'Robótica inicial: circuitos, construcción manual y diseño 3D.',
+    id: 'nivel-1', 
+    nombre: 'Nivel 1 - 4to Grado', 
+    slug: 'nivel-1',
+    descripcion: 'El paso a la creación: aprendemos a conectar componentes y programar nuestros primeros proyectos reales.',
     video: '/videos/nivel1.mp4', 
     detalleExtra: `
-      <strong>El viaje del Explorador: de la curiosidad a la creación.</strong><br /><br />
-      En este primer contacto, los alumnos descubren que son capaces de <strong>intervenir el mundo físico</strong> a través de la electrónica y la mecánica simple. <br /><br />
-      • <strong>Hardware Real:</strong> Transición desde circuitos básicos de energía hasta movimientos autónomos.<br />
-      • <strong>Metodología:</strong> Uso de herramientas reales y resolución de problemas, convirtiendo el error en aprendizaje.<br />
-      • <strong>Diseño 3D:</strong> Introducción al espacio tridimensional para visualizar ideas de una forma nueva.<br /><br />
-      Al finalizar el Nivel 1, los chicos dejan de ser consumidores de pantallas para convertirse en <strong>pequeños inventores</strong> que entienden la lógica detrás de la tecnología.
+      <strong>El viaje del Explorador: de la idea a la realidad.</strong><br /><br />
+      
+      En este nivel, los chicos descubren que pueden crear sus propios dispositivos. Aunque empezamos desde cero, lo hacemos a un ritmo ágil, enfocándonos en proyectos que integran electrónica y programación de forma directa.<br /><br />
+      
+      • <strong>Componentes en Acción:</strong> Aprendemos a usar leds, sensores, buzzers y servomotores para que nuestros proyectos tengan luz, sonido y movimiento.<br />
+      • <strong>Planificación Maker:</strong> Los alumnos aprenden a organizar un proyecto desde el principio, pasando por el diseño, el armado y la programación en bloques.<br />
+      • <strong>Introducción al 3D:</strong> Empezamos a explorar el modelado en tres dimensiones, una herramienta nueva para imaginar y visualizar ideas.<br /><br />
+      
+      Al finalizar el Nivel 1, los chicos dejan de ser solo usuarios de tecnología para convertirse en <strong>pequeños inventores</strong> que entienden cómo funciona lo que los rodea.
     `,
-    items: ['Curiosidad', 'Lógica', 'Construcción'] 
-  },
+    items: ['Electrónica', 'Programación por bloques', 'Modelado 3D'] 
+},
   { 
-    id: 'cyber-exploradores', 
-    nombre: 'Cyber-Exploradores', 
-    slug: 'cyber-exploradores',
+    id: 'nivel-2', 
+    nombre: 'Nivel 2 - 5to Grado', 
+    slug: 'nivel-2',
     descripcion: 'Robótica intermedia: sensores, sistemas autónomos y primer contacto con WRO.',
     video: '/videos/nivel2.mp4', 
     detalleExtra: `
@@ -49,9 +57,9 @@ const levels = [
     items: ['Interacción', 'Autonomía', 'Adaptabilidad'] 
   },
   { 
-    id: 'cyber-pro', 
-    nombre: 'Geek Team', 
-    slug: 'cyber-pro',
+    id: 'nivel-3', 
+    nombre: 'Nivel 3 - 6to Grado', 
+    slug: 'nivel-3',
     descripcion: 'Robótica avanzada: sistemas complejos, automatización y desafío WRO.',
     video: '/videos/nivel3.mp4', 
     detalleExtra: `
@@ -65,9 +73,9 @@ const levels = [
     items: ['Análisis', 'Precisión', 'Resolución'] 
   },
   { 
-    id: 'ctrl-alt-elite', 
-    nombre: 'Ctrl+Alt+Elite', 
-    slug: 'ctrl-alt-elite',
+    id: 'nivel-4', 
+    nombre: 'Nivel 4 - 7mo en adelante', 
+    slug: 'nivel-4',
     descripcion: 'Robótica de Proyectos: prototipado 3D, soluciones propias y entrenamiento para WRO.',
     video: '/videos/nivel4.mp4', 
     detalleExtra: `

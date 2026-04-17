@@ -1,0 +1,78 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+---
+
+<ArticleLayout 
+  title="Nivel 0 - 3er Grado" 
+  subtitle="¿Por qué empezamos a contar desde cero?"
+  heroImage="/images/nivel0-hero.jpg"
+  backUrl="/#nivelesWrapper"
+>
+  <p class="lead">
+    <strong>El verdadero punto de partida.</strong> En el mundo de la programación, los índices de los arreglos y sistemas siempre comienzan en el cero. Es el inicio lógico y fundacional de cualquier código.
+  </p>
+
+  <p>Por eso elegimos este nombre para nuestro nivel inicial dedicado a los alumnos de 3er Grado. Este espacio nació como una respuesta directa al pedido de los padres que buscaban una introducción temprana, segura y de alta calidad a la tecnología para sus hijos.</p>
+
+  {/* IMAGEN 1: EL CONCEPTO DE JUEGO Y DESCUBRIMIENTO */}
+  {/* SUGERENCIA DE FOTO: Un grupo de chicos prestando atención a un componente brillante o manipulando materiales con curiosidad. */}
+  <figure class="article-figure">
+    <img src="/images/nivel0-descubrimiento.jpg" alt="Alumnos descubriendo la electrónica básica" />
+    <figcaption>El primer contacto con la tecnología debe generar asombro, no frustración.</figcaption>
+  </figure>
+
+  <h2>Aprender jugando: La filosofía del Nivel 0</h2>
+  <p>A esta edad, creemos firmemente que el aprendizaje debe entrar por las manos y los sentidos. El objetivo principal es el <strong>descubrimiento sensorial</strong>. No buscamos que los chicos escriban líneas de código en una pantalla, sino que internalicen la lógica y la física detrás de los objetos que los rodean.</p>
+  
+  <p>Para lograrlo, trabajamos con un enfoque manual, combinando el arte y la ciencia. Creamos <strong>dioramas y proyectos en papel (papercraft)</strong> que luego "cobran vida" al integrarles componentes electrónicos simples. Al ver cómo un LED se enciende o un pequeño motor vibra dentro de su propia construcción de papel, el alumno comprende el flujo de la energía de una forma segura y cien por ciento tangible.</p>
+
+  {/* IMAGEN 2: EL PAPERCRAFT Y LA ELECTRÓNICA */}
+  {/* SUGERENCIA DE FOTO: Un primer plano de las manos de un alumno armando un diorama de cartulina o conectando un LED a una pila de botón. */}
+  <figure class="article-figure">
+    <img src="/images/nivel0-papercraft.jpg" alt="Proyecto de papercraft iluminado con LEDs" />
+    <figcaption>Fusionamos la construcción artesanal con los primeros circuitos electrónicos.</figcaption>
+  </figure>
+
+  <h2>Construyendo las bases del pensamiento futuro</h2>
+  <p>El Nivel 0 es la tierra fértil donde se siembra la semilla de la ingeniería y el diseño. A través de actividades lúdicas enfocadas en estimular el <strong>pensamiento espacial</strong>, los chicos empiezan a imaginar y visualizar soluciones en tres dimensiones antes de saltar a plataformas digitales complejas.</p>
+  
+  <p>Pero quizás la lección más importante en esta etapa sea el manejo de la resiliencia. Aquí el error no se califica de forma negativa; es una invitación a la exploración. Si un circuito no funciona, no es un fallo, <strong>es un misterio que resolvemos juntos</strong>.</p>
+
+  {/* IMAGEN 3: LA COMUNIDAD Y EL DOCENTE */}
+  {/* SUGERENCIA DE FOTO: Una de las docentes sonriendo y ayudando a un grupo de alumnos alrededor de una mesa de trabajo, mostrando el entorno contenido. */}
+  <figure class="article-figure">
+    <img src="/images/nivel0-comunidad.jpg" alt="Docente trabajando junto a los alumnos del Nivel 0" />
+    <figcaption>Si un proyecto falla, lo tomamos como un misterio a resolver en equipo.</figcaption>
+  </figure>
+
+  <p>Así, con más de 30 alumnos divididos en grupos de trabajo contenidos, estamos formando una comunidad de pequeños creadores que disfrutan cada paso del proceso, sentando bases sólidas para los desafíos que vendrán en los años siguientes.</p>
+
+</ArticleLayout>
+
+<style>
+  .article-figure {
+    margin: 3.5rem 0;
+    width: 100%;
+  }
+
+  .article-figure img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .article-figure figcaption {
+    margin-top: 1.2rem;
+    font-size: 0.85rem;
+    color: #888;
+    text-align: center;
+    letter-spacing: 0.5px;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .article-figure { margin: 2.5rem 0; }
+  }
+</style>

@@ -1,0 +1,85 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+---
+
+<ArticleLayout 
+  title="Nivel 1 - 4to Grado" 
+  subtitle="El camino de los nuevos inventores"
+  heroImage="/images/nivel1-hero.jpg"
+  backUrl="/#nivelesWrapper"
+>
+  <p class="lead">
+    <strong>Sin conocimientos previos, pero con muchas ganas de crear.</strong> El Nivel 1 es el lugar donde los alumnos de 4to Grado tienen su primer contacto real con la creación tecnológica. 
+  </p>
+
+  <p>Al ser un poco más grandes, el ritmo de la clase es mucho más dinámico: pasamos rápidamente de la teoría a tener los componentes sobre la mesa para empezar a probar ideas y ensuciarnos las manos.</p>
+
+  {/* IMAGEN 1: EL RITMO DINÁMICO DE LA CLASE */}
+  {/* SUGERENCIA DE FOTO: Una mesa de trabajo con componentes electrónicos esparcidos (cables, placas, LEDs) y alumnos con las manos en la masa. */}
+  <figure class="article-figure">
+    <img src="/images/nivel1-manos-en-la-masa.jpg" alt="Mesa de trabajo con componentes electrónicos" />
+    <figcaption>Pasamos rápidamente de la idea a tener los componentes sobre la mesa.</figcaption>
+  </figure>
+
+  <h2>Aprender haciendo: Componentes y código</h2>
+  <p>En este nivel, la magia sucede cuando los chicos conectan su primer LED, hacen sonar un buzzer o logran que un servomotor se mueva por primera vez. Aprenden a usar sensores simples para que sus creaciones reaccionen al entorno físico.</p>
+  
+  <p>Lo hacen de forma sencilla y visual a través de la <strong>programación por bloques</strong>, una herramienta que les permite dar instrucciones claras a la máquina y ver resultados inmediatos sin enredarse en complicaciones de sintaxis ni códigos complejos.</p>
+
+  {/* IMAGEN 2: PROGRAMACIÓN POR BLOQUES Y COMPONENTES */}
+  {/* SUGERENCIA DE FOTO: Una pantalla mostrando código en bloques (tipo Scratch/MakeCode) junto a un robot o placa que está ejecutando esa acción. */}
+  <figure class="article-figure">
+    <img src="/images/nivel1-programacion-bloques.jpg" alt="Pantalla con programación por bloques" />
+    <figcaption>La programación por bloques permite ver resultados inmediatos sin frustraciones.</figcaption>
+  </figure>
+
+  <h2>El orden detrás de la creación</h2>
+  <p>Uno de los grandes aprendizajes de este año es la planificación. En el taller no solo conectamos cables al azar; aprendemos a pensar el proyecto de principio a fin utilizando una estructura clara:</p>
+
+  <ul>
+    <li><strong>Idear:</strong> ¿Qué queremos que haga nuestro invento? Planteamos el problema y la solución.</li>
+    <li><strong>Armar:</strong> Elegir los materiales físicos (cartón, papel, conectores) y ensamblar la electrónica paso a paso.</li>
+    <li><strong>Programar:</strong> Darle las instrucciones en la computadora para que el circuito cobre vida y ejecute su tarea.</li>
+  </ul>
+
+  <h2>Descubriendo el mundo 3D</h2>
+  <p>También dedicamos un espacio para empezar a conocer el <strong>modelado 3D</strong>. Es una introducción sencilla para que los chicos empiecen a entender cómo se diseñan los objetos en el espacio, algo que les abre la cabeza a la hora de imaginar las estructuras de sus futuros trabajos.</p>
+
+  {/* IMAGEN 3: EL INVENTOR CONFIADO */}
+  {/* SUGERENCIA DE FOTO: Un alumno contento probando su circuito terminado, mostrando la satisfacción de haber creado algo que funciona. */}
+  <figure class="article-figure">
+    <img src="/images/nivel1-confianza.jpg" alt="Alumno probando un circuito electrónico funcional" />
+    <figcaption>Descubren que son capaces de construir un proyecto completo con sus propias manos.</figcaption>
+  </figure>
+
+  <p>Al terminar el nivel, lo más importante es la <strong>confianza</strong> que ganan. Descubren que son capaces de construir un proyecto completo con sus propias manos y que la tecnología, lejos de ser algo difícil o inalcanzable, es una herramienta increíble para jugar, crear y resolver problemas cotidianos.</p>
+
+</ArticleLayout>
+
+<style>
+  .article-figure {
+    margin: 3.5rem 0;
+    width: 100%;
+  }
+
+  .article-figure img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .article-figure figcaption {
+    margin-top: 1.2rem;
+    font-size: 0.85rem;
+    color: #888;
+    text-align: center;
+    letter-spacing: 0.5px;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .article-figure { margin: 2.5rem 0; }
+  }
+</style>
