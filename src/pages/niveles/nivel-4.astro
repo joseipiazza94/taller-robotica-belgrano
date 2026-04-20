@@ -1,0 +1,87 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+---
+
+<ArticleLayout 
+  title="Nivel 4 - 7mo en adelante" 
+  subtitle="El espacio donde la pasión no tiene techo"
+  heroImage="/images/nivel4-hero.jpg"
+  backUrl="/#nivelesWrapper"
+>
+  <p class="lead">
+    <strong>Mucho más que un curso.</strong> El Nivel 4 no es un trayecto con un final predefinido; es un centro de experimentación continua para alumnos avanzados de 7mo grado y nivel secundario. 
+  </p>
+
+  <p>Es el punto de encuentro para quienes ya han convertido la robótica y el diseño en su lenguaje natural. Aquí, los alumnos desean seguir explorando las fronteras de la tecnología sin restricciones, en un entorno de libertad creativa total.</p>
+
+  {/* IMAGEN 1: AUTONOMÍA E INGENIERÍA AVANZADA */}
+  {/* SUGERENCIA DE FOTO: Un alumno trabajando solo o en pareja, concentrado en una notebook con código complejo o diseñando una pieza en 3D muy detallada. */}
+  <figure class="article-figure">
+    <img src="/images/nivel4-independencia.jpg" alt="Alumnos avanzados trabajando con autonomía en el laboratorio" />
+    <figcaption>Priorizamos la independencia: el alumno elige sus propios desafíos técnicos.</figcaption>
+  </figure>
+
+  <h2>Independencia y herramientas de nivel profesional</h2>
+  <p>En este nivel, la dinámica del aula se transforma. Si bien nuestro equipo docente está siempre presente para asesorar y mentorizar, priorizamos la <strong>autonomía del estudiante</strong>. Los chicos tienen la libertad de elegir qué dispositivos utilizar y cómo escalar la complejidad de sus prototipos.</p>
+  
+  <p>Para que sus proyectos alcancen estándares de excelencia, especialmente de cara a las instancias internacionales de la WRO, incorporamos recursos de avanzada:</p>
+
+  <ul>
+    <li><strong>Comunicación y Control:</strong> Implementación de protocolos Bluetooth y redes para el control remoto y la interacción entre múltiples dispositivos.</li>
+    <li><strong>Sistemas de Alta Precisión:</strong> Gestión de múltiples motores simultáneos y sensores industriales para lograr movimientos milimétricos.</li>
+    <li><strong>Solvencia Técnica:</strong> El objetivo es que lleguen a la competencia con un abanico de recursos tan amplio que cualquier imprevisto se convierta en un simple problema de ingeniería a resolver.</li>
+  </ul>
+
+  <h2>Un aprendizaje que se renueva: Betatesters de tecnología</h2>
+  <p>Muchos alumnos eligen cursar el Nivel 4 durante varios años consecutivos. En el mundo de la innovación, nunca se termina de aprender. Al investigar por cuenta propia, cada ciclo se proponen metas más ambiciosas.</p>
+  
+  <p>Además, ellos son nuestros "betatesters": son los encargados de testear las nuevas tecnologías que el taller incorpora anualmente. Son los primeros en volar un <strong>dron profesional</strong> o en sumergirse en <strong>realidad virtual</strong> para analizar cómo integrar estas experiencias en sus proyectos de competencia.</p>
+
+  {/* IMAGEN 2: TESTEO DE NUEVAS TECNOLOGÍAS */}
+  {/* SUGERENCIA DE FOTO: Un alumno analizando un drone desarmado o usando gafas de VR con un sensor conectado, buscando la integración técnica. */}
+  <figure class="article-figure">
+    <img src="/images/nivel4-betatesters.jpg" alt="Alumnos testeando nuevas tecnologías incorporadas al taller" />
+    <figcaption>Nuestros alumnos avanzados son los primeros en explorar e integrar las nuevas herramientas del taller.</figcaption>
+  </figure>
+
+  <h2>El corazón del taller y la pertenencia</h2>
+  <p>Los alumnos del Nivel 4 son quienes más habitan y disfrutan el espacio. Se ha formado una comunidad orgánica de jóvenes que comparten una misma vocación y que encuentran en nuestro taller un <strong>lugar de pertenencia</strong> único.</p>
+
+  {/* IMAGEN 3: LA COMUNIDAD DE NIVEL 4 */}
+  {/* SUGERENCIA DE FOTO: Una toma más relajada de los alumnos compartiendo una mesa, charlando o riendo mientras trabajan, mostrando el clima de compañerismo. */}
+  <figure class="article-figure">
+    <img src="/images/nivel4-comunidad.jpg" alt="El clima de camaradería y equipo en el nivel avanzado" />
+    <figcaption>Más que un aula, un entorno de alto rendimiento donde se disfruta la pasión por crear.</figcaption>
+  </figure>
+
+  <p>Aquí no hay límites impuestos por un programa rígido; el único límite es el deseo de cada estudiante de seguir innovando. Formamos un entorno donde el rigor técnico se vive con la alegría de estar haciendo lo que uno ama, preparando a estos jóvenes para ser los <strong>líderes tecnológicos y creativos del futuro</strong>.</p>
+
+</ArticleLayout>
+
+<style>
+  .article-figure {
+    margin: 3.5rem 0;
+    width: 100%;
+  }
+
+  .article-figure img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .article-figure figcaption {
+    margin-top: 1.2rem;
+    font-size: 0.85rem;
+    color: #888;
+    text-align: center;
+    letter-spacing: 0.5px;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .article-figure { margin: 2.5rem 0; }
+  }
+</style>

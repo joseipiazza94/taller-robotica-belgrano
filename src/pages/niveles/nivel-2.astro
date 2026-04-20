@@ -1,0 +1,86 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+---
+
+<ArticleLayout 
+  title="Nivel 2 - 5to Grado" 
+  subtitle="La robótica al servicio del mundo"
+  heroImage="/images/nivel2-hero.jpg"
+  backUrl="/#nivelesWrapper"
+>
+  <p class="lead">
+    <strong>Tecnología con propósito.</strong> El Nivel 2 marca un antes y un después en el recorrido de nuestros alumnos. Es el año donde la técnica se encuentra con un objetivo mayor: ayudar a los demás.
+  </p>
+
+  <p>Los chicos de 5to Grado ya no solo construyen por el placer de ver algo funcionar, sino que empiezan a pensar cómo esa tecnología puede resolver problemas reales de su entorno, transformando su mentalidad de "estudiantes" a "innovadores sociales".</p>
+
+  {/* IMAGEN 1: COMPONENTES MÁS COMPLEJOS */}
+  {/* SUGERENCIA DE FOTO: Un alumno trabajando con un sensor ultrasónico o una pantalla LCD donde se vea algún dato, reflejando el salto técnico del nivel. */}
+  <figure class="article-figure">
+    <img src="/images/nivel2-tecnica-avanzada.jpg" alt="Alumno trabajando con sensores y lógica compleja" />
+    <figcaption>Ampliamos el maletín de herramientas con componentes que permiten tomar decisiones lógicas.</figcaption>
+  </figure>
+
+  <h2>Más herramientas, mejores soluciones</h2>
+  <p>En este nivel, ampliamos significativamente el maletín de herramientas técnicas. Los chicos aprenden a usar componentes más específicos y complejos, lo que permite que sus robots tomen decisiones más difíciles de forma autónoma.</p>
+  
+  <p>La programación en bloques se vuelve mucho más detallada, incorporando el uso de <strong>variables y condiciones lógicas</strong>. Esto requiere un pensamiento más estructurado y abstracto, preparando el terreno para los desafíos de ingeniería que vendrán.</p>
+
+  <h2>El desafío de la competencia (WRO)</h2>
+  <p>La gran novedad de este año es la introducción a la <strong>World Robot Olympiad (WRO)</strong>. Participamos en la categoría de "Future Innovators" (Soluciones para el Futuro), donde el eje no es la velocidad, sino la innovación creativa.</p>
+  
+  <p>Los chicos deben identificar un problema real —como el cuidado del medio ambiente, la salud o la asistencia en el hogar— y diseñar un prototipo robótico original que ayude a resolverlo, integrando la mirada artística y humana de nuestro enfoque STEAM.</p>
+
+  {/* IMAGEN 2: EL PROYECTO DE INNOVACIÓN */}
+  {/* SUGERENCIA DE FOTO: Un equipo de alumnos trabajando juntos sobre un prototipo que no parezca un "auto" tradicional, sino una solución (ej: un invernadero automatizado o una mano robótica). */}
+  <figure class="article-figure">
+    <img src="/images/nivel2-wro-proyecto.jpg" alt="Equipo diseñando una solución robótica para la WRO" />
+    <figcaption>Diseñamos prototipos que buscan dar respuesta a problemas reales del mundo actual.</figcaption>
+  </figure>
+
+  <h2>Saber contar lo que hacemos</h2>
+  <p>En el Nivel 2, comunicar el proceso es tan importante como el resultado final. Trabajamos intensamente en dos pilares de la metodología profesional:</p>
+
+  <ul>
+    <li><strong>La Bitácora de Proyecto:</strong> Los alumnos aprenden a dejar registro escrito de cada prueba, cada error y cada acierto. Es el documento que demuestra su evolución y su capacidad de análisis.</li>
+    <li><strong>La Exposición:</strong> Entrenamos la capacidad de hablar en público. Los chicos aprenden a explicar procesos técnicos de forma clara y asertiva, preparándose para defender sus ideas frente a jueces y ante la comunidad.</li>
+  </ul>
+
+  {/* IMAGEN 3: LA EXPOSICIÓN O LA BITÁCORA */}
+  {/* SUGERENCIA DE FOTO: Un alumno mostrando su bitácora de papel o tablet a la cámara, o un grupo explicando su proyecto frente a un poster. */}
+  <figure class="article-figure">
+    <img src="/images/nivel2-bitacora.jpg" alt="Alumnos registrando su progreso en la bitácora técnica" />
+    <figcaption>Aprender a documentar y comunicar es fundamental en el camino del inventor.</figcaption>
+  </figure>
+
+  <p>Al terminar el año, los chicos se llevan mucho más que conocimientos electrónicos: se llevan la satisfacción de haber creado un proyecto con impacto real. El Nivel 2 fortalece el trabajo colaborativo, donde cada integrante aporta su fuerte para alcanzar un objetivo común.</p>
+
+</ArticleLayout>
+
+<style>
+  .article-figure {
+    margin: 3.5rem 0;
+    width: 100%;
+  }
+
+  .article-figure img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .article-figure figcaption {
+    margin-top: 1.2rem;
+    font-size: 0.85rem;
+    color: #888;
+    text-align: center;
+    letter-spacing: 0.5px;
+    font-style: italic;
+  }
+
+  @media (max-width: 768px) {
+    .article-figure { margin: 2.5rem 0; }
+  }
+</style>
