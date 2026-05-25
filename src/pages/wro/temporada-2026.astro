@@ -1,0 +1,123 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+---
+
+<ArticleLayout 
+  title="Temporada 2026" 
+  subtitle="Nuestros planes para la World Robot Olympiad"
+  heroImage="/images/wro/wro2026-planes.jpg"
+  backUrl="/wro"
+>
+  <p class="lead">
+    <strong>Los Robots se encuentran con la Cultura.</strong> Este año, la categoría <em>Future Innovators</em> de la WRO presenta un desafío totalmente distinto al de las temporadas anteriores: <strong>"Robots meet Culture"</strong>.
+  </p>
+
+  <p>El planteamiento de la organización para este ciclo es que los proyectos resuelvan problemas del mundo real enfocados en tres áreas específicas:</p>
+
+  <ul>
+    <li>
+      <strong>Proteger, preservar y difundir el patrimonio cultural:</strong> El objetivo es salvaguardar tesoros físicos o intangibles (como manuscritos, monumentos, reliquias o lenguas ancestrales) que sufren degradación por el paso del tiempo, el cambio climático o la inaccesibilidad. Los robots se encargarán de tareas de conservación, restauración o digitalización de este patrimonio.
+    </li>
+    <li>
+      <strong>Co-crear arte:</strong> Buscamos romper el mito de que la tecnología reemplaza al artista. La idea es diseñar sistemas robóticos que funcionen como socios creativos en tiempo real —ya sea en pintura, música, danza o literatura—, logrando obras colaborativas que ni los humanos, ni las máquinas, ni la Inteligencia Artificial podrían lograr por separado.
+    </li>
+    <li>
+      <strong>Experimentar el arte y la historia con robots:</strong> Apuntamos a dar acceso a la cultura a más personas, enfocándonos en la experiencia de usuario. ¿Cómo podemos transformar la contemplación pasiva de un museo en una experiencia interactiva? ¿Cómo facilitar el acceso a la cultura a personas con dificultades visuales o auditivas? Los robots serán el puente para lograrlo.
+    </li>
+  </ul>
+
+  {/* CONTENEDOR AJUSTADO CON INLINE STYLES PARA ASEGURAR EL ÉXITO */}
+  <div class="logo-fix-wrapper" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 4rem auto; width: 100%; text-align: center;">
+    <img 
+      src="/images/wro/wro2026-logo.png" 
+      alt="Logo Oficial WRO 2026 - Robots meet Culture" 
+      style="width: 100% !important; max-width: 600px !important; height: auto !important; border: none !important; box-shadow: none !important; background: transparent !important; filter: none !important; border-radius: 0 !important; padding: 0 !important;"
+    />
+    <span class="logo-caption">Logo Oficial WRO 2026 - Robots meet Culture.</span>
+  </div>
+
+  <h2>El plan de trabajo: De la identidad al prototipo</h2>
+  <p>A partir del mes de junio, los alumnos de los niveles 2, 3 y 4 volcarán toda su energía a planear y estructurar sus proyectos en alguna de estas tres áreas.</p>
+  
+  <p>Pero antes de empezar a conectar cables o escribir código, tenemos en claro que nuestro primer paso es conectar a los chicos con su propia identidad cultural. Queremos que aprecien el valor real del arte y la historia que van a intentar proteger, difundir o crear.</p>
+  
+  <p>Por eso, durante las primeras semanas utilizaremos distintas herramientas virtuales y experiencias presenciales muy atractivas. El objetivo es que se comprometan a fondo con la temática de sus inventos. Queremos que, además de aprender robótica, electrónica e ingeniería para competir al más alto nivel, aprendan a querer, cuidar a fondo y valorar nuestra cultura.</p>
+
+  <blockquote>
+    "A medida que los equipos definan sus temáticas y empiecen a prototipar con impresiones 3D y sensores avanzados, iremos subiendo los avances a esta bitácora. ¡Estén atentos, porque este año los proyectos van a dar mucho de qué hablar!"
+  </blockquote>
+
+  <!-- FOOTER CON LA ESTÉTICA SOLICITADA -->
+  <footer class="wro-post-footer">
+    <a href="/wro" class="footer-back-link">← VOLVER AL LISTADO</a>
+    <a href="/#wro" class="footer-back-link">VOLVER AL INICIO →</a>
+  </footer>
+
+  <style>
+    /* --- LOGO CAPTION --- */
+    .logo-caption {
+      margin-top: 1.2rem;
+      font-size: 0.85rem;
+      color: #888;
+      text-align: center;
+      letter-spacing: 0.5px;
+      font-style: italic;
+    }
+
+    /* --- ESTILOS DE IMÁGENES ESTÁNDAR POR SI AGREGÁS EN EL FUTURO --- */
+    .article-figure {
+      margin: 3.5rem 0;
+      width: 100%;
+    }
+
+    .article-figure img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .article-figure figcaption {
+      margin-top: 1.2rem;
+      font-size: 0.85rem;
+      color: #888;
+      text-align: center;
+      letter-spacing: 0.5px;
+      font-style: italic;
+    }
+
+    /* --- ESTILOS DEL PIE DE PÁGINA DISTRIBUIDO --- */
+    .wro-post-footer {
+      margin-top: 5rem;
+      border-top: 1px solid #333;
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-back-link {
+      color: #d83135;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: opacity 0.2s ease;
+    }
+
+    .footer-back-link:hover {
+      opacity: 0.7;
+    }
+
+    @media (max-width: 768px) {
+      .article-figure { margin: 2.5rem 0; }
+      .wro-post-footer {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</ArticleLayout>

@@ -1,28 +1,28 @@
 ---
 const trophies = [
   {
+    slug: 'temporada-2026',
+    year: '2026',
+    title: 'Temporada 2026',
+    desc: 'Conocé los desafíos de este año, las temáticas planteadas y nuestros planes para la competencia.',
+    size: 'bento-big', 
+    img: '/images/wro/wro2026-planes.jpg' // Imagen principal de planes actuales
+  },
+  {
     slug: 'mundial-turquia-2024',
     year: '2024',
     title: 'Mundial Turquía',
-    desc: 'Representamos a Salta en la instancia más exigente del planeta.',
-    size: 'bento-big', 
-    img: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1000'
+    desc: 'Nuestra histórica experiencia en Izmir representando a Salta frente a la élite tecnológica.',
+    size: 'bento-wide',
+    img: '/images/wro/wro2024-izmir.jpg'
   },
   {
-    slug: 'nacional-argentina-2025',
+    slug: 'nacional-misiones-2025',
     year: '2025',
-    title: 'Nacional Argentina',
-    desc: '2do Puesto en la categoría Senior.',
+    title: 'Nacional Misiones',
+    desc: 'Un gran desempeño federal logrando el 2do Puesto en la categoría Senior.',
     size: 'bento-wide',
-    img: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=800'
-  },
-  {
-    slug: 'regional-salta-2022',
-    year: '2022',
-    title: 'Regional Salta',
-    desc: 'Campeones invictos con puntaje perfecto.',
-    size: 'bento-wide',
-    img: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?q=80&w=800'
+    img: '/images/wro/wro2025-misiones.jpg'
   }
 ];
 ---
@@ -31,27 +31,12 @@ const trophies = [
   <div class="wro-limit">
     <header class="wro-intro">
       <div class="intro-main">
-        <span class="wro-badge">ÉLITE MUNDIAL</span>
+        <span class="wro-badge">COMPETENCIA INTERNACIONAL</span>
         <h2>World Robot Olympiad</h2>
         <p class="main-desc">
           La <strong>WRO</strong> es la competencia de robótica educativa más importante del mundo, presente en más de 90 países. 
-          Nuestra participación es el reflejo de la excelencia: resolvemos problemas reales bajo presión global, representando al colegio y al país en la élite tecnológica.
+          En nuestro Taller (a partir de Nivel 2) participamos en la categoría "Future Innovators", en la que debemos brindar una solución robótica creativa a un problema planteado como temática de la temporada. En la competencia, los jueces evalúan la solución técnica, la innovación y la presentación del proyecto.
         </p>
-      </div>
-
-      <div class="wro-stats-container">
-        <div class="stat-line">
-          <span class="stat-value">+90</span>
-          <span class="stat-label">Países en competencia</span>
-        </div>
-        <div class="stat-line">
-          <span class="stat-value">Senior</span>
-          <span class="stat-label">Categoría de Élite</span>
-        </div>
-        <div class="stat-line">
-          <span class="stat-value">WRO</span>
-          <span class="stat-label">Plataforma Global</span>
-        </div>
       </div>
     </header>
 
@@ -63,7 +48,7 @@ const trophies = [
             <span class="bento-tag">{t.year}</span>
             <h3>{t.title}</h3>
             <p>{t.desc}</p>
-            <span class="read-more-btn">VER CRÓNICA →</span>
+            <span class="read-more-btn">VER DETALLES →</span>
           </div>
         </a>
       ))}
@@ -77,24 +62,25 @@ const trophies = [
 </section>
 
 <style>
-  /* Mantenemos tus estilos originales intactos */
+  /* --- ESTILOS GENERALES DE LA SECCIÓN --- */
   .wro-section { background-color: #ffffff !important; padding: 100px 0; width: 100%; color: #121212; }
   .wro-limit { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-  .wro-intro { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; margin-bottom: 80px; align-items: center; }
-  .wro-badge { color: #d83135; font-weight: 900; letter-spacing: 2px; font-size: 0.9rem; display: block; margin-bottom: 10px; }
+  
+  /* Ajustamos el header eliminando el panel lateral de estadísticas */
+  .wro-intro { margin-bottom: 60px; max-width: 850px; }
+  .wro-badge { color: #d83135; font-weight: 900; letter-spacing: 2px; font-size: 0.9rem; display: block; margin-bottom: 10px; text-transform: uppercase; }
   .wro-intro h2 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; text-transform: uppercase; color: #121212; margin: 0; line-height: 0.9; }
   .main-desc { font-size: 1.15rem; color: #444; margin-top: 25px; line-height: 1.6; }
   .main-desc strong { color: #d83135; font-weight: 900; }
-  .wro-stats-container { background: #f4f4f4; padding: 40px; border-left: 5px solid #d83135; display: flex; flex-direction: column; gap: 20px; }
-  .stat-line { display: flex; flex-direction: column; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 15px; }
-  .stat-line:last-child { border: none; padding-bottom: 0; }
-  .stat-value { font-size: 1.8rem; font-weight: 900; color: #121212; line-height: 1; }
-  .stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: #888; margin-top: 5px; font-weight: 700; }
   
+  /* --- GRILLA BENTO --- */
   .bento-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; width: 100%; }
   .bento-box { position: relative; background-size: cover; background-position: center; background-color: #1a1a1a; min-height: 300px; display: flex; align-items: flex-end; overflow: hidden; text-decoration: none !important; color: white !important; transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
+  
+  /* Tarjeta destacada de la temporada actual (ocupa 2 filas) */
   .bento-big { grid-row: span 2; min-height: 620px; }
   .bento-wide { grid-column: span 1; }
+  
   .bento-gradient { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(139, 29, 32, 0.85) 0%, rgba(0,0,0,0.1) 100%); z-index: 1; transition: all 0.4s ease; }
   .bento-info { position: relative; z-index: 2; padding: 35px; width: 100%; transform: translateY(25px); transition: transform 0.4s ease; }
   .bento-tag { background: #d83135; color: white; padding: 4px 10px; font-weight: 900; font-size: 0.75rem; display: inline-block; margin-bottom: 12px; }
@@ -102,49 +88,25 @@ const trophies = [
   .bento-info p { color: rgba(255,255,255,0.9); margin: 12px 0 20px; font-size: 1.05rem; line-height: 1.4; opacity: 0; transition: opacity 0.4s ease; }
   .read-more-btn { display: inline-block; color: #ffffff !important; font-weight: 900; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; border-bottom: 2px solid #d83135; padding-bottom: 4px; opacity: 0; transition: all 0.4s ease; }
   
+  /* --- ANIMACIONES HOVER --- */
   .bento-box:hover { transform: scale(0.985); }
   .bento-box:hover .bento-gradient { background: linear-gradient(0deg, rgba(18, 18, 18, 0.95) 0%, rgba(0,0,0,0.3) 100%); }
   .bento-box:hover .bento-info { transform: translateY(0); }
   .bento-box:hover p, .bento-box:hover .read-more-btn { opacity: 1; }
   .bento-box:hover .read-more-btn { color: #d83135 !important; }
 
-  /* ESTILOS DEL NUEVO BOTÓN AL HISTORIAL */
-  .wro-footer-action {
-    display: flex;
-    justify-content: center;
-    margin-top: 60px;
-  }
+  /* --- BOTÓN ACCIÓN INFERIOR --- */
+  .wro-footer-action { display: flex; justify-content: center; margin-top: 60px; }
+  .btn-history { display: inline-block; background: #121212; color: #ffffff; padding: 1rem 3rem; font-weight: 900; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; border: 2px solid #121212; transition: all 0.3s ease; }
+  .btn-history:hover { background: #d83135; border-color: #d83135; transform: translateY(-5px); box-shadow: 0 10px 20px rgba(216, 49, 53, 0.3); }
 
-  .btn-history {
-    display: inline-block;
-    background: #121212;
-    color: #ffffff;
-    padding: 1rem 3rem;
-    font-weight: 900;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: 2px solid #121212;
-    transition: all 0.3s ease;
-  }
-
-  .btn-history:hover {
-    background: #d83135;
-    border-color: #d83135;
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(216, 49, 53, 0.3);
-  }
-
-  @media (max-width: 900px) {
-    .wro-intro { grid-template-columns: 1fr; gap: 30px; }
-    .wro-stats-container { order: -1; }
-  }
+  /* --- RESPONSIVE --- */
   @media (max-width: 768px) {
     .bento-container { grid-template-columns: 1fr; }
     .bento-big { grid-row: span 1; min-height: 400px; }
     .bento-info { transform: translateY(0); padding: 25px; }
     .bento-info p, .read-more-btn { opacity: 1; }
     .bento-info h3 { font-size: 1.8rem; }
+    .wro-intro h2 { font-size: 2.5rem; }
   }
 </style>

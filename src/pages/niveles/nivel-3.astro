@@ -5,7 +5,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 <ArticleLayout 
   title="Nivel 3 - 6to Grado" 
   subtitle="Proyectos más grandes y más complejos"
-  heroImage="/images/nivel3-hero.jpg"
+  heroImage="/images/bitacora/abril-nivel3.jpg"
   backUrl="/#nivelesWrapper"
 >
   <p class="lead">
@@ -14,10 +14,18 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
   <p>Al ser un grupo con experiencia previa, el taller se transforma en un entorno de experimentación donde cada proyecto representa un desafío directo a la lógica y la técnica de los alumnos. Es el año donde dejan de seguir instrucciones al pie de la letra para empezar a tomar sus propias decisiones de diseño.</p>
 
-  <figure class="article-figure">
-    <img src="/images/nivel3-sistemas-complejos.jpg" alt="Alumnos trabajando en la integración de sistemas robóticos" />
-    <figcaption>Diseñamos sistemas donde múltiples sensores interactúan entre sí en tiempo real.</figcaption>
-  </figure>
+  {/* GRILLA EN PARALELO CON LAS IMÁGENES QUE SÍ TENES */}
+  <div class="figures-grid">
+    <figure class="article-figure">
+      <img src="/images/niveles/nivel3.jpg" alt="Alumnos trabajando en el código escrito de los controladores" />
+      <figcaption>El salto al código: coordinando la lógica de programación para múltiples dispositivos en simultáneo.</figcaption>
+    </figure>
+
+    <figure class="article-figure">
+      <img src="/images/niveles/nivel3-2.jpg" alt="Alumnos trabajando en la maqueta de la casa domótica" />
+      <figcaption>Integración de múltiples sensores en maquetas físicas para repasar hardware conocido.</figcaption>
+    </figure>
+  </div>
 
   <h2>Más piezas, más libertad</h2>
   <p>En el Nivel 3, los alumnos tienen experiencia trabajando con una gran variedad de componentes, por lo que les damos más espacio para intervenir sus trabajos. Partimos de una idea base para todos, pero fomentamos que agreguen componentes extra o hagan cambios en la programación según su imaginación.</p>
@@ -34,28 +42,19 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
     <li><strong>Control inalámbrico:</strong> A fin de año sumamos el Bluetooth. Los chicos aprenden a conectar su robot al teléfono para darle órdenes sin usar cables, abriendo un mundo nuevo de posibilidades de interacción.</li>
   </ul>
 
-  <figure class="article-figure">
-    <img src="/images/nivel3-oratoria-competencia.jpg" alt="Alumno exponiendo un proyecto técnico con seguridad" />
-    <figcaption>La capacidad de comunicar ideas y trabajar en equipo es clave para una experiencia satisfactoria.</figcaption>
-  </figure>
-
   <h2>Competencia y compañerismo</h2>
   <p>Haber competido en la <strong>World Robot Olympiad (WRO)</strong> les da una seguridad distinta. Ya aprendieron que no todo sale a la primera y que hay que trabajar en equipo para encontrar y solucionar las fallas. En el Nivel 3 perfeccionamos todas las habilidades necesarias para que su participación en la competencia sea una experiencia completa y satisfactoria.</p>
 
   <p>Trabajamos no solo en el pulido de los prototipos, sino también en la capacidad de explicar procesos complejos, preparando a los chicos para defender sus ideas con solvencia técnica y confianza.</p>
-
-  <figure class="article-figure">
-    <img src="/images/nivel3-vanguardia.jpg" alt="Alumnos experimentando con tecnologías avanzadas" />
-    <figcaption>Confirmamos la vocación tecnológica a través de proyectos que desafían la creatividad.</figcaption>
-  </figure>
 
   <p>Al finalizar el ciclo, los alumnos habrán consolidado el manejo del ecosistema Arduino y la mecánica de precisión. Esta base es fundamental para enfrentar el Nivel 4, donde la autonomía será la protagonista absoluta de sus propios proyectos de innovación.</p>
 
 </ArticleLayout>
 
 <style>
+  /* --- ESTILOS DE IMÁGENES ESTÁNDAR --- */
   .article-figure {
-    margin: 3.5rem 0;
+    margin: 0; 
     width: 100%;
   }
 
@@ -74,9 +73,27 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
     text-align: center;
     letter-spacing: 0.5px;
     font-style: italic;
+    line-height: 1.4;
   }
 
+  /* --- GRILLA SIMÉTRICA EN ESCRITORIO --- */
+  .figures-grid {
+    display: flex;
+    gap: 2rem;
+    margin: 3.5rem 0;
+    width: 100%;
+  }
+
+  .figures-grid .article-figure {
+    flex: 1;
+  }
+
+  /* --- RESPONSIVO --- */
   @media (max-width: 768px) {
-    .article-figure { margin: 2.5rem 0; }
+    .figures-grid {
+      flex-direction: column;
+      gap: 2.5rem;
+      margin: 2.5rem 0;
+    }
   }
 </style>

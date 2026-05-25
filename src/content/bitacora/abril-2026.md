@@ -12,7 +12,10 @@ description: "Primer mes de clases en el Colegio Belgrano: Pixel Art, Minecraft,
 
 Dentro de ese crecimiento, pudimos cumplir con un pedido especial: abrir dos grupos para que los chicos de Tercer Grado tengan su primer contacto con la robótica. En esta sección les contamos un poquito de lo que hicimos con cada grupo durante el mes de abril.
 
-![El aula del Taller de Robótica llena de alumnos trabajando](/images/abril-inicio.jpg)
+<figure class="article-figure">
+  <img src="/images/bitacora/abril-inicio.jpg" alt="El aula del Taller de Robótica llena de alumnos trabajando" />
+  <figcaption>Chicos de tercer grado mostrando su primer trabajo en el Taller de Robótica.</figcaption>
+</figure>
 
 ---
 
@@ -24,7 +27,10 @@ Trabajando en grillas de 8x8 y 16x16, aprendieron a ubicarse en el espacio a tra
 
 ¿Por qué es importante este trabajo? El Pixel Art es una gran herramienta para que entiendan la base del pensamiento computacional: descomponer una imagen en unidades mínimas (píxeles) y utilizar un sistema de grillas para componerla nuevamente. A esta edad, es una forma divertida de adquirir una habilidad esencial para la futura programación (¡y un poco de diseño digital!).
 
-![Alumno de 3er Grado trabajando en su diseño de Pixel Art](/images/abril-nivel0.jpg)
+<figure class="article-figure">
+  <img src="/images/bitacora/abril-nivel0.jpg" alt="Chicos de 3er grado mostrando sus trabajos en estilo Pixel Art" />
+  <figcaption>Trabajando muy concentrado en su Pixel.</figcaption>
+</figure>
 
 ---
 
@@ -34,7 +40,17 @@ Con los alumnos de cuarto grado aprovechamos que les gusta mucho **Minecraft** p
 
 Aunque también sea su primera vez en robótica, al tener más herramientas y una madurez distinta pudimos exigir un poquito más desde el primer día: ¡estamos sorprendidos con el nivel de detalle de las escenas! Y los chicos están orgullosos de recrear su juego favorito en la vida real.
 
-![Diorama físico de Minecraft con luces programadas](/images/abril-nivel1.jpg)
+<div class="figures-grid">
+  <figure class="article-figure">
+    <img src="/images/bitacora/abril-nivel1-0.jpg" alt="Diorama físico de Minecraft con luces programadas" />
+    <figcaption>Dioramas físicos de Minecraft donde la iluminación responde a las primeras líneas de código visual.</figcaption>
+  </figure>
+
+  <figure class="article-figure">
+    <img src="/images/bitacora/abril-nivel1-1.jpg" alt="Diorama físico de Minecraft con luces programadas" />
+    <figcaption>Dioramas físicos de Minecraft donde la iluminación responde a las primeras líneas de código visual.</figcaption>
+  </figure>
+</div>
 
 ---
 
@@ -44,7 +60,13 @@ Aunque también sea su primera vez en robótica, al tener más herramientas y un
 
 ¡La ejecución fue impecable, y los resultados fueron tan buenos que tendremos que plantear nuevos desafíos para subir la dificultad! Nos alegra saber que al elevar la vara, la respuesta de los chicos es inmediata.
 
-![Alumnos manipulando el potenciómetro de su Faro robótico](/images/abril-nivel2.jpg)
+<div class="figures-grid">
+  <figure class="article-figure">
+    <img src="/images/bitacora/abril-nivel2-0.jpg" alt="Alumnos manipulando el potenciómetro de su Faro robótico" />
+    <figcaption>Alumnos calibrando las variables analógicas de su Faro robótico mediante un potenciómetro.</figcaption>
+  </figure>
+
+</div>
 
 ---
 
@@ -54,7 +76,10 @@ En este nivel los chicos conocen y controlan muchos dispositivos, por lo que nos
 
 Esto les permitió repasar tanto la conexión como la programación de luces RGB, servomotores, buzzers, sensores ultrasónicos, entre otros componentes. Al ser un nivel "avanzado", necesitamos todos esos contenidos frescos para poder introducir nuevos componentes (como el sensor de temperatura, que usarán pronto para simular un invernadero).
 
-![Alumnos trabajando en la maqueta de la casa domótica](/images/abril-nivel3.jpg)
+<figure class="article-figure">
+  <img src="/images/bitacora/abril-nivel3.jpg" alt="Alumnos trabajando en la maqueta de la casa domótica" />
+  <figcaption>Trabajando en el código de un sensor ultrasónico.</figcaption>
+</figure>
 
 ---
 
@@ -66,12 +91,68 @@ El cambio en este nivel fue total: incorporamos kits de autos programables contr
 
 El plan es claro: incorporar todas las herramientas posibles para que, a la hora de competir en la WRO, los chicos tengan más recursos que nunca y puedan brillar con sus proyectos.
 
-![Auto Bluetooth junto a la pantalla de código escrito](/images/abril-nivel4.jpg)
+<figure class="article-figure">
+  <img src="/images/abril-nivel4.jpg" alt="Auto Bluetooth junto a la pantalla de código escrito" />
+  <figcaption>El salto al código escrito: controlando la potencia de los motores sin bloques de por medio.</figcaption>
+</figure>
 
 ---
 
 ## Cierre del mes
 
-Abril fue un mes lleno de sorpresas, desde la cantidad de alumnos inscriptos y la apertura de los grupos de los viernes, hasta el sorprendente desempeño de los chicos en todos los niveles. Estamos sentando bases sólidas para que los chicos transiten su camino por la robótica, la ingeniería, la electrónica, la programación y el diseño de la mejor forma posible.
+Abril fue un mes lleno de sorpresas, desde la cantidad de alumnos inscriptos y la apertura de los grupos de los viernes, hasta el sorprendente desempeño de los chicos de todos los niveles. Estamos sentando bases sólidas para que los chicos transiten su camino por la robótica, la ingeniería, la electrónica, la programación y el diseño de la mejor forma posible.
 
 Ver el aula llena de cables, dibujos, código, y chicos trabajando en equipo nos confirma que estamos en el camino correcto. ¡Nos vemos en mayo con más desafíos!
+
+<style>
+  .article-figure {
+    margin: 2.5rem auto;
+    max-width: 650px;
+    width: 100%;
+  }
+
+  .article-figure img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .article-figure figcaption {
+    margin-top: 0.9rem;
+    font-size: 0.85rem;
+    color: #888;
+    text-align: center;
+    letter-spacing: 0.5px;
+    font-style: italic;
+  }
+
+  /* Estilos para el contenedor de dos imágenes a la par */
+  .figures-grid {
+    display: flex;
+    gap: 1.5rem;
+    max-width: 900px; /* Al ser dos imágenes, ampliamos un poco el margen global para el diseño de escritorio */
+    margin: 2.5rem auto;
+    width: 100%;
+  }
+
+  .figures-grid .article-figure {
+    margin: 0;
+    flex: 1;
+    max-width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .article-figure { 
+      margin: 2rem 0; 
+      max-width: 100%;
+    }
+    
+    .figures-grid {
+      flex-direction: column;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+  }
+</style>

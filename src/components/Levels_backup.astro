@@ -1,50 +1,158 @@
 ---
 const levels = [
   { 
-    id: 'spark', 
-    nombre: 'Spark Squad', 
-    descripcion: 'Nivel Inicial: Exploración mecánica y lógica de bloques.',
+    id: 'nivel-0', 
+    nombre: 'Nivel 0 - 3er Grado', 
+    slug: 'nivel-0',
+    descripcion: 'Un primer contacto lúdico para descubrir que el mundo digital no es magia, sino lógica, circuitos y creatividad.',
+    video: '/videos/nivel0.mp4', 
+    detalleExtra: `
+      <strong>El despertar de la curiosidad: aprender jugando.</strong><br /><br />
+      
+      En este nivel, los chicos descubren que la tecnología no es algo mágico, sino una herramienta que ellos mismos pueden controlar. Buscamos que vean resultados inmediatos en el mundo real a través de la diversión y el descubrimiento, evitando las lecciones teóricas pesadas para centrarse en proyectos lúdicos y atractivos que mantienen su interés encendido desde el primer día.<br /><br />
+      
+      <strong>¿Qué aprenderán en este nivel?</strong><br />
+      • <strong>Circuitos básicos:</strong> Entenderán cómo viaja la electricidad y cómo encender componentes de forma segura.<br />
+      • <strong>Pensamiento secuencial:</strong> Aprenderán a ordenar instrucciones para que un dispositivo cumpla una tarea lógica.<br />
+      • <strong>Construcción en 3D:</strong> Pasarán del plano al volumen, utilizando materiales tradicionales junto con dispositivos electrónicos.<br />
+      • <strong>Lógica de programación:</strong> Tendrán su primer contacto con el código de manera visual y divertida mediante bloques (mBlock, Tinkercad, Scratch).<br /><br />
+      
+      Al finalizar el año, habrán pasado de la curiosidad inicial a la capacidad real de <strong>construir y programar sus propios inventos</strong> con luces, sonidos y dispositivos simples.
+    `,
+    items: ['Circuitos Iniciales', 'Pensamiento Lógico', 'mBlock'] 
+},
+
+  { 
+    id: 'nivel-1', 
+    nombre: 'Nivel 1 - 4to Grado', 
+    slug: 'nivel-1',
+    descripcion: 'Introducción dinámica a la robótica aplicada, donde los alumnos pasan de entender la lógica básica a controlar sensores y sistemas integrados.',
     video: '/videos/nivel1.mp4', 
-    items: ['LEGO Education', 'Motores DC', 'Lógica'] 
-  },
+    detalleExtra: `
+      <strong>De la lógica simple a los sistemas integrados.</strong><br /><br />
+      
+      En el Nivel 1, aprovechamos la madurez de los chicos de cuarto grado para avanzar con mayor agilidad. Es un año de descubrimiento "intensivo", donde exploramos cómo los robots interactúan con el entorno. Nuestro desafío está en que los chicos vean la tecnología como una herramienta de creación y no como un producto para consumir.<br /><br />
+      
+      <strong>¿Qué aprenderán en este nivel?</strong><br />
+      • <strong>Dispositivos simples:</strong> Primer contacto con componentes electrónicos y salidas digitales para dar vida a escenarios físicos mediante luces y sonidos.<br />
+      • <strong>Lógica secuencial:</strong> Aprendizaje de pasos lógicos y temporales, logrando que sus robots ejecuten tareas complejas de forma ordenada.<br />
+      • <strong>Interacción con el entorno:</strong> Uso de sensores de luz y distancia para que los proyectos dejen de ser estáticos y reaccionen a lo que sucede a su alrededor.<br />
+      • <strong>Sistemas integrados:</strong> Unión de todo lo aprendido para crear sistemas complejos, como por ejemplo, un dispositivo de seguridad automatizado.<br /><br />
+      
+      Al finalizar el ciclo, los alumnos habrán ganado la solidez necesaria para enfrentar con confianza los desafíos de la competencia, si deciden participar, el año siguiente.
+    `,
+    items: ['Sensores', 'Lógica Secuencial', 'Sistemas Integrados'] 
+},
   { 
-    id: 'circuit', 
-    nombre: 'Circuit Masters', 
-    descripcion: 'Nivel Intermedio: Electrónica aplicada e impresión 3D.',
+    id: 'nivel-2', 
+    nombre: 'Nivel 2 - 5to Grado', 
+    slug: 'nivel-2',
+    descripcion: 'Sistemas autónomos, control de datos e introducción a la competencia internacional WRO.',
     video: '/videos/nivel2.mp4', 
-    items: ['Arduino', 'Modelado 3D', 'Sensores'] 
-  },
+    detalleExtra: `
+      <strong>De inventores a competidores: el salto a la ingeniería aplicada.</strong><br /><br />
+      
+      En el Nivel 2 todo se vuelve más técnico y profesional: no solo conectamos componentes, sino que diseñamos soluciones para problemas reales. Este es el año en que los alumnos empiezan a manejar datos del entorno (como la temperatura) para que sus robots tomen decisiones por sí mismos.<br /><br />
+      
+      <strong>Ruta de aprendizaje:</strong><br />
+      • <strong>Gestión de datos y sensores:</strong> Incorporamos sensores avanzados (temperatura, humedad y distancia) para medir variables reales.<br />
+      • <strong>Movimiento integrado:</strong> Aprenden a usar motores de corriente continua e integrar servomotores para crear sistemas como ventiladores inteligentes o peajes automáticos.<br />
+      • <strong>Comunicación y pantallas:</strong> En los últimos proyectos del año, utilizan pantallas LCD para que el robot pueda "hablar" con el usuario, mostrando información en tiempo real.<br />
+      • <strong>Preparación WRO:</strong> Tienen su primera experiencia compitiendo en la World Robot Olympiad, organizando su proyecto desde cero y aprendiendo a exponer sus ideas.<br /><br />
+      
+      Al finalizar este nivel, los alumnos desarrollan prototipos funcionales orientados a la resolución de problemas, una base fundamental para profundizar el año siguiente en la alta competencia.
+    `,
+    items: ['Competencia WRO', 'Sensores Complejos', 'Paneles LCD'] 
+},
   { 
-    id: 'cyber', 
-    nombre: 'Cyber Builders', 
-    descripcion: 'Nivel Avanzado: Robótica de competición y código real.',
+    id: 'nivel-3', 
+    nombre: 'Nivel 3 - 6to Grado', 
+    slug: 'nivel-3',
+    descripcion: 'Especialización técnica: elevamos la complejidad de los sistemas mecánicos, integramos control inalámbrico y perfeccionamos la ingeniería para la competencia.',
     video: '/videos/nivel3.mp4', 
-    items: ['WRO', 'Python/C++', 'Sensores Pro'] 
-  }
+    detalleExtra: `
+      <strong>Un paso adelante: proyectos más grandes y más complejos.</strong><br /><br />
+      
+      En el Nivel 3, los alumnos que ya tienen experiencia en la World Robot Olympiad regresan al taller para llevar sus habilidades al siguiente nivel. Es un año de transición donde buscamos que el robot responda con precisión y eficiencia, preparando el terreno para la autonomía total.<br /><br />
+      
+      Buscamos que los chicos se sientan cómodos con mecánicas más difíciles y códigos más extensos, dándoles la libertad de modificar las ideas base y agregar componentes a elección según su propia imaginación.<br /><br />
+      
+      <strong>¿Qué aprenderán en este nivel?</strong><br />
+      • <strong>Sistemas con pantalla:</strong> Aprenderán a mostrar información de sensores en tiempo real en paneles LCD, permitiendo que sus robots nos "hablen".<br />
+      • <strong>Control de movimiento:</strong> Elevarán el desafío del armado manual con proyectos como la grúa de doble comando, coordinando movimientos mediante palancas de control (joysticks).<br />
+      • <strong>Motores con más fuerza:</strong> Aprenderán a usar placas de expansión para dar potencia a vehículos de 4 ruedas (4WD), entendiendo cómo trabajar con motores más grandes.<br />
+      • <strong>Control por Bluetooth:</strong> Como cierre del año, verán cómo conectar sus robots al celular para manejarlos de forma inalámbrica.<br /><br />
+      
+      Al finalizar el año, habrán sumado nuevas herramientas fundamentales para afrontar el gran desafío de nuestro nivel más avanzado.
+    `,
+    items: ['Control Inalámbrico', 'Mecánica de Precisión', 'Pantallas LCD'] 
+},
+  { 
+    id: 'nivel-4', 
+    nombre: 'Nivel 4 - Club de Robótica', 
+    slug: 'nivel-4',
+    descripcion: 'El nivel de autonomía total: un espacio para expandir conocimientos, desarrollar proyectos de innovación y competir en la WRO.',
+    video: '/videos/nivel4.mp4', 
+    detalleExtra: `
+      <strong>Pasión por crear: el lugar donde no hay techo.</strong><br /><br />
+      
+      El Nivel 4 es una propuesta nueva, diseñada como un "Club de Robótica" para quienes no quieren dejar de explorar. Es un espacio con mucha más libertad donde los chicos proponen el rumbo de sus proyectos bajo la guía de las docentes, pero de forma autónoma.<br /><br />
+      
+      <strong>¿Qué define a este nivel?</strong><br />
+      • <strong>Tecnología avanzada:</strong> Acceso a visión artificial con IA, modelado 3D personalizado y experiencias con drones y realidad virtual.<br />
+      • <strong>Foco en la WRO:</strong> A partir de junio, el proyecto de competencia manda. Los equipos diseñan una solución robótica desde cero y gestionan sus recursos como verdaderos desarrolladores.<br />
+      • <strong>Aprendizaje continuo:</strong> No es un "último año"; los alumnos pueden seguir asistiendo hasta terminar el colegio, mientras nosotros nos comprometemos a presentarles nuevas herramientas constantemente.<br /><br />
+      
+      Es el espacio ideal para que su amor por la tecnología crezca sin límites, transformando su pasión en proyectos reales con impacto.
+    `,
+    items: ['Autonomía Total', 'IA y Visión', 'Innovación Libre'] 
+}
 ];
 ---
 
-<section class="niveles-wrapper">
-  <div class="vertical-title">
-    <span>NIVELES</span>
-  </div>
+<section class="niveles-wrapper" id="nivelesWrapper">
+  <div class="vertical-title"><span>NIVELES</span></div>
 
-  <div class="niveles-container">
+  <div class="niveles-container" id="levelsContainer">
     {levels.map((level) => (
-      <div class="level-bar">
+      <div class="level-bar" data-id={level.id}>
         <div class="level-content">
-          <div class="text-area">
-            <h3>{level.nombre}</h3>
-            <p>{level.descripcion}</p>
-            <div class="pills">
-              {level.items.map(item => <span>{item}</span>)}
+          
+          {/* VISTA CERRADA */}
+          <div class="main-info">
+            <div class="text-area">
+              <h3>{level.nombre}</h3>
+              <p>{level.descripcion}</p>
+            </div>
+            <div class="horizontal-video">
+              <video muted loop playsinline preload="auto">
+                <source src={level.video} type="video/mp4" />
+              </video>
             </div>
           </div>
-          
-          <div class="video-area">
-            <video muted loop playsinline preload="none">
-              <source src={level.video} type="video/mp4" />
-            </video>
+
+          {/* VISTA EXPANDIDA */}
+          <div class="expanded-info">
+            <div class="expanded-layout">
+              <div class="expanded-text">
+                <button class="btn-close-level">← VOLVER</button>
+                
+                <div class="text-content-limit">
+                  <h4>Objetivos del Nivel</h4>
+                  <div class="detail-content" set:html={level.detalleExtra}></div>
+
+                  <a href={`/niveles/${level.slug}`} class="btn-discover">
+                    DESCUBRIR EXPERIENCIA COMPLETA →
+                  </a>
+                </div>
+              </div>
+              
+              <div class="vertical-video">
+                <video muted loop playsinline preload="auto">
+                  <source src={level.video} type="video/mp4" />
+                </video>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -53,191 +161,311 @@ const levels = [
 </section>
 
 <style>
-  /* Contenedor principal que envuelve todo */
+  /* --- LAYOUT BASE --- */
   .niveles-wrapper {
     position: relative;
-    background: #121212; /* Negro Técnico */
-    padding: 6rem 0;
-    overflow: hidden;
+    background: #121212;
+    padding: 8rem 0; 
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
   }
 
-  /* Título "NIVELES" en vertical a la derecha */
-  .vertical-title {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+  .niveles-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  /* --- TARJETAS DE NIVELES --- */
+  .level-bar {
+    background: #8b1d20;
+    width: 75vw;
+    min-height: 180px;
+    max-height: 180px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    z-index: 5;
+    pointer-events: auto; /* IMPORTANTE: Asegura que detecte el ratón */
+  }
+
+  @media (hover: hover) {
+    .level-bar:not(.is-expanded):hover {
+      width: 80vw;
+      background: #d83135;
+    }
+  }
+
+  .level-bar:not(.is-expanded):active {
+    background: #a32225;
+    transform: scale(0.99);
+    transition: all 0.1s ease;
+  }
+
+  .level-bar.is-expanded {
+    min-height: 500px;
+    max-height: 1500px; 
+    width: 85vw;
+    background: #222222; 
+    cursor: default;
+    z-index: 10;
+    margin-left: 2vw;
+    box-shadow: 0 0 60px rgba(0,0,0,0.8);
+  }
+
+  .niveles-container.has-expanded .level-bar:not(.is-expanded) {
+    min-height: 0;
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+    transition: all 0.4s ease-in-out;
+  }
+
+  .level-content { 
+    display: grid;
+    width: 100%;
+    height: 100%;
+  }
+
+  .main-info, .expanded-info {
+    grid-area: 1 / 1; 
+    width: 100%;
+  }
+
+  .main-info {
+    display: flex;
+    height: 180px; 
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 4rem;
+    transition: opacity 0.3s ease-out; 
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .level-bar.is-expanded .main-info { 
+    opacity: 0; 
+    pointer-events: none;
+    transition: opacity 0.1s ease-in; 
+  }
+
+  .text-area h3 { 
+    font-size: 2.2rem; 
+    font-weight: 900; 
+    text-transform: uppercase; 
+    margin: 0; 
+    color: white;
+    white-space: normal; 
+    line-height: 1.1;
+  }
+  
+  .text-area p { color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-top: 5px; max-width: 90%; }
+
+  /* CORRECCIÓN: pointer-events none para no interceptar el hover del padre */
+  .horizontal-video { 
+    width: 350px; 
+    height: 180px; 
+    background: #000; 
+    position: relative; 
+    pointer-events: none; 
+  }
+
+  /* --- VISTA EXPANDIDA --- */
+  .expanded-info { 
+    opacity: 0; 
+    transition: opacity 0.2s ease-in; 
     z-index: 1;
     pointer-events: none;
   }
 
-  .vertical-title span {
-    display: block;
-    writing-mode: vertical-rl;
-    font-size: 8rem;
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0.05); /* Blanco muy sutil */
-    letter-spacing: 0.5rem;
-    text-transform: uppercase;
-    line-height: 1;
+  .level-bar.is-expanded .expanded-info { 
+    opacity: 1; 
+    pointer-events: auto;
+    z-index: 3;
+    transition: opacity 0.4s ease-out 0.3s; 
   }
 
-  /* Contenedor de las barras rojas */
-  .niveles-container {
-    display: flex;
+  .expanded-layout { 
+    display: grid; 
+    grid-template-columns: 1.2fr 0.8fr; 
+    min-height: 500px; 
+  }
+
+  .expanded-text { 
+    padding: 4rem; 
+    display: flex; 
     flex-direction: column;
-    gap: 1rem; /* Espacio entre niveles */
-    width: 100%;
-    z-index: 2;
+    justify-content: flex-start; 
   }
 
-  /* La barra roja que sale de la izquierda */
-  .level-bar {
-    background: #8b1d20; /* Bordó Sombra base */
-    width: 75%; /* Retirado para que no toque el texto NIVELES */
-    height: 280px;
-    border-radius: 0; /* CORTE RECTO solicitado */
-    transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    cursor: pointer;
-    overflow: hidden;
-    display: flex;
-  }
+  .text-content-limit { max-width: 580px; }
 
-  /* Efecto de estiramiento y cambio de color al Rojo Oficial */
-  .level-bar:hover {
-    width: 88%; 
-    background: #d83135; /* Rojo Oficial */
-  }
-
-  /* Contenedor interno para separar texto de video */
-  .level-content {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  /* Área del texto (lado izquierdo) */
-  .text-area {
-    padding-left: 4rem;
-    flex: 1;
-    color: white;
-  }
-
-  .text-area h3 {
-    font-size: 3rem;
-    margin: 0;
-    font-weight: 900;
-    text-transform: uppercase;
-    line-height: 1.1;
-  }
-
-  .text-area p {
+  .detail-content {
     font-size: 1.1rem;
-    max-width: 450px;
-    margin: 1rem 0;
-    color: #a0a0a0; /* Gris Texto */
+    line-height: 1.6;
+    color: #cecece;
+    margin-bottom: 2.5rem;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* Contenedor de las "pills" o etiquetas */
-  .pills {
-    display: flex;
-    gap: 0.8rem;
+  :global(.detail-content strong) {
+    color: #ffffff; 
+    font-weight: 700; 
+    display: inline-block;
   }
 
-  .pills span {
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 0.3rem 1rem;
+  .btn-discover {
+    display: inline-block;
+    background: #d83135;
+    color: #ffffff;
+    padding: 0.9rem 2rem;
+    text-decoration: none;
+    font-weight: 700;
     font-size: 0.8rem;
     text-transform: uppercase;
-    background: rgba(255, 255, 255, 0.05);
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    width: fit-content;
   }
 
-  /* Área del video (lado derecho) */
-  .video-area {
-    width: 450px; /* Tamaño fijo del bloque de video */
-    height: 100%;
-    position: relative;
-    border-radius: 0; /* CORTE RECTO solicitado */
-    overflow: hidden;
-    background: #000;
+  .btn-discover:hover { background: #b11b1f; transform: translateX(10px); }
+
+  .btn-close-level {
+    align-self: flex-start;
+    background: transparent;
+    color: #888;
+    border: 1px solid #444;
+    padding: 0.5rem 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.75rem;
   }
 
-  /* Estilos del video propiamente dicho */
+  .btn-close-level:hover { color: white; border-color: #d83135; }
+
+  .expanded-text h4 { color: #d83135; font-size: 1.8rem; text-transform: uppercase; margin-bottom: 1.2rem; font-weight: 900; }
+
+  /* --- VIDEOS --- */
+  .vertical-video { width: 100%; height: 100%; background: #000; position: relative; pointer-events: none; }
+
   video {
-    width: 100%;
-    height: 100%;
+    position: absolute; 
+    top: 0; left: 0; width: 100%; height: 100%;
     object-fit: cover;
-    filter: grayscale(100%) brightness(0.4); /* Estética técnica inicial */
-    transition: all 0.5s ease;
+    filter: grayscale(100%) brightness(0.3);
+    transition: all 0.6s ease;
+    pointer-events: none; /* EL VIDEO NO DEBE INTERCEPTAR EL MOUSE */
   }
 
-  /* Activación del video en hover */
-  .level-bar:hover video {
-    filter: grayscale(0%) brightness(1);
-    transform: scale(1.05);
-  }
+  .level-bar:hover video, .level-bar.is-expanded video { filter: grayscale(0%) brightness(1); }
 
-  /* Ajustes para móviles */
+  /* --- TITULO DE FONDO --- */
+  .vertical-title { position: absolute; right: 30px; top: 50%; transform: translateY(-50%); z-index: 0; }
+  .vertical-title span { writing-mode: vertical-rl; font-size: 8rem; font-weight: 900; color: rgba(255,255,255,0.02); text-transform: uppercase; }
+
+  /* --- MEDIA QUERIES --- */
   @media (max-width: 1024px) {
-    .level-bar {
-      width: 100%;
-      height: auto;
-      flex-direction: column;
-    }
-    
-    .level-content {
-      flex-direction: column;
-      padding: 2rem 0;
-    }
+    .horizontal-video, .vertical-video { display: none !important; }
+    .level-bar { width: 100%; min-height: 200px; max-height: 200px; }
+    .level-bar.is-expanded { width: 100%; margin-left: 0; min-height: 0 !important; max-height: 1500px; }
+    .main-info { height: 200px; padding: 0 2rem; flex-direction: column; justify-content: center; align-items: flex-start; }
+    .text-area h3 { font-size: 1.8rem; white-space: normal; }
+    .text-area p { font-size: 1rem; margin: 0.5rem 0 1rem; }
+    .expanded-layout { display: block; min-height: auto; }
+    .expanded-text { padding: 3rem 2rem 2rem 2rem !important; justify-content: flex-start !important; }
+    .btn-close-level { margin-top: 0; margin-bottom: 1.5rem; } 
+    .expanded-text h4 { font-size: 1.5rem; margin-top: 0; margin-bottom: 1rem; } 
+    .vertical-title { display: none; }
+  }
 
-    .text-area {
-      padding: 0 2rem;
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    .video-area {
-      width: 100%;
-      height: 200px;
-    }
-
-    .vertical-title {
-      display: none;
-    }
+  @media (max-width: 768px) {
+    .niveles-wrapper { padding: 4rem 0; }
+    .level-bar { min-height: 150px; max-height: 150px; }
+    .main-info { height: 150px; padding: 0 1.5rem; }
+    .expanded-text { padding: 2.5rem 1.5rem !important; } 
+    .text-area h3 { font-size: 1.6rem; }
+    .btn-discover { width: 100%; box-sizing: border-box; text-align: center; }
   }
 </style>
 
 <script>
-  // Esta función contiene la lógica de los videos
-  const setupVideos = () => {
+  const setupLevels = () => {
+    const container = document.getElementById('levelsContainer');
     const bars = document.querySelectorAll('.level-bar');
-    
-    bars.forEach(bar => {
-      const video = bar.querySelector('video') as HTMLVideoElement;
-      
-      if (video) {
-        bar.addEventListener('mouseenter', () => {
-          video.play().catch(error => console.log("Auto-play prevenido:", error));
-        });
 
-        bar.addEventListener('mouseleave', () => {
-          video.pause();
-          video.currentTime = 0; // Reinicia el video al salir
-        });
-      }
+    bars.forEach(bar => {
+      const hVideo = bar.querySelector('.horizontal-video video') as HTMLVideoElement;
+      const vVideo = bar.querySelector('.vertical-video video') as HTMLVideoElement;
+      
+      const safePlay = (video: HTMLVideoElement | null) => {
+        if (!video) return;
+        video.muted = true;
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {});
+        }
+      };
+
+      const syncAndPlay = (from: HTMLVideoElement, to: HTMLVideoElement) => {
+        if (!to) return;
+        to.currentTime = from.currentTime;
+        safePlay(to);
+      };
+
+      // --- HOVER ACTIVA VIDEO ---
+      bar.addEventListener('mouseenter', () => {
+        if (!bar.classList.contains('is-expanded')) {
+          if (hVideo) safePlay(hVideo);
+        }
+      });
+
+      bar.addEventListener('mouseleave', () => {
+        if (!bar.classList.contains('is-expanded')) {
+          if (hVideo) {
+            hVideo.pause();
+            hVideo.currentTime = 0;
+          }
+        }
+      });
+
+      // --- CLIC ---
+      bar.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        
+        if (target.classList.contains('btn-close-level')) {
+          if (vVideo && hVideo) syncAndPlay(vVideo, hVideo);
+          bar.classList.remove('is-expanded');
+          container?.classList.remove('has-expanded');
+          setTimeout(() => { if(vVideo) vVideo.pause(); }, 500);
+          e.stopPropagation();
+          return;
+        }
+
+        if (!bar.classList.contains('is-expanded')) {
+          if (hVideo && vVideo) syncAndPlay(hVideo, vVideo);
+          bars.forEach(b => b.classList.remove('is-expanded'));
+          bar.classList.add('is-expanded');
+          container?.classList.add('has-expanded');
+
+          const wrapper = document.getElementById('nivelesWrapper');
+          if (wrapper) {
+            const topOffset = wrapper.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({ top: topOffset - 20, behavior: 'smooth' });
+          }
+        }
+      });
     });
   };
 
-  // 1. Se ejecuta en la carga inicial
-  setupVideos();
-
-  // 2. Se ejecuta cada vez que Astro cambia de página (si usas View Transitions)
-  document.addEventListener('astro:page-load', setupVideos);
-  
-  // 3. Por seguridad, también escuchamos cambios de contenido
-  document.addEventListener('astro:after-swap', setupVideos);
+  setupLevels();
+  document.addEventListener('astro:page-load', setupLevels);
 </script>

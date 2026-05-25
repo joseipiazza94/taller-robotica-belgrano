@@ -38,9 +38,11 @@ const { Content } = await post.render();
         {/* Aquí se renderiza el contenido sobre el trabajo de Ana y Florencia */}
         <Content />
       </div>
+      
       <footer class="post-footer">
-        <a href="/bitacora" class="back-btn">← VOLVER AL LISTADO</a>
-      </footer>
+  <a href="/bitacora" class="back-btn">← VOLVER AL LISTADO</a>
+  <a href="/#bitacora" class="back-btn">VOLVER AL INICIO →</a>
+</footer>
     </div>
   </article>
 </Layout>
@@ -57,6 +59,35 @@ const { Content } = await post.render();
   .markdown-content :global(h2) { color: #d83135; font-size: 2rem; margin: 3rem 0 1rem; text-transform: uppercase; }
   .markdown-content :global(strong) { color: white; }
   .markdown-content :global(hr) { border: 0; height: 1px; background: #222; margin: 3rem 0; }
-  .post-footer { margin-top: 4rem; border-top: 1px solid #222; padding-top: 2rem; }
-  .back-btn { color: #d83135; text-decoration: none; font-weight: 900; font-size: 0.8rem; letter-spacing: 2px; }
+  
+  /* FOOTER DISTRIBUIDO A LOS LADOS */
+  .post-footer { 
+    margin-top: 4rem; 
+    border-top: 1px solid #222; 
+    padding-top: 2rem; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* REUTILIZAMOS LA CLASE ORIGINAL PARA AMBOS BOTONES */
+  .back-btn { 
+    color: #d83135; 
+    text-decoration: none; 
+    font-weight: 900; 
+    font-size: 0.8rem; 
+    letter-spacing: 2px; 
+    text-transform: uppercase;
+    transition: opacity 0.2s ease; 
+  }
+  .back-btn:hover { opacity: 0.7; }
+
+  @media (max-width: 480px) {
+    .post-footer {
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+    h1 { font-size: 2.5rem; }
+  }
 </style>
