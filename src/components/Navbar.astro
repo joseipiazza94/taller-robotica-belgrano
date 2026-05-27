@@ -44,6 +44,7 @@
   .header-content { 
     width: 100%; display: flex; justify-content: center; align-items: center;
     padding: 0 5%; 
+    box-sizing: border-box;
   }
 
   .hero-header.ready .header-content { 
@@ -51,9 +52,9 @@
   }
 
   .brand-link { text-decoration: none; color: inherit; display: block; transition: all 0.5s ease; }
-  .brand-wrapper { display: inline-flex; flex-direction: column; }
+  .brand-wrapper { display: inline-flex; flex-direction: column; align-items: center; } /* Forzamos centrado interno */
   
-  .title-logo-row { display: flex; align-items: center; gap: 2rem; }
+  .title-logo-row { display: flex; align-items: center; gap: 2rem; justify-content: center; }
   
   .hero-header.ready .title-logo-row { 
     transition: gap 0.5s ease; 
@@ -62,8 +63,11 @@
   .main-title { 
     font-size: clamp(3rem, 10vw, 8rem); line-height: 0.85; margin: 0;
     font-weight: 900; text-transform: uppercase;
-    background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    color: #ffffff; /* FIX MODO NOCHE: Color sólido de respaldo absoluto antes del clip */
+    background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%) !important;
+    -webkit-background-clip: text !important; 
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
   }
 
   .side-logo { height: clamp(4.5rem, 15vw, 12rem); width: auto; object-fit: contain; }
@@ -119,9 +123,10 @@
 
   /* --- ESTADO SCROLLED (PC) --- */
   .hero-header.scrolled { background-color: rgba(10, 10, 10, 0.95); backdrop-filter: blur(15px); height: 80px; }
-  .hero-header.scrolled .header-content { justify-content: flex-start; }
-  .hero-header.scrolled .title-logo-row { gap: 1.2rem; }
-  .hero-header.scrolled .main-title { font-size: 1.3rem; -webkit-text-fill-color: white; }
+  .hero-header.scrolled .header-content { justify-content: flex-start; align-items: center; flex-direction: row; }
+  .hero-header.scrolled .brand-wrapper { align-items: flex-start; }
+  .hero-header.scrolled .title-logo-row { gap: 1.2rem; justify-content: flex-start; }
+  .hero-header.scrolled .main-title { font-size: 1.3rem; -webkit-text-fill-color: white !important; }
   .hero-header.scrolled .side-logo { height: 38px; }
   .hero-header.scrolled .nav-subtitle-inline { display: block; }
   .hero-header.scrolled .subtitle-container { display: none; }
@@ -129,20 +134,32 @@
 
   /* --- RESPONSIVE: NUEVA DISTRIBUCIÓN MÓVIL --- */
   @media (max-width: 1024px) {
-    /* Mantenemos el logo gigante centrado al inicio (sin scrolled) */
-    .header-content { flex-direction: column; }
+    /* CORRECCIÓN: Forzamos el centrado perfecto del logo gigante al inicio en celulares */
+    .header-content { 
+      flex-direction: column; 
+      align-items: center !important; 
+      justify-content: center !important;
+      width: 100%;
+    }
+    
+    .brand-link {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
     
     /* Cuando se activa SCROLLED en móvil */
     .hero-header.scrolled {
-      height: 105px; /* Un poco más alto para las dos filas */
+      height: 105px; 
     }
 
     .hero-header.scrolled .header-content {
       padding: 10px 0;
       gap: 12px;
+      align-items: center !important;
     }
 
-    /* FILA 1: Logo y Título */
+    /* FILA 1: Logo y Título en Scrolled */
     .hero-header.scrolled .title-logo-row {
       gap: 0.8rem;
       justify-content: center;
@@ -150,7 +167,8 @@
     }
     
     .hero-header.scrolled .main-title {
-      font-size: 1.1rem; /* Más compacto para que entre todo */
+      font-size: 1.1rem; 
+      text-align: center;
     }
 
     .hero-header.scrolled .side-logo {
@@ -158,12 +176,12 @@
     }
 
     .hero-header.scrolled .nav-subtitle-inline {
-      display: none; /* Quitamos el subtítulo inline para ganar espacio horizontal */
+      display: none; 
     }
 
-    /* FILA 2: Menú de Navegación */
+    /* FILA 2: Menú de Navegación en Scrolled */
     .hero-header.scrolled .nav-menu {
-      position: static; /* Vuelve al flujo normal debajo del logo */
+      position: static; 
       display: flex;
       opacity: 1;
       visibility: visible;
@@ -172,16 +190,15 @@
       justify-content: center;
       width: 100%;
       padding-top: 5px;
-      border-top: 1px solid rgba(255,255,255,0.05); /* Separador sutil */
+      border-top: 1px solid rgba(255,255,255,0.05); 
     }
 
     .hero-header.scrolled .nav-link {
-      font-size: 0.65rem; /* Letra pequeña pero legible */
+      font-size: 0.65rem; 
       letter-spacing: 1px;
       padding: 4px 0;
     }
 
-    /* Ajuste para que el subrayado no choque */
     .nav-link::after { height: 1px; }
   }
 
@@ -244,5 +261,5 @@
   };
 
   initNavbarSmooth();
-  document.addEventListener('astro:after-swap', initNavbarSmooth);
+  document.addEventListener('astro:page-load', initNavbarSmooth); // Cambiado a page-load para soportar transiciones nativas
 </script>

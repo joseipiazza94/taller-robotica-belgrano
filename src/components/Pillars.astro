@@ -107,12 +107,11 @@ const pilares = [
     ],
     cierre: 'Entendemos que el aprendizaje real ocurre en la práctica y en la colaboración, por eso buscamos que el taller sea el lugar ideal para que los chicos aprendan mientras disfrutan.',
     imagen: '/images/como-lo-hacemos.jpg'
-}
+  }
 ];
 ---
 
 <section class="pilares-section" id="pilaresSection">
-  {/* --- MARCA DE AGUA VERTICAL 100% VISIBLE --- */}
   <div class="bg-text-pilares">PILARES</div>
 
   <div class="pilares-container">
@@ -128,7 +127,8 @@ const pilares = [
           <div class="pilar-opened">
             
             <div class="opened-banner" style={`--bg-image: url(${pilar.imagen})`}>
-               <button class="btn-volver" aria-label="Volver">← VOLVER</button>
+               {/* BOTÓN VOLVER ORIGINAL DE PC */}
+               <button class="btn-volver btn-top" aria-label="Volver">← VOLVER</button>
                <h3>{pilar.titulo}</h3>
             </div>
 
@@ -150,6 +150,8 @@ const pilares = [
               
               <div class="action-footer">
                 <a href={`/pilares/${pilar.id}`} class="btn-more">CONOCER MÁS SOBRE ESTE PILAR →</a>
+                {/* BOTÓN INFERIOR CORREGIDO CON LA NUEVA CLASE ESTÉTICA */}
+                <button class="btn-volver-mobile-solid" aria-label="Volver al panel">← VOLVER</button>
               </div>
             </div>
             
@@ -171,17 +173,17 @@ const pilares = [
     position: relative; 
     overflow: hidden; 
     display: flex; 
-    justify-content: center; /* Obliga a la grilla a estar siempre en el medio */
+    justify-content: center; 
     align-items: center;
   }
 
-  /* --- TEXTO DE FONDO (MARCA DE AGUA LADO IZQUIERDO) --- */
+  /* --- TEXTO DE FONDO --- */
   .bg-text-pilares {
     position: absolute;
-    left: 1.5rem; /* Margen seguro para que no se corte la letra */
+    left: 1.5rem; 
     top: 50%;
-    transform: translateY(-50%) rotate(180deg); /* Rotado para leer de abajo a arriba */
-    writing-mode: vertical-rl; /* El método más seguro para texto vertical */
+    transform: translateY(-50%) rotate(180deg); 
+    writing-mode: vertical-rl; 
     font-size: clamp(4rem, 8vw, 10rem);
     font-weight: 900;
     color: rgba(255, 255, 255, 0.03); 
@@ -196,7 +198,7 @@ const pilares = [
     box-sizing: border-box;
     width: 100%; 
     max-width: 1200px; 
-    padding: 0 2rem; /* Protege los costados en pantallas chicas */
+    padding: 0 2rem; 
     position: relative;
     z-index: 2; 
   }
@@ -228,7 +230,7 @@ const pilares = [
     border: 1px solid #d83135; 
   }
 
-  /* --- 5. VISTA CERRADA (CENTRADOS EXACTOS E INMUNES) --- */
+  /* --- 5. VISTA CERRADA --- */
   .pilar-closed { 
     box-sizing: border-box;
     width: 100%;
@@ -236,7 +238,7 @@ const pilares = [
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    justify-content: center; /* Centrado vertical puro */
+    justify-content: center; 
     padding: 2rem; 
     cursor: pointer;
     background-color: #8b1d20; 
@@ -250,27 +252,25 @@ const pilares = [
   .pilar-card:hover .pilar-closed { background-color: #d83135; }
   .pilar-card.is-active .pilar-closed { display: none; }
   
-  /* Reset agresivo en h2 para matar estilos globales */
   .pilar-closed h2 { 
     width: 100%;
     text-align: center;
     font-size: 2.2rem; 
     font-weight: 900; 
     text-transform: uppercase; 
-    margin: 0 0 1rem 0 !important; /* Separación forzada e inviolable hacia abajo */
+    margin: 0 0 1rem 0 !important; 
     padding: 0 !important;
-    line-height: 1; /* Corta el "aire" extra invisible de la tipografía */
+    line-height: 1; 
     text-shadow: 0 2px 10px rgba(0,0,0,0.5); 
   }
   
-  /* Reset agresivo en el párrafo */
   .summary-text { 
     width: 100%;
     text-align: center;
     opacity: 0.9; 
     max-width: 320px; 
     font-size: 1.05rem; 
-    margin: 0 !important; /* Mata cualquier margin-bottom global que lo empuje hacia arriba */
+    margin: 0 !important; 
     padding: 0 !important;
     line-height: 1.5; 
   }
@@ -290,7 +290,7 @@ const pilares = [
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* --- BANNER Y BOTÓN VOLVER --- */
+  /* --- BANNER Y BOTÓN VOLVER ORIGINAL DE PC --- */
   .opened-banner { 
     width: 100%; 
     height: 250px; 
@@ -307,7 +307,7 @@ const pilares = [
     text-shadow: 0 4px 15px rgba(0,0,0,0.5);
   }
 
-  .btn-volver {
+  .btn-top {
     position: absolute;
     top: 1.5rem; left: 1.5rem;
     background: rgba(0,0,0,0.6);
@@ -320,7 +320,12 @@ const pilares = [
     cursor: pointer; transition: 0.3s;
     text-transform: uppercase;
   }
-  .btn-volver:hover { background: #d83135; border-color: #d83135; }
+  .btn-top:hover { background: #d83135; border-color: #d83135; }
+
+  /* El botón móvil inicia totalmente apagado en escritorio */
+  .btn-volver-mobile-solid {
+    display: none;
+  }
 
   /* --- CONTENIDO DE TEXTO --- */
   .content-wrapper { 
@@ -328,6 +333,7 @@ const pilares = [
     max-width: 900px; 
     margin: 0 auto;
     padding: 4rem 5%; 
+    box-sizing: border-box; 
   }
   
   .pilar-separator { width: 60px; height: 4px; background: #d83135; margin-bottom: 2rem; border-radius: 2px; }
@@ -345,8 +351,9 @@ const pilares = [
 
   .closing-text { font-size: 1.1rem; line-height: 1.6; color: #aaa; font-style: italic; margin-bottom: 3rem; }
 
-  /* PIE CON ACCIONES */
+  /* PIE CON ACCIONES (ESCRITORIO) */
   .action-footer { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; }
+  
   .btn-more { 
     display: inline-block; padding: 1rem 2rem; background: #d83135; color: white; 
     text-decoration: none; font-weight: 900; text-transform: uppercase; font-size: 0.85rem;
@@ -354,17 +361,84 @@ const pilares = [
   }
   .btn-more:hover { background: white; color: #d83135; }
 
-  /* --- RESPONSIVE MÓVIL --- */
+
+  /* --- 7. MODIFICACIONES EXCLUSIVAS PARA MÓVIL --- */
   @media (max-width: 1024px) {
     .pilares-section { padding: 4rem 0; }
     .bg-text-pilares { display: none; } 
-    .pilares-container { padding: 0 1rem; }
-    .pilares-grid { display: flex; flex-direction: column; }
+    
+    .pilares-container { padding: 0 1.5rem; width: 100%; max-width: 100%; }
+    .pilares-grid { display: flex; flex-direction: column; width: 100%; }
+    .pilar-card { width: 100%; max-width: 100%; }
+    
     .pilar-closed { min-height: 280px; }
     .opened-banner { height: 180px; }
-    .btn-volver { top: 1rem; left: 1rem; }
-    .content-wrapper { padding: 3rem 5%; }
-    .highlights-section { padding: 1.5rem; }
+    
+    .content-wrapper { 
+      padding: 3rem 1rem; 
+      width: 100%; 
+      max-width: 100%; 
+      overflow: hidden; 
+    }
+    
+    .intro-text, .closing-text, .highlights-list li {
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+
+    .highlights-section { padding: 1.5rem 1.2rem; }
+
+    .btn-top { 
+      display: none !important; /* Desactiva el superior en móviles */
+    }
+
+    /* CONTENEDOR FLEX DE DOS COLUMNAS ALINEADAS PARA MÓVIL */
+    .action-footer {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      align-items: center;
+      width: 100%;
+    }
+
+    .btn-more {
+      flex: 1;
+      text-align: center;
+      padding: 1rem 0; /* Control estricto de alto uniforme */
+      font-size: 0.8rem;
+    }
+
+    /* NUEVO BOTÓN SÓLIDO MÓVIL (IDÉNTICO A CONOCER MÁS PERO EN COLOR OSCURO/GRIS ANTRACITA) */
+    .btn-volver-mobile-solid {
+      display: block !important; /* Enciende la variante móvil */
+      flex: 1;
+      padding: 1rem 0; /* Mismo alto exacto */
+      background: #252525; /* Sólido, sin bordes raros */
+      color: white;
+      border: none !important; /* Remueve los bordes */
+      border-radius: 4px;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.3s ease;
+    }
+
+    .btn-volver-mobile-solid:hover {
+      background: #333333;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Si el espacio es crítico en celulares muy chicos, se apilan manteniendo el formato uniforme */
+    .action-footer {
+      flex-direction: column;
+    }
+    .btn-volver-mobile-solid, .btn-more {
+      width: 100%;
+    }
   }
 </style>
 
@@ -378,7 +452,8 @@ const pilares = [
       card.addEventListener('click', (e) => {
         const target = e.target as HTMLElement;
 
-        if (target.closest('.btn-volver')) {
+        // Se modificaron los selectores lógicos para capturar de manera limpia las dos variantes físicas (.btn-top y .btn-volver-mobile-solid)
+        if (target.classList.contains('btn-top') || target.classList.contains('btn-volver-mobile-solid')) {
           grid?.classList.remove('has-active-card');
           cards.forEach(c => c.classList.remove('is-active'));
           

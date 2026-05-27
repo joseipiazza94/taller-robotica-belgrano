@@ -4,7 +4,7 @@ const levels = [
     id: 'nivel-0', 
     nombre: 'Nivel 0 - 3er Grado', 
     slug: 'nivel-0',
-    descripcion: 'Un primer contacto lúdico para descubrir que el mundo digital no es magia, sino lógica, circuitos y creatividad.',
+    descripcion: 'Una propuesta lúdica para aprender circuitos básicos y lógica de programación de forma divertida.',
     image: '/images/niveles/nivel0.jpg', 
     detalleExtra: `
       <strong>El despertar de la curiosidad: aprender jugando.</strong><br /><br />
@@ -25,7 +25,7 @@ const levels = [
     id: 'nivel-1', 
     nombre: 'Nivel 1 - 4to Grado', 
     slug: 'nivel-1',
-    descripcion: 'Introducción dinámica a la robótica aplicada, donde los alumnos pasan de entender la lógica básica a controlar sensores y sistemas integrados.',
+    descripcion: 'Comprensión de la lógica básica y control de sistemas completos mediante el uso de sensores, luces y servomotores.',
     image: '/images/niveles/nivel1.jpg', 
     detalleExtra: `
       <strong>De la lógica simple a los sistemas integrados.</strong><br /><br />
@@ -46,7 +46,7 @@ const levels = [
     id: 'nivel-2', 
     nombre: 'Nivel 2 - 5to Grado', 
     slug: 'nivel-2',
-    descripcion: 'Sistemas autónomos, control de datos e introducción a la competencia internacional WRO.',
+    descripcion: 'Creación de sistemas autónomos con una mayor variedad de sensores y proyectos de construcción más complejos.',
     image: '/images/niveles/nivel2.jpg', 
     detalleExtra: `
       <strong>De inventores a competidores: el salto a la ingeniería aplicada.</strong><br /><br />
@@ -67,7 +67,7 @@ const levels = [
     id: 'nivel-3', 
     nombre: 'Nivel 3 - 6to Grado', 
     slug: 'nivel-3',
-    descripcion: 'Especialización técnica: elevamos la complejidad de los sistemas mecánicos, integramos control inalámbrico y perfeccionamos la ingeniería para la competencia.',
+    descripcion: 'Desafíos de mayor dificultad en sistemas mecánicos y electrónicos, ¡mientras nos perfeccionamos para la WRO!.',
     image: '/images/niveles/nivel3.jpg', 
     detalleExtra: `
       <strong>Un paso adelante: proyectos más grandes y más complejos.</strong><br /><br />
@@ -90,7 +90,7 @@ const levels = [
     id: 'nivel-4', 
     nombre: 'Nivel 4 - Club de Robótica', 
     slug: 'nivel-4',
-    descripcion: 'El nivel de autonomía total: un espacio para expandir conocimientos, desarrollar proyectos de innovación y competir en la WRO.',
+    descripcion: 'Un espacio para crear y aprender sin límites, con más herramientas y más libertad en cada proyecto.',
     image: '/images/niveles/nivel4.jpg', 
     detalleExtra: `
       <strong>Pasión por crear: el lugar donde no hay techo.</strong><br /><br />
@@ -132,15 +132,20 @@ const levels = [
           <div class="expanded-info">
             <div class="expanded-layout">
               <div class="expanded-text">
-                <button class="btn-close-level">← VOLVER</button>
+                {/* BOTÓN VOLVER ORIGINAL DE ESCRITORIO (FONDO SÓLIDO ASIGNADO) */}
+                <button class="btn-close-level btn-top-level">← VOLVER</button>
                 
                 <div class="text-content-limit">
                   <h4>Objetivos del Nivel</h4>
                   <div class="detail-content" set:html={level.detalleExtra}></div>
 
-                  <a href={`/niveles/${level.slug}`} class="btn-discover">
-                    DESCUBRIR EXPERIENCIA COMPLETA →
-                  </a>
+                  <div class="level-actions-footer">
+                    <a href={`/niveles/${level.slug}`} class="btn-discover">
+                      DESCUBRIR EXPERIENCIA COMPLETA →
+                    </a>
+                    {/* BOTÓN INFERIOR SÓLIDO PARA MÓVILES */}
+                    <button class="btn-volver-mobile-solid btn-close-level" aria-label="Volver al panel">← VOLVER</button>
+                  </div>
                 </div>
               </div>
               
@@ -158,6 +163,7 @@ const levels = [
 <style>
   /* --- LAYOUT BASE --- */
   .niveles-wrapper {
+    box-sizing: border-box;
     position: relative;
     background: #121212;
     padding: 8rem 0; 
@@ -167,6 +173,7 @@ const levels = [
   }
 
   .niveles-container {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -176,6 +183,7 @@ const levels = [
 
   /* --- TARJETAS DE NIVELES --- */
   .level-bar {
+    box-sizing: border-box;
     background: #8b1d20;
     width: 75vw;
     min-height: 180px;
@@ -226,11 +234,13 @@ const levels = [
     display: grid;
     width: 100%;
     height: 100%;
+    box-sizing: border-box;
   }
 
   .main-info, .expanded-info {
     grid-area: 1 / 1; 
     width: 100%;
+    box-sizing: border-box;
   }
 
   .main-info {
@@ -264,20 +274,20 @@ const levels = [
 
   /* --- CONTROL RÍGIDO DE TAMAÑO PARA UNIFORMIDAD --- */
   .horizontal-image { 
-    width: 320px;       /* Ancho idéntico fijado para todos los niveles */
-    min-width: 320px;   /* Evita que flexbox colapse la caja */
-    height: 180px;      /* Alto idéntico fijado para todos los niveles */
+    width: 320px;       
+    min-width: 320px;   
+    height: 180px;      
     background: #000; 
     position: relative; 
     pointer-events: none; 
-    overflow: hidden;   /* Oculta cualquier desborde */
+    overflow: hidden;   
   }
 
   .level-photo {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* CORRECCIÓN CLAVE: Fuerza a la foto a llenar la caja sin deformarse */
-    object-position: center; /* Centra el encuadre del recorte */
+    object-fit: cover; 
+    object-position: center; 
     filter: grayscale(100%) brightness(0.3); 
     transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
@@ -305,6 +315,7 @@ const levels = [
     display: grid; 
     grid-template-columns: 1.2fr 0.8fr; 
     min-height: 500px; 
+    box-sizing: border-box;
   }
 
   .expanded-text { 
@@ -312,9 +323,10 @@ const levels = [
     display: flex; 
     flex-direction: column;
     justify-content: flex-start; 
+    box-sizing: border-box;
   }
 
-  .text-content-limit { max-width: 580px; }
+  .text-content-limit { max-width: 580px; width: 100%; box-sizing: border-box; }
 
   .detail-content {
     font-size: 1.1rem;
@@ -334,7 +346,7 @@ const levels = [
     display: inline-block;
     background: #d83135;
     color: #ffffff;
-    padding: 0.9rem 2rem;
+    padding: 1rem 2rem;
     text-decoration: none;
     font-weight: 700;
     font-size: 0.8rem;
@@ -342,13 +354,16 @@ const levels = [
     letter-spacing: 1.5px;
     transition: all 0.3s ease;
     width: fit-content;
+    box-sizing: border-box;
+    border-radius: 4px;
   }
 
   .btn-discover:hover { background: #b11b1f; transform: translateX(10px); }
 
-  .btn-close-level {
+  /* CORRECCIÓN: Botón volver escritorio con fondo sólido para evitar mezclas con el texto */
+  .btn-top-level {
     align-self: flex-start;
-    background: transparent;
+    background: #222222 !important;
     color: #888;
     border: 1px solid #444;
     padding: 0.5rem 1rem;
@@ -358,9 +373,19 @@ const levels = [
     transition: all 0.3s ease;
     text-transform: uppercase;
     font-size: 0.75rem;
+    display: block;
+    border-radius: 4px;
   }
 
-  .btn-close-level:hover { color: white; border-color: #d83135; }
+  .btn-top-level:hover { color: white; border-color: #d83135; background: #333333 !important; }
+
+  .level-actions-footer {
+    width: 100%;
+  }
+
+  .btn-volver-mobile-solid {
+    display: none;
+  }
 
   .expanded-text h4 { color: #d83135; font-size: 1.8rem; text-transform: uppercase; margin-bottom: 1.2rem; font-weight: 900; }
 
@@ -384,28 +409,83 @@ const levels = [
   .vertical-title { position: absolute; right: 30px; top: 50%; transform: translateY(-50%); z-index: 0; }
   .vertical-title span { writing-mode: vertical-rl; font-size: 8rem; font-weight: 900; color: rgba(255,255,255,0.02); text-transform: uppercase; }
 
-  /* --- MEDIA QUERIES --- */
+  /* --- MEDIA QUERIES (RESOLUCIÓN DEL BUG DEL MARGEN EN MÓVIL) --- */
   @media (max-width: 1024px) {
     .horizontal-image, .vertical-image { display: none !important; }
-    .level-bar { width: 100%; min-height: 200px; max-height: 200px; }
-    .level-bar.is-expanded { width: 100%; margin-left: 0; min-height: 0 !important; max-height: 1500px; }
-    .main-info { height: 200px; padding: 0 2rem; flex-direction: column; justify-content: center; align-items: flex-start; }
+    
+    /* FIX EXCLUSIVO REBOTE DE BORDE EN MÓVIL: Forzado riguroso a pantalla completa sin márgenes dinámicos residuales */
+    .level-bar { width: 100% !important; max-width: 100% !important; min-height: 200px; max-height: 200px; margin-left: 0 !important; margin-right: 0 !important; transform: none !important; }
+    .level-bar.is-expanded { width: 100% !important; max-width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; min-height: 0 !important; max-height: 1500px; transform: none !important; }
+    
+    .main-info { height: 200px; padding: 0 2rem; flex-direction: column; justify-content: center; align-items: flex-start; width: 100%; box-sizing: border-box; }
     .text-area h3 { font-size: 1.8rem; white-space: normal; }
     .text-area p { font-size: 1rem; margin: 0.5rem 0 1rem; }
-    .expanded-layout { display: block; min-height: auto; }
-    .expanded-text { padding: 3rem 2rem 2rem 2rem !important; justify-content: flex-start !important; }
-    .btn-close-level { margin-top: 0; margin-bottom: 1.5rem; } 
+    .expanded-layout { display: block; min-height: auto; width: 100%; }
+    
+    .expanded-text { padding: 3rem 1.5rem !important; justify-content: flex-start !important; width: 100% !important; box-sizing: border-box !important; }
+    .text-content-limit { max-width: 100%; width: 100%; }
+    
+    .btn-top-level { display: none !important; } 
     .expanded-text h4 { font-size: 1.5rem; margin-top: 0; margin-bottom: 1rem; } 
     .vertical-title { display: none; }
+
+    /* CONTENEDOR FLEX EN PARALELO PARA EL PIE MÓVIL */
+    .level-actions-footer {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      align-items: center;
+      width: 100%;
+      margin-top: 2.5rem;
+      box-sizing: border-box;
+    }
+
+    .btn-discover {
+      flex: 1;
+      text-align: center;
+      padding: 1rem 0; 
+      font-size: 0.8rem;
+      width: auto;
+    }
+
+    /* FORMATO IDÉNTICO AL DE LOS PILARES MÓVILES */
+    .btn-volver-mobile-solid {
+      display: block !important; 
+      flex: 1;
+      padding: 1rem 0; 
+      background: #252525; 
+      color: white;
+      border: none !important; 
+      border-radius: 4px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.3s ease;
+      box-sizing: border-box;
+    }
+
+    .btn-volver-mobile-solid:hover {
+      background: #333333;
+    }
   }
 
   @media (max-width: 768px) {
     .niveles-wrapper { padding: 4rem 0; }
     .level-bar { min-height: 150px; max-height: 150px; }
     .main-info { height: 150px; padding: 0 1.5rem; }
-    .expanded-text { padding: 2.5rem 1.5rem !important; } 
     .text-area h3 { font-size: 1.6rem; }
-    .btn-discover { width: 100%; box-sizing: border-box; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    .level-actions-footer {
+      flex-direction: column;
+    }
+    .btn-volver-mobile-solid, .btn-discover {
+      width: 100% !important;
+    }
   }
 </style>
 
@@ -418,7 +498,6 @@ const levels = [
       bar.addEventListener('click', (e) => {
         const target = e.target as HTMLElement;
         
-        // Manejo del botón de cierre
         if (target.classList.contains('btn-close-level')) {
           bar.classList.remove('is-expanded');
           container?.classList.remove('has-expanded');
@@ -426,7 +505,6 @@ const levels = [
           return;
         }
 
-        // Al hacer click, expandir el nivel e ir con scroll suave
         if (!bar.classList.contains('is-expanded')) {
           bars.forEach(b => b.classList.remove('is-expanded'));
           bar.classList.add('is-expanded');
