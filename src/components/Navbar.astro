@@ -59,10 +59,10 @@
     transition: gap 0.5s ease; 
   }
 
-  /* ESTILO BASE PC */
   .main-title { 
     font-size: clamp(3rem, 10vw, 8rem); line-height: 0.85; margin: 0;
     font-weight: 900; text-transform: uppercase;
+    color: #ffffff !important; 
     background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
     -webkit-background-clip: text; 
     -webkit-text-fill-color: transparent;
@@ -133,17 +133,28 @@
   @media (max-width: 1024px) {
     .header-content { flex-direction: column; }
 
-    /* FIX MODO OSCURO INMUNE: Anulamos el background-clip en la vista inicial para pintar el texto blanco real */
+    /* FIX MODO OSCURO INMUNE */
     .hero-header:not(.scrolled) .main-title {
       color: #ffffff !important;
       background: none !important;
       -webkit-background-clip: initial !important;
       background-clip: initial !important;
       -webkit-text-fill-color: initial !important;
-      text-align: left !important; /* Mantiene la alineación original del texto */
+      white-space: nowrap !important; /* BLINDAJE 1: Evita por completo que las palabras salten de renglón de manera extraña */
+    }
+
+    /* BLINDAJE 2: Asegura que el contenedor de la marca mantenga el ancho completo del Viewport al transformarse */
+    .hero-header:not(.scrolled) .brand-wrapper {
+      width: 90vw !important;
+      max-width: 90vw !important;
+    }
+
+    .hero-header:not(.scrolled) .title-logo-row {
+      width: 100% !important;
+      justify-content: space-between !important; /* Fuerza al escudo a quedarse pegado a la derecha y al texto a la izquierda */
     }
     
-    /* Cuando se activa SCROLLED en móvil (Mantiene tu distribución exacta intacta) */
+    /* Cuando se activa SCROLLED en móvil (Tu distribución original intacta) */
     .hero-header.scrolled {
       height: 105px; 
     }
@@ -165,6 +176,7 @@
       color: #ffffff !important;
       background: none !important;
       -webkit-text-fill-color: white !important;
+      white-space: normal !important; /* Devuelve el comportamiento responsivo en el navbar compacto */
     }
 
     .hero-header.scrolled .side-logo {
