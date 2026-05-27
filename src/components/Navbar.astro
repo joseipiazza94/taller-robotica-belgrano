@@ -59,26 +59,13 @@
     transition: gap 0.5s ease; 
   }
 
-  /* SOLUCIÓN INTEGRAL AL MODO OSCURO DE CELULARES: */
+  /* ESTILO BASE PC */
   .main-title { 
     font-size: clamp(3rem, 10vw, 8rem); line-height: 0.85; margin: 0;
     font-weight: 900; text-transform: uppercase;
-    color: #ffffff !important; /* Fuerza el color blanco sólido por defecto */
-    background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%) !important;
-    -webkit-background-clip: text !important; 
-    background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-  }
-
-  /* Forzado estricto e inmune a las mutaciones de inversión de brillo del sistema operativo móvil */
-  @media (prefers-color-scheme: dark) {
-    .main-title {
-      color: #ffffff !important;
-      background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%) !important;
-      -webkit-background-clip: text !important;
-      background-clip: text !important;
-      -webkit-text-fill-color: transparent !important;
-    }
+    background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%);
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
   }
 
   .side-logo { height: clamp(4.5rem, 15vw, 12rem); width: auto; object-fit: contain; }
@@ -136,33 +123,27 @@
   .hero-header.scrolled { background-color: rgba(10, 10, 10, 0.95); backdrop-filter: blur(15px); height: 80px; }
   .hero-header.scrolled .header-content { justify-content: flex-start; }
   .hero-header.scrolled .title-logo-row { gap: 1.2rem; }
-  .hero-header.scrolled .main-title { font-size: 1.3rem; -webkit-text-fill-color: white !important; }
+  .hero-header.scrolled .main-title { font-size: 1.3rem; -webkit-text-fill-color: white !important; background: none !important; }
   .hero-header.scrolled .side-logo { height: 38px; }
   .hero-header.scrolled .nav-subtitle-inline { display: block; }
   .hero-header.scrolled .subtitle-container { display: none; }
   .hero-header.scrolled .nav-menu { opacity: 1; visibility: visible; pointer-events: auto; }
 
-  /* --- RESPONSIVE: MÓVIL (CORRECCIÓN EXCLUSIVA DE CENTRADO INICIAL) --- */
+  /* --- RESPONSIVE: MÓVIL --- */
   @media (max-width: 1024px) {
     .header-content { flex-direction: column; }
 
-    /* FIX CENTRAL: Forzamos que todo el bloque de marca y texto se oriente de forma simétrica */
-    .hero-header:not(.scrolled) .brand-wrapper {
-      align-items: center !important;
-      text-align: center !important;
-      width: 100%;
-    }
-
-    .hero-header:not(.scrolled) .title-logo-row {
-      justify-content: center !important;
-      width: 100%;
-    }
-
+    /* FIX MODO OSCURO INMUNE: Anulamos el background-clip en la vista inicial para pintar el texto blanco real */
     .hero-header:not(.scrolled) .main-title {
-      text-align: center !important;
+      color: #ffffff !important;
+      background: none !important;
+      -webkit-background-clip: initial !important;
+      background-clip: initial !important;
+      -webkit-text-fill-color: initial !important;
+      text-align: left !important; /* Mantiene la alineación original del texto */
     }
     
-    /* Cuando se activa SCROLLED en móvil (Tu distribución original sin tocar nada más) */
+    /* Cuando se activa SCROLLED en móvil (Mantiene tu distribución exacta intacta) */
     .hero-header.scrolled {
       height: 105px; 
     }
@@ -181,8 +162,9 @@
     
     .hero-header.scrolled .main-title {
       font-size: 1.1rem; 
+      color: #ffffff !important;
+      background: none !important;
       -webkit-text-fill-color: white !important;
-      text-align: left !important; /* Respeta tu retorno a la izquierda en scrolled móvil */
     }
 
     .hero-header.scrolled .side-logo {
