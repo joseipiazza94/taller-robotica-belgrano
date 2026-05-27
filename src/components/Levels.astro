@@ -132,7 +132,7 @@ const levels = [
           <div class="expanded-info">
             <div class="expanded-layout">
               <div class="expanded-text">
-                {/* BOTÓN VOLVER ORIGINAL DE ESCRITORIO (FONDO SÓLIDO ASIGNADO) */}
+                {/* BOTÓN VOLVER ORIGINAL DE ESCRITORIO */}
                 <button class="btn-close-level btn-top-level">← VOLVER</button>
                 
                 <div class="text-content-limit">
@@ -143,8 +143,8 @@ const levels = [
                     <a href={`/niveles/${level.slug}`} class="btn-discover">
                       DESCUBRIR EXPERIENCIA COMPLETA →
                     </a>
-                    {/* BOTÓN INFERIOR SÓLIDO PARA MÓVILES */}
-                    <button class="btn-volver-mobile-solid btn-close-level" aria-label="Volver al panel">← VOLVER</button>
+                    {/* BOTÓN INFERIOR SÓLIDO PARA MÓVILES (CON LA CLASE ASIGNADA DE FORMA CORRECTA) */}
+                    <button class="btn-close-level btn-volver-mobile-solid" aria-label="Volver al panel">← VOLVER</button>
                   </div>
                 </div>
               </div>
@@ -164,7 +164,7 @@ const levels = [
   /* --- LAYOUT BASE --- */
   .niveles-wrapper {
     box-sizing: border-box;
-    position: relative;
+    position: relative; /* Inviolable para coordenadas de scroll */
     background: #121212;
     padding: 8rem 0; 
     display: flex;
@@ -360,7 +360,7 @@ const levels = [
 
   .btn-discover:hover { background: #b11b1f; transform: translateX(10px); }
 
-  /* CORRECCIÓN: Botón volver escritorio con fondo sólido para evitar mezclas con el texto */
+  /* Botón volver original de escritorio */
   .btn-top-level {
     align-self: flex-start;
     background: #222222 !important;
@@ -409,11 +409,11 @@ const levels = [
   .vertical-title { position: absolute; right: 30px; top: 50%; transform: translateY(-50%); z-index: 0; }
   .vertical-title span { writing-mode: vertical-rl; font-size: 8rem; font-weight: 900; color: rgba(255,255,255,0.02); text-transform: uppercase; }
 
-  /* --- MEDIA QUERIES (RESOLUCIÓN DEL BUG DEL MARGEN EN MÓVIL) --- */
+  /* --- MEDIA QUERIES --- */
   @media (max-width: 1024px) {
     .horizontal-image, .vertical-image { display: none !important; }
     
-    /* FIX EXCLUSIVO REBOTE DE BORDE EN MÓVIL: Forzado riguroso a pantalla completa sin márgenes dinámicos residuales */
+    /* PRESERVADO: Conservamos tu blindaje contra rebotes de borde negro */
     .level-bar { width: 100% !important; max-width: 100% !important; min-height: 200px; max-height: 200px; margin-left: 0 !important; margin-right: 0 !important; transform: none !important; }
     .level-bar.is-expanded { width: 100% !important; max-width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; min-height: 0 !important; max-height: 1500px; transform: none !important; }
     
@@ -448,7 +448,7 @@ const levels = [
       width: auto;
     }
 
-    /* FORMATO IDÉNTICO AL DE LOS PILARES MÓVILES */
+    /* FORMATO REFINADO SÓLIDO */
     .btn-volver-mobile-solid {
       display: block !important; 
       flex: 1;
@@ -498,9 +498,17 @@ const levels = [
       bar.addEventListener('click', (e) => {
         const target = e.target as HTMLElement;
         
+        // CORRECCIÓN: El listener ahora captura el retorno y reposiciona el scroll exactamente en la cabecera del wrapper
         if (target.classList.contains('btn-close-level')) {
           bar.classList.remove('is-expanded');
           container?.classList.remove('has-expanded');
+          
+          const wrapper = document.getElementById('nivelesWrapper');
+          if (wrapper) {
+            const topOffset = wrapper.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({ top: topOffset - 20, behavior: 'smooth' });
+          }
+          
           e.stopPropagation();
           return;
         }
