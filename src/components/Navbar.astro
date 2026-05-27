@@ -44,7 +44,6 @@
   .header-content { 
     width: 100%; display: flex; justify-content: center; align-items: center;
     padding: 0 5%; 
-    box-sizing: border-box;
   }
 
   .hero-header.ready .header-content { 
@@ -52,9 +51,9 @@
   }
 
   .brand-link { text-decoration: none; color: inherit; display: block; transition: all 0.5s ease; }
-  .brand-wrapper { display: inline-flex; flex-direction: column; align-items: center; } /* Forzamos centrado interno */
+  .brand-wrapper { display: inline-flex; flex-direction: column; }
   
-  .title-logo-row { display: flex; align-items: center; gap: 2rem; justify-content: center; }
+  .title-logo-row { display: flex; align-items: center; gap: 2rem; }
   
   .hero-header.ready .title-logo-row { 
     transition: gap 0.5s ease; 
@@ -63,11 +62,19 @@
   .main-title { 
     font-size: clamp(3rem, 10vw, 8rem); line-height: 0.85; margin: 0;
     font-weight: 900; text-transform: uppercase;
-    color: #ffffff; /* FIX MODO NOCHE: Color sólido de respaldo absoluto antes del clip */
+    color: #ffffff !important; /* Respaldo para evitar texto negro en modo oscuro de celulares */
     background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%) !important;
     -webkit-background-clip: text !important; 
-    background-clip: text !important;
     -webkit-text-fill-color: transparent !important;
+  }
+
+  /* Forzado estricto ante el motor de renderizado nocturno de sistemas móviles */
+  @media (prefers-color-scheme: dark) {
+    .main-title {
+      background: linear-gradient(135deg, #ffffff 0%, #cccccc 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
   }
 
   .side-logo { height: clamp(4.5rem, 15vw, 12rem); width: auto; object-fit: contain; }
@@ -123,32 +130,30 @@
 
   /* --- ESTADO SCROLLED (PC) --- */
   .hero-header.scrolled { background-color: rgba(10, 10, 10, 0.95); backdrop-filter: blur(15px); height: 80px; }
-  .hero-header.scrolled .header-content { justify-content: flex-start; align-items: center; flex-direction: row; }
-  .hero-header.scrolled .brand-wrapper { align-items: flex-start; }
-  .hero-header.scrolled .title-logo-row { gap: 1.2rem; justify-content: flex-start; }
+  .hero-header.scrolled .header-content { justify-content: flex-start; }
+  .hero-header.scrolled .title-logo-row { gap: 1.2rem; }
   .hero-header.scrolled .main-title { font-size: 1.3rem; -webkit-text-fill-color: white !important; }
   .hero-header.scrolled .side-logo { height: 38px; }
   .hero-header.scrolled .nav-subtitle-inline { display: block; }
   .hero-header.scrolled .subtitle-container { display: none; }
   .hero-header.scrolled .nav-menu { opacity: 1; visibility: visible; pointer-events: auto; }
 
-  /* --- RESPONSIVE: NUEVA DISTRIBUCIÓN MÓVIL --- */
+  /* --- RESPONSIVE: DISTRIBUCIÓN MÓVIL (PRESERVADA) --- */
   @media (max-width: 1024px) {
-    /* CORRECCIÓN: Forzamos el centrado perfecto del logo gigante al inicio en celulares */
-    .header-content { 
-      flex-direction: column; 
-      align-items: center !important; 
+    /* Mantenemos tu flex-direction original */
+    .header-content { flex-direction: column; }
+    
+    /* MODIFICACIÓN EXCLUSIVA: Centrado horizontal exacto del logo grande ANTES del scroll */
+    .hero-header:not(.scrolled) .brand-wrapper {
+      align-items: center !important;
+      width: 100%;
+    }
+    .hero-header:not(.scrolled) .title-logo-row {
       justify-content: center !important;
       width: 100%;
     }
     
-    .brand-link {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-    }
-    
-    /* Cuando se activa SCROLLED en móvil */
+    /* Cuando se activa SCROLLED en móvil (Se mantiene 100% tu layout solicitado) */
     .hero-header.scrolled {
       height: 105px; 
     }
@@ -156,10 +161,9 @@
     .hero-header.scrolled .header-content {
       padding: 10px 0;
       gap: 12px;
-      align-items: center !important;
     }
 
-    /* FILA 1: Logo y Título en Scrolled */
+    /* FILA 1: Logo y Título */
     .hero-header.scrolled .title-logo-row {
       gap: 0.8rem;
       justify-content: center;
@@ -168,7 +172,7 @@
     
     .hero-header.scrolled .main-title {
       font-size: 1.1rem; 
-      text-align: center;
+      -webkit-text-fill-color: white !important;
     }
 
     .hero-header.scrolled .side-logo {
@@ -179,7 +183,7 @@
       display: none; 
     }
 
-    /* FILA 2: Menú de Navegación en Scrolled */
+    /* FILA 2: Menú de Navegación */
     .hero-header.scrolled .nav-menu {
       position: static; 
       display: flex;
@@ -261,5 +265,5 @@
   };
 
   initNavbarSmooth();
-  document.addEventListener('astro:page-load', initNavbarSmooth); // Cambiado a page-load para soportar transiciones nativas
+  document.addEventListener('astro:after-swap', initNavbarSmooth);
 </script>
