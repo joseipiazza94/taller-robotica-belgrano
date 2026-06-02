@@ -29,7 +29,7 @@ Trabajando en grillas de 8x8 y 16x16, aprendieron a ubicarse en el espacio a tra
 
 <figure class="article-figure">
   <img src="/images/bitacora/abril-nivel0.jpg" alt="Chicos de 3er grado mostrando sus trabajos en estilo Pixel Art" />
-  <figcaption>Trabajando muy concentrado en su Pixel.</figcaption>
+  <figcaption>Trabajando muy concentrado en su Pixel Art.</figcaption>
 </figure>
 
 ---
@@ -43,12 +43,12 @@ Aunque también sea su primera vez en robótica, al tener más herramientas y un
 <div class="figures-grid">
   <figure class="article-figure">
     <img src="/images/bitacora/abril-nivel1-0.jpg" alt="Diorama físico de Minecraft con luces programadas" />
-    <figcaption>Dioramas físicos de Minecraft donde la iluminación responde a las primeras líneas de código visual.</figcaption>
+    <figcaption>Conejito de Minecraft iluminado con dos LEDs, primer trabajo completo!.</figcaption>
   </figure>
 
   <figure class="article-figure">
     <img src="/images/bitacora/abril-nivel1-1.jpg" alt="Diorama físico de Minecraft con luces programadas" />
-    <figcaption>Dioramas físicos de Minecraft donde la iluminación responde a las primeras líneas de código visual.</figcaption>
+    <figcaption>Enderman muy tierno junto a un portal iluminado ¡Quedó buenísimo!.</figcaption>
   </figure>
 </div>
 
@@ -63,7 +63,7 @@ Aunque también sea su primera vez en robótica, al tener más herramientas y un
 <div class="figures-grid">
   <figure class="article-figure">
     <img src="/images/bitacora/abril-nivel2-0.jpg" alt="Alumnos manipulando el potenciómetro de su Faro robótico" />
-    <figcaption>Alumnos calibrando las variables analógicas de su Faro robótico mediante un potenciómetro.</figcaption>
+    <figcaption>Calibrando las variables analógicas del Faro con un potenciómetro.</figcaption>
   </figure>
 
 </div>
@@ -92,8 +92,8 @@ El cambio en este nivel fue total: incorporamos kits de autos programables contr
 El plan es claro: incorporar todas las herramientas posibles para que, a la hora de competir en la WRO, los chicos tengan más recursos que nunca y puedan brillar con sus proyectos.
 
 <figure class="article-figure">
-  <img src="/images/abril-nivel4.jpg" alt="Auto Bluetooth junto a la pantalla de código escrito" />
-  <figcaption>El salto al código escrito: controlando la potencia de los motores sin bloques de por medio.</figcaption>
+  <img src="/images/bitacora/abril-nivel4.jpg" alt="Auto Bluetooth junto a la pantalla de código escrito" />
+  <figcaption>Programando el auto en Arduino IDE ¡Chau a los bloques!.</figcaption>
 </figure>
 
 ---

@@ -6,7 +6,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
   title="Temporada 2026" 
   subtitle="Nuestros planes para la World Robot Olympiad"
   heroImage="/images/wro/wro2026-planes.jpg"
-  backUrl="/wro"
+  backUrl="/#wro" {/* CORREGIDO: Ahora el botón superior te regresa directo al Inicio */}
 >
   <p class="lead">
     <strong>Los Robots se encuentran con la Cultura.</strong> Este año, la categoría <em>Future Innovators</em> de la WRO presenta un desafío totalmente distinto al de las temporadas anteriores: <strong>"Robots meet Culture"</strong>.
@@ -47,10 +47,9 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
     "A medida que los equipos definan sus temáticas y empiecen a prototipar con impresiones 3D y sensores avanzados, iremos subiendo los avances a esta bitácora. ¡Estén atentos, porque este año los proyectos van a dar mucho de qué hablar!"
   </blockquote>
 
-  <!-- FOOTER CON LA ESTÉTICA SOLICITADA -->
   <footer class="wro-post-footer">
-    <a href="/wro" class="footer-back-link">← VOLVER AL LISTADO</a>
-    <a href="/#wro" class="footer-back-link">VOLVER AL INICIO →</a>
+    <a href="/#wro" class="footer-back-link">← VOLVER AL INICIO</a>
+    <a href="/wro" class="footer-back-link">VER TODO EL LISTADO →</a>
   </footer>
 
   <style>
