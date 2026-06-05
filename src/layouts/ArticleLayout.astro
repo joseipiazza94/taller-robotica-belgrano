@@ -20,12 +20,9 @@ const { title, subtitle, heroImage, backUrl = "/" } = Astro.props;
     <title>{title} | Taller de Robótica</title>
     
     <ViewTransitions />
-    
   </head>
   <body>
     <Navbar />
-
-    
 
     <main class="article-main">
       <header class="article-hero">
@@ -54,9 +51,41 @@ const { title, subtitle, heroImage, backUrl = "/" } = Astro.props;
       </article>
     </main>
 
+    <button class="btn-scroll-top" id="btnScrollTop" aria-label="Volver arriba">
+      ↑
+    </button>
+
     <footer class="article-footer">
       COLEGIO BELGRANO · TALLER DE ROBÓTICA
     </footer>
+
+    <script is:inline>
+      // Control de visibilidad del botón flotante según el scroll del usuario
+      const handleScrollButton = () => {
+        const btn = document.getElementById('btnScrollTop');
+        if (!btn) return;
+        
+        if (window.scrollY > 300) {
+          btn.classList.add('visible');
+        } else {
+          btn.classList.remove('visible');
+        }
+      };
+
+      const setupScrollTop = () => {
+        const btn = document.getElementById('btnScrollTop');
+        if (btn) {
+          btn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        }
+        window.addEventListener('scroll', handleScrollButton);
+      };
+
+      // Inicialización compatible con transiciones de página de Astro
+      setupScrollTop();
+      document.addEventListener('astro:page-load', setupScrollTop);
+    </script>
   </body>
 </html>
 
@@ -99,10 +128,51 @@ const { title, subtitle, heroImage, backUrl = "/" } = Astro.props;
   .article-body li::before { content: '→'; position: absolute; left: 0; color: #d83135; font-weight: 900; }
   .article-body img { width: 100%; height: auto; border: 1px solid #333; margin: 3rem 0; filter: grayscale(20%); transition: filter 0.4s ease; }
   .article-body img:hover { filter: grayscale(0%); }
+  
+  /* ESTILOS DEL BOTÓN INTERACTIVO DE RETORNO (Apagado por defecto en PC) */
+  .btn-scroll-top {
+    display: none;
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: #252525;
+    color: #ffffff;
+    border: 1px solid #444;
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  }
+
+  .btn-scroll-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .btn-scroll-top:hover {
+    background-color: #d83135;
+    border-color: #d83135;
+  }
+
   .article-footer { border-top: 1px solid #222; padding: 2rem 0; text-align: center; color: #666; font-size: 0.85rem; letter-spacing: 3px; margin-top: 4rem; }
+
+  /* MÓVIL: Activación del botón flotante */
+  @media (max-width: 1024px) {
+    .btn-scroll-top {
+      display: block; /* Se enciende de forma física exclusivamente en pantallas táctiles */
+    }
+  }
 
   @media (max-width: 768px) {
     .hero-content { flex-direction: column; align-items: flex-start; }
     .btn-back { align-self: flex-start; }
+    .btn-scroll-top { bottom: 1.5rem; right: 1.5rem; width: 45px; height: 45px; }
   }
 </style>

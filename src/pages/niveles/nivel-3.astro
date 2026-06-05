@@ -49,6 +49,12 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
   <p>Al finalizar el ciclo, los alumnos habrán consolidado el manejo del ecosistema Arduino y la mecánica de precisión. Esta base es fundamental para enfrentar el Nivel 4, donde la autonomía será la protagonista absoluta de sus propios proyectos de innovación.</p>
 
+  <footer class="level-post-footer">
+    <a href="/#nivelesWrapper" class="btn-back-custom">
+      ← Volver al Inicio
+    </a>
+  </footer>
+
 </ArticleLayout>
 
 <style>
@@ -88,12 +94,51 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
     flex: 1;
   }
 
+  /* --- PIE DE PÁGINA Y RECREACIÓN FIEL DEL BOTÓN DE ARTÍCULOS --- */
+  .level-post-footer {
+    margin-top: 5rem;
+    border-top: 1px solid #333;
+    padding-top: 3rem;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .btn-back-custom { 
+    display: inline-block !important; 
+    color: #d83135 !important; 
+    border: 1px solid #d83135 !important; 
+    padding: 0.8rem 1.5rem !important; 
+    text-decoration: none !important; 
+    font-weight: 700 !important; 
+    text-transform: uppercase !important; 
+    font-size: 0.85rem !important; 
+    transition: all 0.3s ease !important; 
+    white-space: nowrap !important;
+    background-color: transparent !important;
+    letter-spacing: normal !important;
+    font-family: system-ui, -apple-system, sans-serif !important;
+  }
+
+  .btn-back-custom:hover { 
+    background-color: #d83135 !important; 
+    color: #ffffff !important; 
+    text-decoration: none !important;
+  }
+
   /* --- RESPONSIVO --- */
   @media (max-width: 768px) {
     .figures-grid {
       flex-direction: column;
       gap: 2.5rem;
       margin: 2.5rem 0;
+    }
+    
+    .btn-back-custom {
+      width: 100% !important;
+      text-align: center;
     }
   }
 </style>

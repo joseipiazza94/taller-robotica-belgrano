@@ -3,7 +3,10 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
 const allPosts: CollectionEntry<'bitacora'>[] = await getCollection('bitacora');
-const latestPost = allPosts.sort((a, b) => b.data.fecha.valueOf() - a.data.fecha.valueOf())[0];
+// Ordenamos por fecha de forma descendente y tomamos las últimas 2
+const latestPosts = allPosts
+  .sort((a, b) => b.data.fecha.valueOf() - a.data.fecha.valueOf())
+  .slice(0, 2);
 ---
 
 <section id="bitacora" class="bitacora-preview">
@@ -13,19 +16,28 @@ const latestPost = allPosts.sort((a, b) => b.data.fecha.valueOf() - a.data.fecha
       <h2>BITÁCORA DE ACTIVIDADES</h2>
     </div>
 
-    {latestPost ? (
-      <div class="preview-card">
-        <div class="preview-image">
-          <img src={latestPost.data.image} alt={latestPost.data.title} />
+    {latestPosts.length > 0 ? (
+      <div class="preview-wrapper">
+        <div class="posts-grid">
+          {latestPosts.map(post => (
+            <div class="preview-card">
+              <div class="preview-image">
+                <img src={post.data.image} alt={post.data.title} />
+              </div>
+              <div class="preview-info">
+                <span class="mes-tag">{post.data.mes}</span>
+                <h3>{post.data.title}</h3>
+                <p>{post.data.description}</p>
+                <div class="actions">
+                  <a href={`/bitacora/${post.slug}`} class="btn-primary">LEER BITÁCORA COMPLETA</a>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-        <div class="preview-info">
-          <span class="mes-tag">{latestPost.data.mes}</span>
-          <h3>{latestPost.data.title}</h3>
-          <p>{latestPost.data.description}</p>
-          <div class="actions">
-            <a href={`/bitacora/${latestPost.slug}`} class="btn-primary">LEER BITÁCORA COMPLETA</a>
-            <a href="/bitacora" class="btn-secondary">VER MESES ANTERIORES</a>
-          </div>
+
+        <div class="archive-action">
+          <a href="/bitacora" class="btn-secondary">VER MESES ANTERIORES</a>
         </div>
       </div>
     ) : (
@@ -40,12 +52,10 @@ const latestPost = allPosts.sort((a, b) => b.data.fecha.valueOf() - a.data.fecha
   /* --- CONTENEDOR PRINCIPAL --- */
   .bitacora-preview { 
     padding: 10rem 0; 
-    /* Forzamos el color para que no lo pise ninguna regla global */
     background-color: #8b1d20 !important; 
     position: relative; 
     display: block;
     width: 100%;
-    /* Eliminamos transiciones para evitar el parpadeo visual */
     transition: none !important; 
     border-top: 1px solid rgba(255,255,255,0.1);
   }
@@ -63,25 +73,33 @@ const latestPost = allPosts.sort((a, b) => b.data.fecha.valueOf() - a.data.fecha
   .pre-title { color: white; font-weight: 900; letter-spacing: 4px; font-size: 0.8rem; opacity: 0.8; text-transform: uppercase; }
   .section-header h2 { font-size: 3.5rem; font-weight: 900; text-transform: uppercase; margin-top: 0.5rem; color: white; line-height: 1; }
 
-  /* --- TARJETA DE ADELANTO --- */
+  /* --- GRILLA SIMÉTRICA DE 2 NOTICIAS --- */
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    width: 100%;
+  }
+
+  /* --- TARJETA DE ADELANTO EN FORMATO VERTICAL --- */
   .preview-card { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
+    display: flex;
+    flex-direction: column;
     background: #111; 
     box-shadow: 0 30px 60px rgba(0,0,0,0.4);
     overflow: hidden;
   }
 
-  .preview-image { height: 100%; min-height: 400px; }
+  .preview-image { width: 100%; height: 280px; }
   .preview-image img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
 
-  .preview-info { padding: 4rem; display: flex; flex-direction: column; justify-content: center; }
+  .preview-info { padding: 3rem 2.5rem; display: flex; flex-direction: column; flex-grow: 1; }
   .mes-tag { color: #d83135; font-weight: 800; letter-spacing: 2px; font-size: 0.7rem; margin-bottom: 1rem; text-transform: uppercase; }
-  .preview-info h3 { font-size: 2.5rem; font-weight: 900; margin-bottom: 1.5rem; color: white; line-height: 1.1; }
-  .preview-info p { color: #ccc; line-height: 1.6; font-size: 1.1rem; margin-bottom: 2.5rem; }
+  .preview-info h3 { font-size: 2rem; font-weight: 900; margin-bottom: 1rem; color: white; line-height: 1.2; text-transform: uppercase; }
+  .preview-info p { color: #ccc; line-height: 1.6; font-size: 1.05rem; margin-bottom: 2rem; flex-grow: 1; /* Empuja el botón al fondo si los textos difieren en largo */ }
 
   /* --- BOTONES Y ACCIONES --- */
-  .actions { display: flex; gap: 1.5rem; align-items: center; }
+  .actions { display: flex; width: 100%; }
   
   .btn-primary { 
     background: #d83135; 
@@ -93,30 +111,41 @@ const latestPost = allPosts.sort((a, b) => b.data.fecha.valueOf() - a.data.fecha
     transition: 0.3s ease; 
     text-transform: uppercase;
     letter-spacing: 1px;
+    text-align: center;
+    width: 100%; /* El botón ocupa el ancho de la tarjeta para mejor impacto visual */
+    box-sizing: border-box;
   }
   .btn-primary:hover { background: white; color: #d83135; }
   
+  /* CONTENEDOR DEL ENLACE AL HISTORIAL HISTÓRICO */
+  .archive-action {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
   .btn-secondary { 
     color: #eee; 
     text-decoration: none; 
     font-weight: 900; 
-    font-size: 0.8rem; 
-    border-bottom: 2px solid #d83135; 
+    font-size: 0.85rem; 
+    border-bottom: 2px solid #ffffff; 
     padding-bottom: 4px;
     text-transform: uppercase;
     transition: 0.3s ease; 
+    letter-spacing: 1px;
   }
-  .btn-secondary:hover { color: white; border-color: white; }
+  .btn-secondary:hover { color: #111; background-color: white; border-color: white; padding: 4px 10px; }
 
   .no-posts { text-align: center; padding: 4rem; color: white; background: rgba(0,0,0,0.2); }
 
   /* --- AJUSTES RESPONSIVE --- */
   @media (max-width: 1024px) {
     .bitacora-preview { padding: 6rem 0; }
-    .preview-card { grid-template-columns: 1fr; }
-    .preview-info { padding: 2.5rem; }
+    .posts-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .section-header h2 { font-size: 2.5rem; }
-    .preview-info h3 { font-size: 2rem; }
-    .actions { flex-direction: column; align-items: flex-start; }
+    .preview-info { padding: 2.5rem 2rem; }
+    .preview-info h3 { font-size: 1.8rem; }
   }
 </style>

@@ -9,7 +9,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
   backUrl="/#nivelesWrapper"
 >
   <p class="lead">
-    <strong>El verdadero punto de partida.</strong> En el mundo de la programación, los sistemas y arreglos siempre comienzan en el cero. Es el inicio lógico y fundacional de cualquier código, y por eso elegimos este nombre para nuestro nivel inicial.
+    <strong>El verdadero punto de partida.</strong> En el mundo de la programación, los sistemas y arreglos siempre comienzan en el cero. Es el inicio lógico y fundacional de cualquier código, y por eso elegimos este nombre para nuestro level inicial.
   </p>
 
   <p>Este espacio nace como una respuesta directa al pedido de las familias del Colegio Belgrano, que buscaban para sus hijos una introducción temprana, segura y de alta calidad a la tecnología. Aquí, los alumnos de tercer grado dan sus primeros pasos transformando la curiosidad en proyectos reales.</p>
@@ -45,14 +45,18 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
   <p>Buscamos que desarrollen paciencia, motricidad fina y una fuerte capacidad de colaboración con sus compañeros. Queremos que tengan la confianza necesaria para que, cuando algo no funcione, no lo vean como un error, sino como una oportunidad para revisar, corregir y entender el porqué.</p>
 
-  {/* Bloque de cierre limpio sin imágenes redundantes. A medida que avance el año, si querés, podés meter una foto grupal acá */}
+  <footer class="level-post-footer">
+    <a href="/#nivelesWrapper" class="btn-back-custom">
+      ← Volver al Inicio
+    </a>
+  </footer>
 
 </ArticleLayout>
 
 <style>
   /* --- ESTILOS DE IMÁGENES ESTÁNDAR --- */
   .article-figure {
-    margin: 0; /* Reseteado para que se controle desde la grilla */
+    margin: 0; 
     width: 100%;
   }
 
@@ -74,7 +78,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
     line-height: 1.4;
   }
 
-  /* --- GRId PARA DOS IMÁGENES EN PARALELO --- */
+  /* --- GRID PARA DOS IMÁGENES EN PARALELO --- */
   .figures-grid {
     display: flex;
     gap: 2rem;
@@ -86,12 +90,52 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
     flex: 1;
   }
 
+  /* --- PIE DE PÁGINA Y RECREACIÓN FIEL DEL BOTÓN DE ARTÍCULOS --- */
+  .level-post-footer {
+    margin-top: 5rem;
+    border-top: 1px solid #333;
+    padding-top: 3rem;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Forzamos que rompa las reglas por defecto del navegador y use la estética exacta */
+  .btn-back-custom { 
+    display: inline-block !important; 
+    color: #d83135 !important; 
+    border: 1px solid #d83135 !important; 
+    padding: 0.8rem 1.5rem !important; 
+    text-decoration: none !important; 
+    font-weight: 700 !important; 
+    text-transform: uppercase !important; 
+    font-size: 0.85rem !important; 
+    transition: all 0.3s ease !important; 
+    white-space: nowrap !important;
+    background-color: transparent !important;
+    letter-spacing: normal !important;
+    font-family: system-ui, -apple-system, sans-serif !important;
+  }
+
+  .btn-back-custom:hover { 
+    background-color: #d83135 !important; 
+    color: #ffffff !important; 
+    text-decoration: none !important;
+  }
+
   /* --- RESPONSIVO --- */
   @media (max-width: 768px) {
     .figures-grid {
       flex-direction: column;
       gap: 2.5rem;
       margin: 2.5rem 0;
+    }
+    
+    .btn-back-custom {
+      width: 100% !important;
+      text-align: center;
     }
   }
 </style>

@@ -14,7 +14,7 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 
   <p>Nosotros planteamos un desafío: iluminar una obra de arte, abrir una puerta de forma automática, detectar movimientos e incluso controlar un vehículo con un celular. Ellos piensan cómo llevarlo a la realidad y planifican teniendo en cuenta las herramientas disponibles. Como el taller está creciendo constantemente, la variedad de herramientas es cada vez mayor, permitiéndoles ser cada vez más creativos.</p>
 
-  <p>Una vez planteado el proyecto, empieza el montaje físico. Combinando materiales cotidianos con componentes tecnológicos, los chicos dan forma a la estructura mecánica del robot. Usamos desde cartón y papel hasta impresiones 3D, dispositivos y sensores complejos.</p>
+  <p>Una vez planteado el proyecto, empieza el montaje físico. Combinando materiales cotidianos con componentes tecnológicos, los chicos dán forma a la estructura mecánica del robot. Usamos desde cartón y papel hasta impresiones 3D, dispositivos y sensores complejos.</p>
 
   <figure class="article-figure">
     <img src="/images/pilares/que-hacemos/que-hacemos-1.jpg" alt="Alumnos ensamblando un prototipo robótico" />
@@ -40,18 +40,24 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
   <p>Participar en la WRO no es un evento aislado; es una meta para la que nos preparamos desde el primer día con una progresión clara:</p>
   
   <ul>
-    <li><strong>Niveles 0 y 1:</strong> Es la etapa de descubrir la tecnología. Adquieren las primeras herramientas de electrónica y lógica, pero, sobre todo, aprenden a estructurar y pensar sus proyectos con la misma metodología que usan quienes participan en la WRO.</li>
+    <li><strong>Niveles 0 y 1:</strong> Es la etapa de descubrir la tecnología. Adquieren las primeras herramientas de electrónica y lógica, pero, sobre todo, aprenden a de estructurar y pensar sus proyectos con la misma metodología que usan quienes participan en la WRO.</li>
     <li><strong>Nivel 2:</strong> ¡El gran salto! Compiten por primera vez, teniendo la experiencia completa: desde el planteo del proyecto hasta la evaluación final y presentación frente a los jueces.</li>
     <li><strong>Niveles 3 y 4:</strong> En esta etapa nos enfocamos en el alto rendimiento. Hacemos énfasis en perfeccionar el proyecto de competencia y en enseñarles las herramientas específicas que necesitan para que sus soluciones brillen.</li>
   </ul>
 
- 
-
   <h2>Diversión y Trabajo en Equipo</h2>
   <p>Aunque el contenido es técnico, la atmósfera es de puro disfrute: en el Taller aprenden divirtiéndose, todos colaboran para resolver errores y festejan juntos cuando un robot por fin cumple su misión. Así, el taller se transforma en un verdadero espacio de pertenencia y aprendizaje mutuo.</p>
+
+  <footer class="level-post-footer">
+    <a href="/#pilares" class="btn-back-custom">
+      ← Volver al Inicio
+    </a>
+  </footer>
+
 </ArticleLayout>
 
 <style>
+  /* --- ESTILOS DE IMÁGENES ESTÁNDAR --- */
   .article-figure {
     margin: 3.5rem 0;
     width: 100%;
@@ -74,7 +80,46 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
     font-style: italic;
   }
 
+  /* --- PIE DE PÁGINA Y RECREACIÓN FIEL DEL BOTÓN INSTITUCIONAL --- */
+  .level-post-footer {
+    margin-top: 5rem;
+    border-top: 1px solid #333;
+    padding-top: 3rem;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .btn-back-custom { 
+    display: inline-block !important; 
+    color: #d83135 !important; 
+    border: 1px solid #d83135 !important; 
+    padding: 0.8rem 1.5rem !important; 
+    text-decoration: none !important; 
+    font-weight: 700 !important; 
+    text-transform: uppercase !important; 
+    font-size: 0.85rem !important; 
+    transition: all 0.3s ease !important; 
+    white-space: nowrap !important;
+    background-color: transparent !important;
+    letter-spacing: normal !important;
+    font-family: system-ui, -apple-system, sans-serif !important;
+  }
+
+  .btn-back-custom:hover { 
+    background-color: #d83135 !important; 
+    color: #ffffff !important; 
+    text-decoration: none !important;
+  }
+
   @media (max-width: 768px) {
     .article-figure { margin: 2.5rem 0; }
+    
+    .btn-back-custom {
+      width: 100% !important;
+      text-align: center;
+    }
   }
 </style>

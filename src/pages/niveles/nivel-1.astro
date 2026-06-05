@@ -19,8 +19,6 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
     <figcaption>Construyendo su primer trabajo con ayuda de Flor.</figcaption>
   </figure>
 
-  
-
   <h2>Ejes de aprendizaje: El camino del inventor</h2>
   <p>En el taller no solo conectamos cables; aprendemos a pensar el proyecto de principio a fin utilizando una estructura clara que aumenta su complejidad mes a mes:</p>
 
@@ -30,8 +28,6 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
     <li><strong>Mecánica y Precisión:</strong> Incorporamos el uso de servomotores para generar movimientos y aprendemos a gestionar el color mediante señales RGB (como en el proyecto del sable de luz).</li>
     <li><strong>Automatización:</strong> En la etapa final del año, introducimos la interacción con el entorno mediante fotorresistencias y sensores ultrasónicos para crear sistemas como el "Guardián del Museo", donde el código responde a estímulos externos.</li>
   </ul>
-
-  
 
   <h2>Técnica y Seguridad</h2>
   <p>A lo largo de este nivel, los alumnos manipulan muchísimos dispositivos nuevos para ellos: controladores Arduino, servos, potenciómetros y diversos sensores. Nuestro enfoque busca que ganen seguridad y autonomía en el manejo de estos materiales.</p>
@@ -43,9 +39,16 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
     <figcaption>¡Para conectar LEDs necesitamos estar MUY concentrados!.</figcaption>
   </figure>
 
+  <footer class="level-post-footer">
+    <a href="/#nivelesWrapper" class="btn-back-custom">
+      ← Volver al Inicio
+    </a>
+  </footer>
+
 </ArticleLayout>
 
 <style>
+  /* --- ESTILOS DE IMÁGENES ESTÁNDAR --- */
   .article-figure {
     margin: 3.5rem 0;
     width: 100%;
@@ -68,7 +71,46 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
     font-style: italic;
   }
 
+  /* --- PIE DE PÁGINA Y RECREACIÓN FIEL DEL BOTÓN DE ARTÍCULOS --- */
+  .level-post-footer {
+    margin-top: 5rem;
+    border-top: 1px solid #333;
+    padding-top: 3rem;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .btn-back-custom { 
+    display: inline-block !important; 
+    color: #d83135 !important; 
+    border: 1px solid #d83135 !important; 
+    padding: 0.8rem 1.5rem !important; 
+    text-decoration: none !important; 
+    font-weight: 700 !important; 
+    text-transform: uppercase !important; 
+    font-size: 0.85rem !important; 
+    transition: all 0.3s ease !important; 
+    white-space: nowrap !important;
+    background-color: transparent !important;
+    letter-spacing: normal !important;
+    font-family: system-ui, -apple-system, sans-serif !important;
+  }
+
+  .btn-back-custom:hover { 
+    background-color: #d83135 !important; 
+    color: #ffffff !important; 
+    text-decoration: none !important;
+  }
+
   @media (max-width: 768px) {
     .article-figure { margin: 2.5rem 0; }
+    
+    .btn-back-custom {
+      width: 100% !important;
+      text-align: center;
+    }
   }
 </style>
