@@ -10,11 +10,11 @@ description: "Primer mes de clases en el Colegio Belgrano: Pixel Art, Minecraft,
 
 ¡Estamos felices con el inicio de este ciclo lectivo! Si bien proyectábamos un taller de 50 alumnos, ¡la respuesta de las familias fue mucho mayor y hoy son más de 100 pequeños ingenieros y creadores!
 
-Dentro de ese crecimiento, pudimos cumplir con un pedido especial: abrir dos grupos para que los chicos de Tercer Grado tengan su primer contacto con la robótica. En esta sección les contamos un poquito de lo que hicimos con cada grupo durante el mes de abril.
+Dentro de ese crecimiento, pudimos cumplir con un pedido especial: abrir dos grupos para que los niños de Tercer Grado tengan su primer contacto con la robótica. En esta sección les contamos un poquito de lo que hicimos con cada grupo durante el mes de abril.
 
 <figure class="article-figure">
   <img src="/images/bitacora/abril/abril-inicio.jpg" alt="El aula del Taller de Robótica llena de alumnos trabajando" />
-  <figcaption>Chicos de tercer grado mostrando su primer trabajo en el Taller de Robótica.</figcaption>
+  <figcaption>Alumnos de tercer grado mostrando su primer trabajo en el Taller de Robótica.</figcaption>
 </figure>
 
 ---
@@ -28,7 +28,7 @@ Trabajando en grillas de 8x8 y 16x16, aprendieron a ubicarse en el espacio a tra
 ¿Por qué es importante este trabajo? El Pixel Art es una gran herramienta para que entiendan la base del pensamiento computacional: descomponer una imagen en unidades mínimas (píxeles) y utilizar un sistema de grillas para componerla nuevamente. A esta edad, es una forma divertida de adquirir una habilidad esencial para la futura programación (¡y un poco de diseño digital!).
 
 <figure class="article-figure">
-  <img src="/images/bitacora/abril/abril-nivel0.jpg" alt="Chicos de 3er grado mostrando sus trabajos en estilo Pixel Art" />
+  <img src="/images/bitacora/abril/abril-nivel0.jpg" alt="Alumnos de 3er grado mostrando sus trabajos en estilo Pixel Art" />
   <figcaption>Trabajando muy concentrado en su Pixel Art.</figcaption>
 </figure>
 
@@ -38,7 +38,7 @@ Trabajando en grillas de 8x8 y 16x16, aprendieron a ubicarse en el espacio a tra
 
 Con los alumnos de cuarto grado aprovechamos que les gusta mucho **Minecraft** para dar su primer paso en robótica: crear una escena física inspirada en el juego que incluya iluminación propia. Y a diferencia del nivel inicial, aquí ya empezamos a programar un juego de luces básico.
 
-Aunque también sea su primera vez en robótica, al tener más herramientas y una madurez distinta pudimos exigir un poquito más desde el primer día: ¡estamos sorprendidos con el nivel de detalle de las escenas! Y los chicos están orgullosos de recrear su juego favorito en la vida real.
+Aunque también sea su primera vez en robótica, al tener más herramientas y una madurez distinta pudimos exigir un poquito más desde el primer día: ¡estamos sorprendidos con el nivel de detalle de las escenas! Y los alumnos están orgullosos de recrear su juego favorito en la vida real.
 
 <div class="figures-grid">
   <figure class="article-figure">
@@ -58,7 +58,7 @@ Aunque también sea su primera vez en robótica, al tener más herramientas y un
 
 ¡Este nivel nos dejó sin palabras! El planteo era construir un Faro que integrara dos componentes: un potenciómetro para regular la intensidad de la luz y un pulsador para activar una baliza de emergencia.
 
-¡La ejecución fue impecable, y los resultados fueron tan buenos que tendremos que plantear nuevos desafíos para subir la dificultad! Nos alegra saber que al elevar la vara, la respuesta de los chicos es inmediata.
+¡La ejecución fue impecable, y los resultados fueron tan buenos que tendremos que plantear nuevos desafíos para subir la dificultad! Nos alegra saber que al elevar la vara, la respuesta de los niños es inmediata.
 
 <div class="figures-grid">
   <figure class="article-figure">
@@ -72,7 +72,7 @@ Aunque también sea su primera vez en robótica, al tener más herramientas y un
 
 ## Nivel 3 - Un gran repaso
 
-En este nivel los chicos conocen y controlan muchos dispositivos, por lo que nos pareció importante hacer un "repaso integrador". Para ello, elaboraron una maqueta de una casa con puertas, iluminación y seguridad automática.
+En este nivel los alumnos conocen y controlan muchos dispositivos, por lo que nos pareció importante hacer un "repaso integrador". Para ello, elaboraron una maqueta de una casa con puertas, iluminación y seguridad automática.
 
 Esto les permitió repasar tanto la conexión como la programación de luces RGB, servomotores, buzzers, sensores ultrasónicos, entre otros componentes. Al ser un nivel "avanzado", necesitamos todos esos contenidos frescos para poder introducir nuevos componentes (como el sensor de temperatura, que usarán pronto para simular un invernadero).
 
@@ -85,11 +85,11 @@ Esto les permitió repasar tanto la conexión como la programación de luces RGB
 
 ## Nivel 4 - Nuevo formato
 
-El cambio en este nivel fue total: incorporamos kits de autos programables controlados por Bluetooth. Los chicos disfrutaron mucho de armar los autos, pero el verdadero desafío vino después.
+El cambio en este nivel fue total: incorporamos kits de autos programables controlados por Bluetooth. Los alumnos disfrutaron mucho de armar los autos, pero el verdadero desafío vino después.
 
 ¡Chau a los bloques! En este nivel empezamos a trabajar directamente con código escrito en **Arduino IDE**. Entender la sintaxis pura les permite comprender cómo una App instalada en un celular o tablet puede dar órdenes complejas a un vehículo que ellos mismos ensamblaron.
 
-El plan es claro: incorporar todas las herramientas posibles para que, a la hora de competir en la WRO, los chicos tengan más recursos que nunca y puedan brillar con sus proyectos.
+El plan es claro: incorporar todas las herramientas posibles para que, a la hora de competir en la WRO, los alumnos tengan más recursos que nunca y puedan brillar con sus proyectos.
 
 <figure class="article-figure">
   <img src="/images/bitacora/abril/abril-nivel4.jpg" alt="Auto Bluetooth junto a la pantalla de código escrito" />
@@ -100,9 +100,9 @@ El plan es claro: incorporar todas las herramientas posibles para que, a la hora
 
 ## Cierre del mes
 
-Abril fue un mes lleno de sorpresas, desde la cantidad de alumnos inscriptos y la apertura de los grupos de los viernes, hasta el sorprendente desempeño de los chicos de todos los niveles. Estamos sentando bases sólidas para que los chicos transiten su camino por la robótica, la ingeniería, la electrónica, la programación y el diseño de la mejor forma posible.
+Abril fue un mes lleno de sorpresas, desde la cantidad de alumnos inscriptos y la apertura de los grupos de los viernes, hasta el sorprendente desempeño de los alumnos de todos los niveles. Estamos sentando bases sólidas para que los niños transiten su camino por la robótica, la ingeniería, la electrónica, la programación y el diseño de la mejor forma posible.
 
-Ver el aula llena de cables, dibujos, código, y chicos trabajando en equipo nos confirma que estamos en el camino correcto. ¡Nos vemos en mayo con más desafíos!
+Ver el aula llena de cables, dibujos, código, y alumnos trabajando en equipo nos confirma que estamos en el camino correcto. ¡Nos vemos en mayo con más desafíos!
 
 <style>
   .article-figure {
