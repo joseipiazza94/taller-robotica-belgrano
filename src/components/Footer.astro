@@ -1,11 +1,10 @@
 ---
-// Datos de contacto
+// Datos de contacto institucionales unificados
 const contacto = {
   direccion: "Bartolomé Mitre 764, A4400 Salta",
   colegio: "Colegio Belgrano",
-  whatsapp: "+54387XXXXXXX", 
-  instagram: "https://instagram.com/tu_cuenta",
-  horarios: "Atención: Lunes a Viernes - 14:00 a 18:00 hs"
+  weboficial: "https://colegiobelgrano.edu.ar/", 
+  instagram: "https://instagram.com/colegiobelgrano"
 };
 ---
 
@@ -13,7 +12,6 @@ const contacto = {
   <div class="footer-container">
     <div class="contact-grid">
       
-      {/* BLOQUE 1: MAPA ESTÁNDAR (Etiqueta por fuera usando Grid) */}
       <div class="contact-card map-box">
         <div class="map-label">
           <span class="status-tag">UBICACIÓN TALLER</span>
@@ -31,25 +29,24 @@ const contacto = {
         </div>
       </div>
 
-      {/* BLOQUE 2: INFO Y ACCESO DIRECTO */}
       <div class="contact-card info-box">
         <div class="info-content">
-          <span class="label">COLEGIO BELGRANO</span>
-          <h3>Contáctanos</h3>
+          <span class="label">Salta - Argentina</span>
+          <h3>COLEGIO BELGRANO</h3>
           <p class="address-text">{contacto.direccion}</p>
           
           <div class="divider"></div>
           
-          <p class="summary-text">Espacio exclusivo para la comunidad educativa del colegio. Consultas sobre inscripciones y niveles por canales oficiales.</p>
-          
-          <p class="horarios-tag">{contacto.horarios}</p>
+          <p class="summary-text">
+            Espacio exclusivo para la comunidad educativa del Colegio. Consultas sobre inscripciones y niveles por canales oficiales.
+          </p>
         </div>
         
         <div class="social-links">
-          <a href={`https://wa.me/${contacto.whatsapp}`} class="social-btn wa" target="_blank">
-            <span>WHATSAPP DIRECTO</span>
+          <a href={contacto.weboficial} class="social-btn web-colegio" target="_blank" rel="noopener noreferrer">
+            <span>WEB DEL COLEGIO</span>
           </a>
-          <a href={contacto.instagram} class="social-btn ig" target="_blank">
+          <a href={contacto.instagram} class="social-btn ig-colegio" target="_blank" rel="noopener noreferrer">
             <span>INSTAGRAM OFICIAL</span>
           </a>
         </div>
@@ -64,6 +61,7 @@ const contacto = {
 </footer>
 
 <style>
+  /* --- CONTENEDOR PRINCIPAL --- */
   .footer-section {
     background-color: #121212;
     padding: 80px 0 20px;
@@ -84,25 +82,25 @@ const contacto = {
   }
 
   .contact-card {
-    background: #1e1e1e; /* Gris Industrial */
+    background: #1e1e1e;
     display: flex;
     flex-direction: column;
     min-height: 450px;
     border: 1px solid rgba(255,255,255,0.05);
   }
 
-  /* --- MAPA Y ETIQUETA VERTICAL (GRID) --- */
+  /* --- MAP BOX Y TEXTO VERTICAL --- */
   .map-box { 
     display: grid;
-    grid-template-columns: auto 1fr; /* Columna 1 ajustada al texto, Columna 2 toma el resto */
+    grid-template-columns: auto 1fr;
     padding: 15px; 
     gap: 15px; 
   }
   
   .map-label {
-    position: relative !important; /* Mata cualquier posición flotante vieja */
-    top: 0 !important;
-    left: 0 !important;
+    position: relative;
+    top: 0;
+    left: 0;
     display: flex;
     align-items: flex-start; 
   }
@@ -114,9 +112,7 @@ const contacto = {
     font-weight: 900;
     font-size: 0.75rem;
     letter-spacing: 3px;
-    white-space: nowrap; /* Evita que la palabra se rompa en dos líneas */
-    
-    /* TEXTO VERTICAL */
+    white-space: nowrap;
     writing-mode: vertical-rl;
     transform: rotate(180deg);
   }
@@ -125,7 +121,7 @@ const contacto = {
     width: 100%;
     height: 100%;
     background: #252525;
-    min-height: 350px; /* Asegura que el mapa no colapse */
+    min-height: 350px;
   }
 
   /* --- INFO BOX --- */
@@ -151,7 +147,11 @@ const contacto = {
     margin-bottom: 15px;
   }
 
-  .address-text { color: #888; font-size: 1.1rem; margin: 0; }
+  .address-text { 
+    color: #888; 
+    font-size: 1.1rem; 
+    margin: 0; 
+  }
 
   .divider {
     height: 1px;
@@ -166,16 +166,11 @@ const contacto = {
     margin-bottom: 20px;
   }
 
-  .horarios-tag {
-    font-weight: 900;
-    font-size: 0.75rem;
-    color: #d83135;
-    text-transform: uppercase;
-    margin: 0;
+  /* --- BOTONES INSTITUCIONALES --- */
+  .social-links { 
+    display: grid; 
+    gap: 10px; 
   }
-
-  /* --- BOTONES --- */
-  .social-links { display: grid; gap: 10px; }
 
   .social-btn {
     padding: 18px;
@@ -185,10 +180,18 @@ const contacto = {
     font-size: 0.8rem;
     letter-spacing: 1px;
     transition: all 0.3s ease;
+    box-sizing: border-box;
   }
 
-  .wa { background: #d83135; color: white !important; }
-  .ig { border: 1px solid rgba(255,255,255,0.1); color: white !important; }
+  .web-colegio { 
+    background: #d83135; 
+    color: white !important; 
+  }
+  
+  .ig-colegio { 
+    border: 1px solid rgba(255,255,255,0.1); 
+    color: white !important; 
+  }
 
   .social-btn:hover {
     background: white !important;
@@ -196,15 +199,21 @@ const contacto = {
     transform: translateY(-2px);
   }
 
+  /* --- PIE DE PÁGINA --- */
   .footer-bottom {
     text-align: center;
     border-top: 1px solid rgba(255,255,255,0.05);
     padding-top: 30px;
   }
 
-  .footer-bottom p { font-size: 0.7rem; color: #444; letter-spacing: 1px; margin: 0; }
+  .footer-bottom p { 
+    font-size: 0.7rem; 
+    color: #444; 
+    letter-spacing: 1px; 
+    margin: 0; 
+  }
 
-  /* --- RESPONSIVE --- */
+  /* --- ADAPTACIÓN RESPONSIVE --- */
   @media (max-width: 900px) {
     .contact-grid { grid-template-columns: 1fr; }
     .info-box { padding: 30px; }
@@ -213,11 +222,12 @@ const contacto = {
   @media (max-width: 768px) {
     .map-box { 
       display: flex;
-      flex-direction: column; /* Pasa la etiqueta arriba del mapa en celulares */
+      flex-direction: column;
       gap: 10px;
     }
+    
     .status-tag {
-      writing-mode: horizontal-tb; /* Vuelve el texto a la normalidad */
+      writing-mode: horizontal-tb;
       transform: none;
       padding: 8px 15px;
       width: fit-content;

@@ -2,7 +2,7 @@
 title: "Abril: Un comienzo que supera expectativas"
 mes: "Abril 2026"
 fecha: 2026-04-27
-image: "/images/bitacora/portada-abril.jpg"
+image: "/images/bitacora/abril/portada-abril.jpg"
 description: "Primer mes de clases en el Colegio Belgrano: Pixel Art, Minecraft, sistemas automáticos y el salto al código puro."
 ---
 
@@ -13,7 +13,7 @@ description: "Primer mes de clases en el Colegio Belgrano: Pixel Art, Minecraft,
 Dentro de ese crecimiento, pudimos cumplir con un pedido especial: abrir dos grupos para que los chicos de Tercer Grado tengan su primer contacto con la robótica. En esta sección les contamos un poquito de lo que hicimos con cada grupo durante el mes de abril.
 
 <figure class="article-figure">
-  <img src="/images/bitacora/abril-inicio.jpg" alt="El aula del Taller de Robótica llena de alumnos trabajando" />
+  <img src="/images/bitacora/abril/abril-inicio.jpg" alt="El aula del Taller de Robótica llena de alumnos trabajando" />
   <figcaption>Chicos de tercer grado mostrando su primer trabajo en el Taller de Robótica.</figcaption>
 </figure>
 
@@ -28,7 +28,7 @@ Trabajando en grillas de 8x8 y 16x16, aprendieron a ubicarse en el espacio a tra
 ¿Por qué es importante este trabajo? El Pixel Art es una gran herramienta para que entiendan la base del pensamiento computacional: descomponer una imagen en unidades mínimas (píxeles) y utilizar un sistema de grillas para componerla nuevamente. A esta edad, es una forma divertida de adquirir una habilidad esencial para la futura programación (¡y un poco de diseño digital!).
 
 <figure class="article-figure">
-  <img src="/images/bitacora/abril-nivel0.jpg" alt="Chicos de 3er grado mostrando sus trabajos en estilo Pixel Art" />
+  <img src="/images/bitacora/abril/abril-nivel0.jpg" alt="Chicos de 3er grado mostrando sus trabajos en estilo Pixel Art" />
   <figcaption>Trabajando muy concentrado en su Pixel Art.</figcaption>
 </figure>
 
@@ -42,12 +42,12 @@ Aunque también sea su primera vez en robótica, al tener más herramientas y un
 
 <div class="figures-grid">
   <figure class="article-figure">
-    <img src="/images/bitacora/abril-nivel1-0.jpg" alt="Diorama físico de Minecraft con luces programadas" />
+    <img src="/images/bitacora/abril/abril-nivel1-0.jpg" alt="Diorama físico de Minecraft con luces programadas" />
     <figcaption>Conejito de Minecraft iluminado con dos LEDs, primer trabajo completo!.</figcaption>
   </figure>
 
   <figure class="article-figure">
-    <img src="/images/bitacora/abril-nivel1-1.jpg" alt="Diorama físico de Minecraft con luces programadas" />
+    <img src="/images/bitacora/abril/abril-nivel1-1.jpg" alt="Diorama físico de Minecraft con luces programadas" />
     <figcaption>Enderman muy tierno junto a un portal iluminado ¡Quedó buenísimo!.</figcaption>
   </figure>
 </div>
@@ -62,7 +62,7 @@ Aunque también sea su primera vez en robótica, al tener más herramientas y un
 
 <div class="figures-grid">
   <figure class="article-figure">
-    <img src="/images/bitacora/abril-nivel2-0.jpg" alt="Alumnos manipulando el potenciómetro de su Faro robótico" />
+    <img src="/images/bitacora/abril/abril-nivel2-0.jpg" alt="Alumnos manipulando el potenciómetro de su Faro robótico" />
     <figcaption>Calibrando las variables analógicas del Faro con un potenciómetro.</figcaption>
   </figure>
 
@@ -77,7 +77,7 @@ En este nivel los chicos conocen y controlan muchos dispositivos, por lo que nos
 Esto les permitió repasar tanto la conexión como la programación de luces RGB, servomotores, buzzers, sensores ultrasónicos, entre otros componentes. Al ser un nivel "avanzado", necesitamos todos esos contenidos frescos para poder introducir nuevos componentes (como el sensor de temperatura, que usarán pronto para simular un invernadero).
 
 <figure class="article-figure">
-  <img src="/images/bitacora/abril-nivel3.jpg" alt="Alumnos trabajando en la maqueta de la casa domótica" />
+  <img src="/images/bitacora/abril/abril-nivel3.jpg" alt="Alumnos trabajando en la maqueta de la casa domótica" />
   <figcaption>Trabajando en el código de un sensor ultrasónico.</figcaption>
 </figure>
 
@@ -92,7 +92,7 @@ El cambio en este nivel fue total: incorporamos kits de autos programables contr
 El plan es claro: incorporar todas las herramientas posibles para que, a la hora de competir en la WRO, los chicos tengan más recursos que nunca y puedan brillar con sus proyectos.
 
 <figure class="article-figure">
-  <img src="/images/bitacora/abril-nivel4.jpg" alt="Auto Bluetooth junto a la pantalla de código escrito" />
+  <img src="/images/bitacora/abril/abril-nivel4.jpg" alt="Auto Bluetooth junto a la pantalla de código escrito" />
   <figcaption>Programando el auto en Arduino IDE ¡Chau a los bloques!.</figcaption>
 </figure>
 
