@@ -1,0 +1,110 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+---
+
+<ArticleLayout 
+  title="Nacional Misiones 2025" 
+  subtitle="Nuestro recorrido desde el Colegio hasta la final Nacional en 2025"
+  heroImage="/images/wro/nacional2025-clasificados2.jpg"
+  backUrl="/#wro"
+>
+  <p class="lead">
+    <strong>Redoblando el esfuerzo.</strong> Después de la experiencia increíble que vivimos en 2024 con la primera participación del Taller en la competencia de la WRO y la clasificación a la final internacional en Izmir, Turquía, decidimos intentar que todos los alumnos del taller puedan tener la experiencia de participar en la competencia.
+  </p>
+
+  <p>Realizamos la preparación para la misma desde el nivel 1 (cuarto grado) en tres instancias sucesivas:</p>
+
+  <h2>Instancia Institucional</h2>
+  <p>Esta etapa se realizó en el colegio a través de videos en los que los alumnos presentaban sus propuestas. De los 24 proyectos presentados, el jurado (formado por las docentes del taller y el equipo TIC del Colegio) seleccionó los 19 que tenían mayor proyección para la competencia regional. En las clases, los alumnos continuaron su capacitación completando los proyectos y tratando de que funcionaran para la siguiente fase.</p>
+
+  {/* ESPACIO PARA FOTO DE LA INSTANCIA INSTITUCIONAL */}
+
+  <h2>Instancia Regional</h2>
+  <p>Se llevó a cabo en la Usina Cultural. Allí, los alumnos de nivel 1 (Elementary), nivel 2 (Elementary) y nivel 3 (Elementary y Junior) compitieron con equipos de otras instituciones, cumpliendo un excelente papel.</p>
+  
+  <p>Por una cuestión de la organización de la WRO a nivel nacional, sólo los dos primeros puestos de cada categoría pasaban a la siguiente instancia. De los equipos del taller, tres lograron la clasificación al certamen nacional en Misiones.</p> 
+
+  {/* ESPACIO PARA FOTO DE LA USINA CULTURAL */}
+  <figure class="article-figure">
+    <img src="/images/wro/nacional2025-clasificados.jpg" alt="Equipos del taller clasificados al certamen Nacional en Misiones" />
+    <figcaption>Nuestros alumnos clasificados al certamen Nacional en Misiones.</figcaption>
+  </figure>
+
+  <h2>Instancia Nacional</h2>
+  <p>Se llevó a cabo en Posadas, Misiones. Debemos destacar en este caso el apoyo incondicional del Colegio y de las familias, que viajaron con los alumnos a la competencia y estuvieron todo el tiempo acompañando cada esfuerzo. El grupo humano que logramos formar fortaleció enormemente nuestro proyecto, ya que nos unimos con muchísimo cariño para acompañar a los alumnos, conocimos otros talleres y equipos, y compartimos momentos muy emocionantes durante la competencia.</p>
+   
+  {/* ESPACIO PARA FOTO DEL VIAJE O LA COMPETENCIA EN MISIONES */}
+  <figure class="article-figure">
+    <img src="/images/wro/nacional2025-misiones.jpg" alt="Delegación en Posadas, Misiones" />
+    <figcaption>El equipo del taller y las familias compartiendo la experiencia en Misiones.</figcaption>
+  </figure>
+
+  <p>La competencia fue muy difícil y nuestros equipos hicieron un papel excelente. En la categoría Elementary, logramos el segundo puesto nacional con un muy buen puntaje, quedando muy cerca de clasificar a la final internacional. En la categoría Junior, ambos equipos obtuvieron alto puntaje, y aunque no alcanzó para que accedan al podio, lograron un cuarto y quinto puestos muy meritorios para el nivel de competencia que se presentó, con muchos equipos de distintas provincias.</p>
+  
+  <p>Fue una experiencia muy enriquecedora para nuestro taller, y nos permitió tomar decisiones importantes para futuras competencias. Confiamos en que esto nos permitirá disfrutar más y competir aún mejor en la WRO 2026.</p>
+
+  <footer class="wro-post-footer">
+    <a href="/#wro" class="footer-back-link">← VOLVER AL INICIO</a>
+    <a href="/wro" class="footer-back-link">EXPLORAR MÁS BITÁCORAS →</a>
+  </footer>
+
+  <style>
+    /* --- ESTILOS DE IMÁGENES ESTÁNDAR --- */
+    .article-figure {
+      margin: 3.5rem 0;
+      width: 100%;
+    }
+
+    .article-figure img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .article-figure figcaption {
+      margin-top: 1.2rem;
+      font-size: 0.85rem;
+      color: #888;
+      text-align: center;
+      letter-spacing: 0.5px;
+      font-style: italic;
+    }
+
+    /* --- ESTILOS DEL PIE DE PÁGINA DISTRIBUIDO --- */
+    .wro-post-footer {
+      margin-top: 5rem;
+      border-top: 1px solid #333;
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .footer-back-link {
+      color: #d83135;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      transition: opacity 0.2s ease;
+    }
+
+    .footer-back-link:hover {
+      opacity: 0.7;
+    }
+
+    @media (max-width: 768px) {
+      .article-figure { margin: 2.5rem 0; }
+      .wro-post-footer {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</ArticleLayout>

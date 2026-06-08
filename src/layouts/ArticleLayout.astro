@@ -17,8 +17,9 @@ const { title, subtitle, heroImage, backUrl = "/" } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <title>{title} | Taller de Robótica</title>
-    
+    <meta name="robots" content="noimageindex" />
     <ViewTransitions />
   </head>
   <body>
@@ -72,7 +73,15 @@ const { title, subtitle, heroImage, backUrl = "/" } = Astro.props;
         }
       };
 
-      const setupScrollTop = () => {
+      // Desactiva el menú contextual (clic derecho / pulsación larga) en fotos y videos
+      const protegerMultimedia = () => {
+        const elementos = document.querySelectorAll('.article-body img, .article-body video, .hero-bg img');
+        elementos.forEach(el => {
+          el.addEventListener('contextmenu', e => e.preventDefault());
+        });
+      };
+
+      const setupScripts = () => {
         const btn = document.getElementById('btnScrollTop');
         if (btn) {
           btn.addEventListener('click', () => {
@@ -80,11 +89,12 @@ const { title, subtitle, heroImage, backUrl = "/" } = Astro.props;
           });
         }
         window.addEventListener('scroll', handleScrollButton);
+        protegerMultimedia();
       };
 
       // Inicialización compatible con transiciones de página de Astro
-      setupScrollTop();
-      document.addEventListener('astro:page-load', setupScrollTop);
+      setupScripts();
+      document.addEventListener('astro:page-load', setupScripts);
     </script>
   </body>
 </html>
@@ -104,6 +114,14 @@ const { title, subtitle, heroImage, backUrl = "/" } = Astro.props;
     margin: 0; padding: 0; background-color: #121212 !important; color: #eeeeee;
     font-family: system-ui, -apple-system, sans-serif; overflow-x: hidden;
   }
+  
+  /* --- BLINDAJE MULTIMEDIA CONTRA ARRASTRE Y COPIADO --- */
+  img, video {
+    user-select: none !important;
+    -webkit-user-drag: none !important;
+    -webkit-touch-callout: none !important; /* Desactiva el menú de guardado nativo en iOS (Safari/Chrome) */
+  }
+
   .article-main { padding-top: 80px; }
   .article-hero { position: relative; width: 100%; height: 40vh; min-height: 350px; display: flex; align-items: flex-end; padding-bottom: 3rem; border-bottom: 1px solid #222; }
   .hero-bg { position: absolute; inset: 0; z-index: 0; background: #000; }
@@ -166,7 +184,7 @@ const { title, subtitle, heroImage, backUrl = "/" } = Astro.props;
   /* MÓVIL: Activación del botón flotante */
   @media (max-width: 1024px) {
     .btn-scroll-top {
-      display: block; /* Se enciende de forma física exclusivamente en pantallas táctiles */
+      display: block;
     }
   }
 

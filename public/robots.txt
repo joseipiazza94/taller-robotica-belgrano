@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /images/bitacora/
+Disallow: /images/wro/
+Disallow: /images/niveles/
+Disallow: /videos/
+
+# Bloqueo específico para el bot de Google Imágenes
+User-agent: Googlebot-Image
+Disallow: /

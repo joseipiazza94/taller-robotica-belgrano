@@ -8,7 +8,6 @@ interface Props {
 }
 
 export async function getStaticPaths() {
-  // Le decimos a TypeScript que esto es una lista de entradas de la bitácora
   const posts: CollectionEntry<'bitacora'>[] = await getCollection('bitacora');
   
   return posts.map((post) => ({
@@ -17,7 +16,6 @@ export async function getStaticPaths() {
   }));
 }
 
-// 2. Astro.props ahora sabe que 'post' tiene la propiedad 'data'
 const { post } = Astro.props;
 const { Content } = await post.render();
 ---
@@ -25,7 +23,7 @@ const { Content } = await post.render();
 <Layout title={post.data.title}>
   <article class="post-detail">
     <header class="post-hero">
-      {/* Usamos la imagen que definiste en el Markdown para la portada mensual */}
+      {/* Portada mensual protegida */}
       <div class="hero-overlay" style={`background-image: url(${post.data.image})`}></div>
       <div class="hero-text">
         <span class="mes-badge">{post.data.mes}</span>
@@ -35,28 +33,68 @@ const { Content } = await post.render();
 
     <div class="post-body">
       <div class="markdown-content">
-        {/* Aquí se renderiza el contenido sobre el trabajo de Ana y Florencia */}
         <Content />
       </div>
       
       <footer class="post-footer">
-  
-  <a href="/#bitacora" class="back-btn">← VOLVER AL INICIO</a>
-  <a href="/bitacora" class="back-btn">IR AL LISTADO →</a>
-</footer>
+        <a href="/#bitacora" class="back-btn">← VOLVER AL INICIO</a>
+        <a href="/bitacora" class="back-btn">IR AL LISTADO →</a>
+      </footer>
     </div>
   </article>
+
+  {/* SCRIPT INTERACTIVO: Bloquea clic derecho, pulsación larga y desactiva el arrastre nativo */}
+  <script is:inline>
+    const blindarMultimediaDinamico = () => {
+      const multimedia = document.querySelectorAll('.post-detail img, .post-detail video');
+      multimedia.forEach(el => {
+        // 1. Bloquea el menú contextual (clic derecho / presión larga en táctil)
+        el.addEventListener('contextmenu', e => e.preventDefault());
+        
+        // 2. Desactiva de raíz el arrastre nativo del elemento HTML para evitar aperturas en pestañas nuevas
+        if (el.tagName.toLowerCase() === 'img') {
+          el.setAttribute('draggable', 'false');
+        }
+      });
+    };
+
+    // Ejecuta de inmediato y maneja el comportamiento de ViewTransitions
+    blindarMultimediaDinamico();
+    document.addEventListener('astro:page-load', blindarMultimediaDinamico);
+  </script>
 </Layout>
 
 <style>
   .post-detail { background: #0a0a0a; color: white; min-height: 100vh; }
   .post-hero { height: 50vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-  .hero-overlay { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0.3; filter: blur(8px); }
+  
+  /* Bloqueamos arrastre en la portada difuminada de fondo */
+  .hero-overlay { 
+    position: absolute; 
+    inset: 0; 
+    background-size: cover; 
+    background-position: center; 
+    opacity: 0.3; 
+    filter: blur(8px); 
+    user-select: none !important;
+    -webkit-user-drag: none !important;
+  }
+  
   .hero-text { position: relative; z-index: 10; text-align: center; }
   h1 { font-size: 4rem; font-weight: 900; text-transform: uppercase; margin-top: 1rem; }
   .mes-badge { background: #d83135; padding: 0.5rem 1rem; font-weight: 900; font-size: 0.8rem; letter-spacing: 2px; }
   .post-body { max-width: 800px; margin: 0 auto; padding: 4rem 5%; }
+  
+  /* --- PROTECCIÓN POR CSS DE TODO EL CONTENIDO DEL MARKDOWN --- */
   .markdown-content { font-size: 1.1rem; line-height: 1.8; color: #ccc; }
+  
+  .markdown-content :global(img),
+  .markdown-content :global(video) {
+    user-select: none !important;
+    -webkit-user-drag: none !important;
+    -webkit-touch-callout: none !important; /* Anula menú de guardado en iPhones */
+  }
+
   .markdown-content :global(h2) { color: #d83135; font-size: 2rem; margin: 3rem 0 1rem; text-transform: uppercase; }
   .markdown-content :global(strong) { color: white; }
   .markdown-content :global(hr) { border: 0; height: 1px; background: #222; margin: 3rem 0; }
@@ -71,7 +109,6 @@ const { Content } = await post.render();
     align-items: center;
   }
   
-  /* REUTILIZAMOS LA CLASE ORIGINAL PARA AMBOS BOTONES */
   .back-btn { 
     color: #d83135; 
     text-decoration: none; 
